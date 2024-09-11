@@ -1,0 +1,9 @@
+project:
+  title: "cv_typst"
+  type: default
+  output-dir: docs
+
+execute:
+  freeze: auto
+
+

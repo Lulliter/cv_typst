@@ -1,0 +1,334 @@
+---
+title: "Kazuharu Yanagimoto"
+author:
+  firstname: Kazuharu
+  lastname: Yanagimoto
+  address: CEMFI, Calle Casado del Alisal 5, 28014 Madrid, Spain
+  position: "Ph.D. Candidate in Economics. Labor, Macro, and Family Economics."
+  contacts:
+    - icon: fa envelope
+      text: kazuharu.yanagimoto@cemfi.edu.es
+      url: "mailto:kazuharu.yanagimoto@cemfi.edu.es"
+    - icon: assets/icon/bi-house-fill.svg
+      text: kazuyanagimoto.com
+      url: https://kazuyanagimoto.com
+    - icon: fa brands orcid
+      text: 0009-0007-1967-8304
+      url: https://orcid.org/0009-0007-1967-8304
+    - icon: fa brands github
+      text: kazuyanagimoto
+      url: https://github.com/kazuyanagimoto
+    - icon: fa brands x-twitter
+      text: kazuyanagimoto
+      url: https://twitter.com/kazuyanagimoto
+    - icon: assets/icon/fa-google-scholar.svg
+      text: Kazuharu Yanagimoto
+      url: https://scholar.google.com/citations?user=kypV1CYAAAAJ
+    - icon: fa brands linkedin
+      text: Kazuharu Yanagimoto
+      url: https://www.linkedin.com/in/kazuharu-yanagimoto
+    - icon: assets/icon/si-zenn.svg
+      text: Kazuharu Yanagimoto
+      url: https://zenn.dev/nicetak
+style:
+  color-accent: 516db0
+format:
+  awesomecv-typst:
+    font-paths: ["assets/fonts/"]
+    keep-typ: true
+execute: 
+  echo: false
+  warning: false
+---
+
+```{r}
+# fonte 
+# EXE https://kazuyanagimoto.com/cv/cv.pdf
+# GH https://github.com/kazuyanagimoto/cv
+
+# install.packages("typstcv", repos = "https://kazuyanagimoto.r-universe.dev")
+library(typstcv)
+library(dplyr)
+```
+
+
+## Education
+
+```{r}
+#| output: asis
+educ <- readr::read_csv(here::here("data", "edu.csv"), show_col_types = FALSE)
+#  
+# 
+# educ <- read.csv("data/edu.csv",
+#                  colClasses = c("character", "Date", "Date", "character", "character"))
+# 
+# educ |>
+#   format_date(end = "end", sort_by = "start") |>
+#   resume_entry(title = "degree",
+#                description = "institution")
+
+educ %>% 
+	mutate( end_m_y = glue::glue("{end_month} - {end_year}"))  %>% 
+	resume_entry(title = "degree",
+  				 location = "inst",
+  				 date = "end_m_y",
+               description = "detail")
+```
+
+
+## Research Experience
+
+```{r}
+#| output: asis
+
+read.csv("data_old/job.csv", colClasses = c("character", "character", "Date", "Date", "character")) |>
+  format_date(end = "end", sort_by = "start") |>
+  resume_entry(description = "institution")
+```
+
+## Teaching Experience
+
+```{r}
+#| output: asis
+
+read.csv("data_old/teaching.csv",
+         colClasses = c("character", "character", "Date", "Date", "character")) |>
+  format_date(end = "end", sort_by = "start") |>
+  resume_entry(description = "institution")
+```
+
+## Other Experience
+
+```{r}
+#| output: asis
+
+read.csv("data_old/other.csv") |>
+  resume_entry(details = c("detail1", "detail2"))
+```
+
+## Research Grant
+
+```{r}
+#| output: asis
+
+read.csv("data_old/grant.csv",
+         colClasses = c("character", "character", "Date")) |>
+  format_date(start = "year", date_format = "%Y", sort_by = "start") |>
+  resume_entry(description = "amount")
+```
+
+
+## Scholarships
+
+```{r}
+#| output: asis
+
+read.csv("data_old/scholarship.csv",
+         colClasses = c("character", "Date", "Date", "character", "character"))  |>
+  format_date(end = "end", sort_by = "start") |>
+  resume_entry()
+```
+
+
+## Skills
+
+```{r}
+#| output: asis
+read.csv("data_old/skill.csv") |>
+  resume_entry(title = "area",
+               description = "skills")
+```
+
+```{r  sw_opt2, results='markup'}
+#| output: asis
+#| 
+# Lorena Abad, ma non viene !
+# https://github.com/loreabad6/R-CV/blob/master/CV.Rmd
+
+skill <-  tribble(
+  ~`Office Suite`, ~`Statistics/Databases`, ~`Business Intelligence`, ~`Other`,
+  "(Expert)", "(Expert)",  "(Basic)",  "(Basic)",
+  "MS Office, GSuite, LibreOffice", # iWork Suite,    
+  "R, RStudio, Stata, SQL, Excel",
+  "Salesforce, SAP, Power BI",
+  #       "ArcGIS, QGIS, GeoDa, OpenStreetMap",
+  "Markdown, Git, Github, Unix Shell, QGIS" ) # CSS, HTML, LaTeX, 
+
+
+#  %>%
+#   kable(booktabs = T, align = 'c', escape = F, format = "latex")  %>%
+#   kable_styling(full_width = F, font_size = 10, latex_options = "HOLD_position") %>%
+#   row_spec(0, bold = T, color = "#009acd") %>%
+#   row_spec(1, bold = F, italic = T, color = "#7f7f7f") %>%
+#   column_spec(column = 1:4, width = '4 cm')   %>% 
+# # TRYING TO HAVE NO HORIZONTAL LINES  
+#   #row_spec(0:4, extra_latex_after = "\\arrayrulecolor{white}" ) %>% 
+#   #row_spec( extra_latex_after = "\\arrayrulecolor{white}")  %>%
+#    sub("\\\\toprule", "", .) %>%
+#   sub("\\\\bottomrule", "", .) 
+# %>% 
+#   add_header_above(line = F) 
+#  
+```
+
+```{r lan_opt2, eval=FALSE, results='markup'}
+#| output: asis
+lang <- data.frame(
+  Skill = c("Reading", "Writing", "Listening","Speaking"),
+  Italian = cell_spec(c(rep("Native", 4)), 'latex', color = '#005c7b'), 
+  English = cell_spec(c("C2","C2","C2","C2"), 'latex', color = '#009acd'), 
+  Spanish = cell_spec(c("C2","C1","C2","C2"), 'latex', color = '#4cb8dc'), 
+  Portuguese = cell_spec(c("B2","A1","B2","B2"), 'latex', color = '#4cb8dc')
+  #French = cell_spec(c("A2","A1","A1","A1"), 'latex', color = '#7fcce6') 
+) 
+# %>% 
+#   kable(booktabs = T, align = 'c', escape = F, format = "latex")  %>% 
+#   kable_styling(full_width = F, font_size = 10, latex_options = "HOLD_position") %>%  
+#   footnote(
+#     footnote_as_chunk = T,
+#     general_title = " ",
+#     general = "\\\\tiny Common European Framework of Reference for Languages: A1/A2: Basic User. B1/B2: Independent User. C1/C2: Proficient User",
+#     escape = F
+#   )  %>% 
+#   row_spec(0, bold = T, color = "#009acd") %>% 
+#   column_spec(column = 1, bold = F, italic = T, color = "#7f7f7f") %>% 
+#   column_spec(column = 1:6, width = '2.4cm')   %>% 
+# # TRYING TO HAVE NO HORIZONTAL LINES  
+#   #row_spec(0:4, extra_latex_after = "\\arrayrulecolor{white}" ) %>% 
+#   #row_spec( extra_latex_after = "\\arrayrulecolor{white}")  %>%
+#    sub("\\\\toprule", "", .) %>%
+#   sub("\\\\bottomrule", "", .) 
+# %>% 
+#   add_header_above(line = F) 
+#  
+```
+
+```{r lan_opt3, results='markup'}
+#| output: asis
+
+data.frame(
+	Skill = c( "(Written and Verbal)"), # no"  & " will mess Latex
+	Italian = cell_spec( c("Native" ), 'latex', color = '#005c7b'), 
+	English = cell_spec(c("C2" ), 'latex', color = '#009acd'), 
+	Spanish = cell_spec(c("C2"), 'latex', color = '#4cb8dc'), 
+	Portuguese = cell_spec(c("B1"), 'latex', color = '#4cb8dc'),
+	French = cell_spec(c("A1"), 'latex', color = '#7fcce6') 
+)  %>% 
+	kable(booktabs = T, align = 'c', escape = F, format = "latex")  %>% 
+	kable_styling(full_width = F, font_size = 10, latex_options = "HOLD_position") %>%  
+	footnote(
+		footnote_as_chunk = T,
+		general_title = " ",
+		general = "\\\\tiny Common European Framework of Reference for Languages: A1/A2: Basic User. B1/B2: Independent User. C1/C2: Proficient User",
+		escape = F
+	)  %>% 
+	row_spec(0, bold = T, color = "#009acd") %>% 
+	column_spec(column = 1, bold = F, italic = T, color = "#7f7f7f") %>% 
+	column_spec(column = 1:6, width = '2.4cm')   %>% 
+	# TRYING TO HAVE NO HORIZONTAL LINES  
+	#row_spec(0:4, extra_latex_after = "\\arrayrulecolor{white}" ) %>% 
+	#row_spec( extra_latex_after = "\\arrayrulecolor{white}")  %>%
+	sub("\\\\toprule", "", .) %>%
+	sub("\\\\bottomrule", "", .) # %>% 
+#   add_header_above(line = F) 
+#  
+```
+
+
+<!-- # TALKS  -->
+
+<!-- ```{r} -->
+<!-- # lula_talks <- RefManageR::ReadBib(file = here::here("data", "Lula-MyTalks.bib"), -->
+<!-- #                                   .Encoding ="UTF-8") %>%  -->
+<!-- #   as.data.frame() -->
+
+
+<!-- lula_talks <- bib2df::bib2df(here::here("data", "Lula-MyTalks.bib")) -->
+<!-- df -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- #| output: asis -->
+
+<!-- lula_talks %>%  -->
+<!--   resume_entry(title = "TITLE",date = "DATE" ,description = "EVENTTITLE" -->
+
+<!--   				 ) -->
+<!-- ``` -->
+ 
+ 
+## Publications
+
+### Peer-reviewed 
+See complete list on [Google Scholar profile](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao)
+
+<!-- ```{r} -->
+<!-- lula_pub <- RefManageR::ReadBib( -->
+<!--   file = here::here("data", "Lula-MyPublication-Narrow.bib"), -->
+<!--   .Encoding ="UTF-8") %>%    -->
+<!--   as.data.frame() %>%  -->
+<!--   dplyr::filter(bibtype != "Online")   -->
+
+<!-- #paint(lula_pub) -->
+
+<!-- peer_pub <- lula_pub %>%  -->
+<!--   filter(type == "Peer-reviewed") %>%  -->
+<!--   #mutate(date  =  as.Date(date, format = "%Y-%m") ) %>%  -->
+<!--   mutate(date2  =  lubridate::ym(date)) %>%  # aggiunge giorno -->
+<!--   mutate(year  =  lubridate::year(date2)) %>%    -->
+<!--   mutate(month  =  lubridate::month(date2)) %>%    -->
+<!--   select( author, date, year, month,    journaltitle,   doi) -->
+
+<!-- #paint(peer_pub) -->
+
+```{r}
+# filter blogs
+peer_pub <- RefManageR::ReadBib(
+  file = here::here("data", "Lula-MyPublication-Narrow.bib"),
+  .Encoding ="UTF-8")  %>%
+  as.data.frame() %>%
+  dplyr::filter(bibtype == "Article")
+```
+
+```{r}
+#| output: asis
+peer_pub |>
+	resume_entry(title = "title",
+					 description = "type",
+					 date = "date",
+					 details = "url")
+```
+
+
+
+### Blog posts
+```{r}
+# filter blogs
+lula_blog <- RefManageR::ReadBib(
+  file = here::here("data", "Lula-MyPublication-Narrow.bib"),
+  .Encoding ="UTF-8")  %>%
+  as.data.frame() %>%
+  dplyr::filter(bibtype  == "Online")
+```
+
+```{r}
+#| output: asis
+lula_blog |>
+	resume_entry(title = "title",
+					 location = "journaltitle",
+					 description = "author",
+					 date = "date",
+					 details = "url")
+```
+
+
+## Conference and Seminar Presentations
+
+```{r}
+#| output: asis
+
+read.csv("data_old/conference.csv",
+         colClasses = c("character", "Date", "Date", "character", "character")) |>
+  format_date(sort_by = "start") |>
+  resume_entry(title = "title")
+```
