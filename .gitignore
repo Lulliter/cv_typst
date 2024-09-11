@@ -44,6 +44,7 @@ docs/*
 !docs/index.html
 !docs/_config.yml
 /.quarto/
+_freeze/
 cv.typ
 
 

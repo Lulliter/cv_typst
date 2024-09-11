@@ -13,7 +13,7 @@ git add tools/*
     git add     r/00_useful.qmd
 =======
 
-git commit -m "cv.qmd"
+git commit -m "___render_deploy.sh"
 git commit -m "worked r/02_r_vscode.qmd 😵‍💫"
 		# git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 

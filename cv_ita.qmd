@@ -1,0 +1,202 @@
+---
+title: "Luisa M. Mimmi"
+author:
+  firstname: Luisa M.
+  lastname: Mimmi
+  address: Pavia, Italia
+  position: "Economista | Analista di politiche pubbliche | Consulente freelance"
+  contacts:
+    - icon: fa envelope
+      text: lmm76@georgetown.edu
+      url: "mailto:lmm76@georgetown.edu"
+    - icon: assets/icon/bi-house-fill.svg
+      text: luisamimmi.org
+      url: https://luisamimmi.org
+    # - icon: fa brands orcid
+    #   text: 0000-0002-2244-8282
+    #   url: https://orcid.org/0000-0002-2244-8282
+    # - icon: fa brands x-twitter
+    #   text: Lulliter
+    #   url: https://x.com/Lulliter
+    - icon: fa brands linkedin
+      text: Luisa M. Mimmi
+      url: https://www.linkedin.com/in/luisa-m-mimmi
+    - icon: assets/icon/fa-google-scholar.svg
+      text: Luisa M. Mimmi
+      url: https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao
+    - icon: fa brands researchgate
+      text: Luisa M. Mimmi
+      url: https://www.researchgate.net/profile/Luisa-Mimmi
+    - icon: fa brands github
+      text: lulliter
+      url: https://github.com/lulliter
+style:
+  color-accent: 0088cc #516db0
+format:
+  awesomecv-typst:
+    font-paths: ["assets/fonts/"]
+    keep-typ: true
+execute: 
+  echo: false
+  warning: false
+---
+
+```{r}
+# fonte 
+# pckg https://kazuyanagimoto.com/typstcv/
+# EXE https://kazuyanagimoto.com/cv/cv.pdf
+# GH https://github.com/kazuyanagimoto/cv
+
+# install.packages("typstcv", repos = "https://kazuyanagimoto.r-universe.dev")
+library(typstcv)
+library(dplyr)
+library(stringr)
+```
+
+## Esperienza professionale
+```{r}
+work <- readr::read_csv(here::here("data", "work_ita.csv"), show_col_types = FALSE)%>% 
+	#mutate(start_month = lubridate::month("start_month"))
+	mutate(start  = glue::glue("{start_month}-{start_year}"),
+			 end = glue::glue("{end_month}-{end_year}")) %>% 
+	mutate(end = if_else(end == "NA-NA", "Present", end),
+			 date = glue::glue("{start} - {end}")
+	)
+
+# names(work )
+#work$end
+```
+
+```{r}
+#| output: asis
+work %>% 
+	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
+	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
+	resume_entry(title = "title",
+					 description = "org",
+					 location = "where",
+					 date = "date",
+					 details = c("description_1" )
+					 #details = c("description_1", "description_2" )
+					 ) 
+	
+```
+
+
+## Competenze
+ 
+ •	**Competenze Analitiche**: Eccellenti capacità di pensiero critico e creativo, applicata alla soluzione di problemi complessi di carattere quantitativo, perfezionate nell'ambito di programmi internazionali di sviluppo economico  
+ •	**Competenze Organizzative**: Affidabilità, intraprendenza, e capacità di lavorare in squadra dimostrata in ruoli di _leadership_ ricoperti nella conduzione di progetti di ricerca e assistenza tecnica con diversi _stakeholders_  
+ •	**Competenze di Comunicazione**: Efficaci capacità interpersonali e comunicative, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni  
+
+
+\newpage
+
+## Istruzione
+
+```{r}
+educ <- readr::read_csv(here::here("data", "edu_ita.csv"), show_col_types = FALSE)
+```
+
+```{r}
+#| output: asis
+educ %>% 
+mutate( end_m_y = glue::glue("{end_month} - {end_year}"))  %>% 
+	resume_entry(title = "degree",
+					 location = "inst",
+					 date = "end_m_y",
+					 description = "detail")
+```
+ 
+
+
+## Lingue e software
+
+```{r}
+#| output: asis
+read.csv("data/skill_ita.csv") |>
+  resume_entry(title = "area",
+               description = "skills")
+```
+
+
+ 
+ 
+## Pubblicazioni
+
+### Peer-reviewed  
+
+
+```{r}
+# filter blogs
+peer_pub <- RefManageR::ReadBib(
+	file = here::here("data", "Lula-MyPublication-Narrow.bib"),
+	.Encoding ="UTF-8")  %>%
+	as.data.frame() %>%
+	dplyr::filter(bibtype == "Article") # %>% 
+	#mutate(url = if_else(is.na(url), url_preprint, url) )
+
+```
+
+```{r}
+#| output: asis
+peer_pub |>
+	resume_entry(title = "title",
+					 description =  "author",
+					 location = "journaltitle",
+					 date =  "date" ,
+					 details = "url")
+```
+
+
+### Altre pubblicazioni tecniche 
+
+<br><br>
+
+Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao)
+
+
+<!-- ### Media Divulgativi -->
+<!-- ```{r} -->
+<!-- # filter blogs -->
+<!-- lula_blog <- RefManageR::ReadBib( -->
+<!--   file = here::here("data", "Lula-MyPublication-Narrow.bib"), -->
+<!--   .Encoding ="UTF-8")  %>% -->
+<!--   as.data.frame() %>% -->
+<!--   dplyr::filter(bibtype  == "Online") -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- lula_blog |> -->
+<!-- 	resume_entry(title = "title", -->
+<!-- 					 location = "type", -->
+<!-- 					 description = "author", -->
+<!-- 					 date = "date", -->
+<!-- 					 details = "url") -->
+<!-- ``` -->
+
+
+<!-- ## Presentazioni e Seminari -->
+
+<!-- ```{r} -->
+<!-- # filter recent and.... -->
+<!-- talks <- RefManageR::ReadBib( -->
+<!-- 	file = here::here("data", "Lula-MyTalks.bib"), -->
+<!-- 	.Encoding ="UTF-8")  %>% -->
+<!-- 	as.data.frame() %>% -->
+<!-- 	mutate(year = stringr::str_extract(date,pattern = "^.{1,4}")) %>% -->
+<!-- 	dplyr::filter(year >2020 & type != "Invited Talk") # %>% -->
+<!-- #mutate(url = if_else(is.na(url), url_preprint, url) ) -->
+
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- #| output: asis -->
+
+<!-- talks %>% -->
+<!-- 	resume_entry(title = "title", -->
+<!-- 					 date = "date" , -->
+<!-- 					 description = "eventtitle",location = "venue" -->
+<!-- 	) -->
+<!-- ``` -->
