@@ -1,37 +1,37 @@
 ---
-title: "Kazuharu Yanagimoto"
+title: "Luisa M. Mimmi"
 author:
-  firstname: Kazuharu
-  lastname: Yanagimoto
-  address: CEMFI, Calle Casado del Alisal 5, 28014 Madrid, Spain
-  position: "Ph.D. Candidate in Economics. Labor, Macro, and Family Economics."
+  firstname: Luisa M.
+  lastname: Mimmi
+  address: Pavia, Italy
+  position: "Economist | Policy Analyst | Freelance consultant"
   contacts:
     - icon: fa envelope
-      text: kazuharu.yanagimoto@cemfi.edu.es
-      url: "mailto:kazuharu.yanagimoto@cemfi.edu.es"
+      text: lmm76@georgetown.edu
+      url: "mailto:lmm76@georgetown.edu"
     - icon: assets/icon/bi-house-fill.svg
-      text: kazuyanagimoto.com
-      url: https://kazuyanagimoto.com
-    - icon: fa brands orcid
-      text: 0009-0007-1967-8304
-      url: https://orcid.org/0009-0007-1967-8304
-    - icon: fa brands github
-      text: kazuyanagimoto
-      url: https://github.com/kazuyanagimoto
-    - icon: fa brands x-twitter
-      text: kazuyanagimoto
-      url: https://twitter.com/kazuyanagimoto
-    - icon: assets/icon/fa-google-scholar.svg
-      text: Kazuharu Yanagimoto
-      url: https://scholar.google.com/citations?user=kypV1CYAAAAJ
+      text: luisamimmi.org
+      url: https://luisamimmi.org
+    # - icon: fa brands orcid
+    #   text: 0000-0002-2244-8282
+    #   url: https://orcid.org/0000-0002-2244-8282
+    # - icon: fa brands x-twitter
+    #   text: Lulliter
+    #   url: https://x.com/Lulliter
     - icon: fa brands linkedin
-      text: Kazuharu Yanagimoto
-      url: https://www.linkedin.com/in/kazuharu-yanagimoto
-    - icon: assets/icon/si-zenn.svg
-      text: Kazuharu Yanagimoto
-      url: https://zenn.dev/nicetak
+      text: Luisa M. Mimmi
+      url: https://www.linkedin.com/in/luisa-m-mimmi
+    - icon: assets/icon/fa-google-scholar.svg
+      text: Luisa M. Mimmi
+      url: https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao
+    - icon: fa brands researchgate
+      text: Luisa M. Mimmi
+      url: https://www.researchgate.net/profile/Luisa-Mimmi
+    - icon: fa brands github
+      text: lulliter
+      url: https://github.com/lulliter
 style:
-  color-accent: 516db0
+  color-accent: 0088cc #516db0
 format:
   awesomecv-typst:
     font-paths: ["assets/fonts/"]
@@ -43,292 +43,158 @@ execute:
 
 ```{r}
 # fonte 
+# pckg https://kazuyanagimoto.com/typstcv/
 # EXE https://kazuyanagimoto.com/cv/cv.pdf
 # GH https://github.com/kazuyanagimoto/cv
 
 # install.packages("typstcv", repos = "https://kazuyanagimoto.r-universe.dev")
 library(typstcv)
 library(dplyr)
+library(stringr)
 ```
 
+## Work Experience
+```{r}
+work <- readr::read_csv(here::here("data", "work.csv"), show_col_types = FALSE)%>% 
+	#mutate(start_month = lubridate::month("start_month"))
+	mutate(start  = glue::glue("{start_month}-{start_year}"),
+			 end = glue::glue("{end_month}-{end_year}")) %>% 
+	mutate(end = if_else(end == "NA-NA", "Present", end),
+			 date = glue::glue("{start} - {end}")
+	)
+
+# names(work )
+#work$end
+```
+
+```{r}
+#| output: asis
+work %>% 
+	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
+	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
+	resume_entry(title = "title",
+					 description = "org",
+					 location = "where",
+					 date = "date",
+					 details = c("description_1" )
+					 #details = c("description_1", "description_2" )
+					 ) 
+	
+```
+
+
+## Professional Skills
+ 
+ •	<!-- \faIcon{calculator}--> Exceptional critical thinking, and **data analysis skills**, showcased in international development programs    
+ •	<!-- \faIcon{sitemap}--> Demonstrated drive and resourcefulness in **leadership roles** for complex projects with multiple stakeholders      
+ •	<!-- \faIcon{users}--> Effective **communication skills**, proven by record of multilingual publications and public speaking 
+
+\newpage
 
 ## Education
 
 ```{r}
-#| output: asis
 educ <- readr::read_csv(here::here("data", "edu.csv"), show_col_types = FALSE)
-#  
-# 
-# educ <- read.csv("data/edu.csv",
-#                  colClasses = c("character", "Date", "Date", "character", "character"))
-# 
-# educ |>
-#   format_date(end = "end", sort_by = "start") |>
-#   resume_entry(title = "degree",
-#                description = "institution")
+```
 
+```{r}
+#| output: asis
 educ %>% 
-	mutate( end_m_y = glue::glue("{end_month} - {end_year}"))  %>% 
+mutate( end_m_y = glue::glue("{end_month} - {end_year}"))  %>% 
 	resume_entry(title = "degree",
-  				 location = "inst",
-  				 date = "end_m_y",
-               description = "detail")
+					 location = "inst",
+					 date = "end_m_y",
+					 description = "detail")
 ```
-
-
-## Research Experience
-
-```{r}
-#| output: asis
-
-read.csv("data_old/job.csv", colClasses = c("character", "character", "Date", "Date", "character")) |>
-  format_date(end = "end", sort_by = "start") |>
-  resume_entry(description = "institution")
-```
-
-## Teaching Experience
-
-```{r}
-#| output: asis
-
-read.csv("data_old/teaching.csv",
-         colClasses = c("character", "character", "Date", "Date", "character")) |>
-  format_date(end = "end", sort_by = "start") |>
-  resume_entry(description = "institution")
-```
-
-## Other Experience
-
-```{r}
-#| output: asis
-
-read.csv("data_old/other.csv") |>
-  resume_entry(details = c("detail1", "detail2"))
-```
-
-## Research Grant
-
-```{r}
-#| output: asis
-
-read.csv("data_old/grant.csv",
-         colClasses = c("character", "character", "Date")) |>
-  format_date(start = "year", date_format = "%Y", sort_by = "start") |>
-  resume_entry(description = "amount")
-```
-
-
-## Scholarships
-
-```{r}
-#| output: asis
-
-read.csv("data_old/scholarship.csv",
-         colClasses = c("character", "Date", "Date", "character", "character"))  |>
-  format_date(end = "end", sort_by = "start") |>
-  resume_entry()
-```
+ 
 
 
 ## Skills
 
 ```{r}
 #| output: asis
-read.csv("data_old/skill.csv") |>
+read.csv("data/skill.csv") |>
   resume_entry(title = "area",
                description = "skills")
 ```
 
-```{r  sw_opt2, results='markup'}
-#| output: asis
-#| 
-# Lorena Abad, ma non viene !
-# https://github.com/loreabad6/R-CV/blob/master/CV.Rmd
 
-skill <-  tribble(
-  ~`Office Suite`, ~`Statistics/Databases`, ~`Business Intelligence`, ~`Other`,
-  "(Expert)", "(Expert)",  "(Basic)",  "(Basic)",
-  "MS Office, GSuite, LibreOffice", # iWork Suite,    
-  "R, RStudio, Stata, SQL, Excel",
-  "Salesforce, SAP, Power BI",
-  #       "ArcGIS, QGIS, GeoDa, OpenStreetMap",
-  "Markdown, Git, Github, Unix Shell, QGIS" ) # CSS, HTML, LaTeX, 
-
-
-#  %>%
-#   kable(booktabs = T, align = 'c', escape = F, format = "latex")  %>%
-#   kable_styling(full_width = F, font_size = 10, latex_options = "HOLD_position") %>%
-#   row_spec(0, bold = T, color = "#009acd") %>%
-#   row_spec(1, bold = F, italic = T, color = "#7f7f7f") %>%
-#   column_spec(column = 1:4, width = '4 cm')   %>% 
-# # TRYING TO HAVE NO HORIZONTAL LINES  
-#   #row_spec(0:4, extra_latex_after = "\\arrayrulecolor{white}" ) %>% 
-#   #row_spec( extra_latex_after = "\\arrayrulecolor{white}")  %>%
-#    sub("\\\\toprule", "", .) %>%
-#   sub("\\\\bottomrule", "", .) 
-# %>% 
-#   add_header_above(line = F) 
-#  
-```
-
-```{r lan_opt2, eval=FALSE, results='markup'}
-#| output: asis
-lang <- data.frame(
-  Skill = c("Reading", "Writing", "Listening","Speaking"),
-  Italian = cell_spec(c(rep("Native", 4)), 'latex', color = '#005c7b'), 
-  English = cell_spec(c("C2","C2","C2","C2"), 'latex', color = '#009acd'), 
-  Spanish = cell_spec(c("C2","C1","C2","C2"), 'latex', color = '#4cb8dc'), 
-  Portuguese = cell_spec(c("B2","A1","B2","B2"), 'latex', color = '#4cb8dc')
-  #French = cell_spec(c("A2","A1","A1","A1"), 'latex', color = '#7fcce6') 
-) 
-# %>% 
-#   kable(booktabs = T, align = 'c', escape = F, format = "latex")  %>% 
-#   kable_styling(full_width = F, font_size = 10, latex_options = "HOLD_position") %>%  
-#   footnote(
-#     footnote_as_chunk = T,
-#     general_title = " ",
-#     general = "\\\\tiny Common European Framework of Reference for Languages: A1/A2: Basic User. B1/B2: Independent User. C1/C2: Proficient User",
-#     escape = F
-#   )  %>% 
-#   row_spec(0, bold = T, color = "#009acd") %>% 
-#   column_spec(column = 1, bold = F, italic = T, color = "#7f7f7f") %>% 
-#   column_spec(column = 1:6, width = '2.4cm')   %>% 
-# # TRYING TO HAVE NO HORIZONTAL LINES  
-#   #row_spec(0:4, extra_latex_after = "\\arrayrulecolor{white}" ) %>% 
-#   #row_spec( extra_latex_after = "\\arrayrulecolor{white}")  %>%
-#    sub("\\\\toprule", "", .) %>%
-#   sub("\\\\bottomrule", "", .) 
-# %>% 
-#   add_header_above(line = F) 
-#  
-```
-
-```{r lan_opt3, results='markup'}
-#| output: asis
-
-data.frame(
-	Skill = c( "(Written and Verbal)"), # no"  & " will mess Latex
-	Italian = cell_spec( c("Native" ), 'latex', color = '#005c7b'), 
-	English = cell_spec(c("C2" ), 'latex', color = '#009acd'), 
-	Spanish = cell_spec(c("C2"), 'latex', color = '#4cb8dc'), 
-	Portuguese = cell_spec(c("B1"), 'latex', color = '#4cb8dc'),
-	French = cell_spec(c("A1"), 'latex', color = '#7fcce6') 
-)  %>% 
-	kable(booktabs = T, align = 'c', escape = F, format = "latex")  %>% 
-	kable_styling(full_width = F, font_size = 10, latex_options = "HOLD_position") %>%  
-	footnote(
-		footnote_as_chunk = T,
-		general_title = " ",
-		general = "\\\\tiny Common European Framework of Reference for Languages: A1/A2: Basic User. B1/B2: Independent User. C1/C2: Proficient User",
-		escape = F
-	)  %>% 
-	row_spec(0, bold = T, color = "#009acd") %>% 
-	column_spec(column = 1, bold = F, italic = T, color = "#7f7f7f") %>% 
-	column_spec(column = 1:6, width = '2.4cm')   %>% 
-	# TRYING TO HAVE NO HORIZONTAL LINES  
-	#row_spec(0:4, extra_latex_after = "\\arrayrulecolor{white}" ) %>% 
-	#row_spec( extra_latex_after = "\\arrayrulecolor{white}")  %>%
-	sub("\\\\toprule", "", .) %>%
-	sub("\\\\bottomrule", "", .) # %>% 
-#   add_header_above(line = F) 
-#  
-```
-
-
-<!-- # TALKS  -->
-
-<!-- ```{r} -->
-<!-- # lula_talks <- RefManageR::ReadBib(file = here::here("data", "Lula-MyTalks.bib"), -->
-<!-- #                                   .Encoding ="UTF-8") %>%  -->
-<!-- #   as.data.frame() -->
-
-
-<!-- lula_talks <- bib2df::bib2df(here::here("data", "Lula-MyTalks.bib")) -->
-<!-- df -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-
-<!-- lula_talks %>%  -->
-<!--   resume_entry(title = "TITLE",date = "DATE" ,description = "EVENTTITLE" -->
-
-<!--   				 ) -->
-<!-- ``` -->
  
  
 ## Publications
 
-### Peer-reviewed 
-See complete list on [Google Scholar profile](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao)
+### Peer-reviewed  
 
-<!-- ```{r} -->
-<!-- lula_pub <- RefManageR::ReadBib( -->
-<!--   file = here::here("data", "Lula-MyPublication-Narrow.bib"), -->
-<!--   .Encoding ="UTF-8") %>%    -->
-<!--   as.data.frame() %>%  -->
-<!--   dplyr::filter(bibtype != "Online")   -->
-
-<!-- #paint(lula_pub) -->
-
-<!-- peer_pub <- lula_pub %>%  -->
-<!--   filter(type == "Peer-reviewed") %>%  -->
-<!--   #mutate(date  =  as.Date(date, format = "%Y-%m") ) %>%  -->
-<!--   mutate(date2  =  lubridate::ym(date)) %>%  # aggiunge giorno -->
-<!--   mutate(year  =  lubridate::year(date2)) %>%    -->
-<!--   mutate(month  =  lubridate::month(date2)) %>%    -->
-<!--   select( author, date, year, month,    journaltitle,   doi) -->
-
-<!-- #paint(peer_pub) -->
 
 ```{r}
 # filter blogs
 peer_pub <- RefManageR::ReadBib(
-  file = here::here("data", "Lula-MyPublication-Narrow.bib"),
-  .Encoding ="UTF-8")  %>%
-  as.data.frame() %>%
-  dplyr::filter(bibtype == "Article")
+	file = here::here("data", "Lula-MyPublication-Narrow.bib"),
+	.Encoding ="UTF-8")  %>%
+	as.data.frame() %>%
+	dplyr::filter(bibtype == "Article") # %>% 
+	#mutate(url = if_else(is.na(url), url_preprint, url) )
+
 ```
 
 ```{r}
 #| output: asis
 peer_pub |>
 	resume_entry(title = "title",
-					 description = "type",
-					 date = "date",
-					 details = "url")
-```
-
-
-
-### Blog posts
-```{r}
-# filter blogs
-lula_blog <- RefManageR::ReadBib(
-  file = here::here("data", "Lula-MyPublication-Narrow.bib"),
-  .Encoding ="UTF-8")  %>%
-  as.data.frame() %>%
-  dplyr::filter(bibtype  == "Online")
-```
-
-```{r}
-#| output: asis
-lula_blog |>
-	resume_entry(title = "title",
+					 description =  "author",
 					 location = "journaltitle",
-					 description = "author",
-					 date = "date",
+					 date =  "date" ,
 					 details = "url")
 ```
 
 
-## Conference and Seminar Presentations
+### Other Publications  
+<br><br>
 
-```{r}
-#| output: asis
+See complete list on  [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao)
 
-read.csv("data_old/conference.csv",
-         colClasses = c("character", "Date", "Date", "character", "character")) |>
-  format_date(sort_by = "start") |>
-  resume_entry(title = "title")
-```
+ 
+<!-- ### Blog posts -->
+<!-- ```{r} -->
+<!-- # filter blogs -->
+<!-- lula_blog <- RefManageR::ReadBib( -->
+<!--   file = here::here("data", "Lula-MyPublication-Narrow.bib"), -->
+<!--   .Encoding ="UTF-8")  %>% -->
+<!--   as.data.frame() %>% -->
+<!--   dplyr::filter(bibtype  == "Online") -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- lula_blog |> -->
+<!-- 	resume_entry(title = "title", -->
+<!-- 					 location = "type", -->
+<!-- 					 description = "author", -->
+<!-- 					 date = "date", -->
+<!-- 					 details = "url") -->
+<!-- ``` -->
+
+
+<!-- ## Conference and Seminars  -->
+
+<!-- ```{r} -->
+<!-- # filter recent and....  -->
+<!-- talks <- RefManageR::ReadBib( -->
+<!-- 	file = here::here("data", "Lula-MyTalks.bib"), -->
+<!-- 	.Encoding ="UTF-8")  %>% -->
+<!-- 	as.data.frame() %>% -->
+<!-- 	mutate(year = stringr::str_extract(date,pattern = "^.{1,4}")) %>%  -->
+<!-- 	dplyr::filter(year >2020 & type != "Invited Talk") # %>%  -->
+<!-- #mutate(url = if_else(is.na(url), url_preprint, url) ) -->
+
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- #| output: asis -->
+
+<!-- talks %>% -->
+<!-- 	resume_entry(title = "title",  -->
+<!-- 					 date = "date" , -->
+<!-- 					 description = "eventtitle",location = "venue" -->
+<!-- 	) -->
+<!-- ``` -->
