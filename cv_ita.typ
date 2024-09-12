@@ -509,10 +509,9 @@
 ]
 = Competenze
 <competenze>
-• Eccellenti #strong[competenze analitiche] e critiche per la soluzione di problemi complessi, perfezionate nell’ambito di programmi internazionali di sviluppo economico \
-• #strong[Affidabilità, intraprendenza, e capacità di lavorare in squadra] dimostrate in ruoli di #emph[leadership] nella gestopme di progetti di ricerca e assistenza tecnica in vari contesti professionali diversi \
+• Eccellenti #strong[competenze analitiche] e critiche, perfezionate nell’ambito di programmi internazionali di sviluppo economico \
+• #strong[Affidabilità, intraprendenza, e capacità di lavorare in squadra] dimostrate in ruoli di #emph[leadership] nella gestione di progetti di ricerca e assistenza tecnica in vari contesti \
 • Efficaci #strong[capacità di relazione e comunicazione];, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni \
-• #strong[Forte orientamento ai risultati] e capacità di lavorare in modo autonomo e in condizioni di stress
 
 #pagebreak()
 = Istruzione

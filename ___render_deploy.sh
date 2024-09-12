@@ -1,3 +1,6 @@
+# render the project
+quarto render
+
 #=========================================== (Push to Github repo) ================================================#
 # check status
 git status
@@ -6,7 +9,7 @@ git status
 git add -A # ALL
 git add -u # tracked
 
-git commit -m "cv_ita.qmd cv_ita.typ"
+git commit -m "CLEANED cv_ita.qmd | cv.qmd ⭐️"
 git commit -m "worked r/02_r_vscode.qmd 😵‍💫"
 		# git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 
