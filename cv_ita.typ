@@ -471,80 +471,81 @@
 )
 = Esperienza professionale
 <esperienza-professionale>
-#resume-entry(title: "Analista di Politiche Pubbliche e Settoriali",location: "Milano, Italia & remoto",date: "1-2022 - Present",description: "Libera Professione",)
+#resume-entry(title: "Analista di Politiche Pubbliche e Settoriali",location: "Milano, Italia & remoto",date: "Gen-2022 - Set-2024",description: "Libera Professione",)
 #resume-item[
-- Consulenza ad enti pubblici, università e centri studi
+- Consulenza e formazione su analisi statistiche, econometriche e di ML per per enti pubblici, ricercatori universitari e centri studi
 ]
-#resume-entry(title: "Esperto in Analisi di Fondi UE",location: "Roma, Italia",date: "2-2023 - 8-2024",description: "Presidenza del Consiglio dei Ministri",)
+#resume-entry(title: "Esperto in Analisi di Fondi UE",location: "Roma, Italia",date: "Feb-2023 - Ago-2024",description: "Presidenza del Consiglio dei Ministri",)
 #resume-item[
 - Contributo al servizio monitoraggio per gli interventi in ambito PNRR M5C3 (coesione territoriale)
 ]
-#resume-entry(title: "Sr. Economic Advisor - dossier infrastrutture",location: "Roma, Italia",date: "2-2020 - 12-2021",description: "Ministero dell'Economia e delle Finanze",)
+#resume-entry(title: "Sr. Economic Advisor - dossier infrastrutture",location: "Roma, Italia",date: "Feb-2020 - Dic-2021",description: "Ministero dell'Economia e delle Finanze",)
 #resume-item[
 - Supporto alla preparazione della Presidenza Italiana del G20 (2021) nel Gruppo di Lavoro Infrastrutture
 ]
-#resume-entry(title: "Advisor",location: "Milano, Italia",date: "2-2020 - 3-2020",description: "CSIL",)
+#resume-entry(title: "Advisor",location: "Milano, Italia",date: "Feb-2020 - Mar-2020",description: "CSIL",)
 #resume-item[
 - Contributo alla preparazione di una proposta di ricerca su 'EU Lagging Regions: state of play and future challenges'
 ]
-#resume-entry(title: "Research Fellow",location: "Washington DC, USA",date: "5-2018 - 10-2019",description: "Banca Inter-Americana dello Sviluppo",)
+#resume-entry(title: "Research Fellow",location: "Washington DC, USA",date: "Mag-2018 - Ott-2019",description: "Banca Inter-Americana dello Sviluppo",)
 #resume-item[
 - Indagini statistiche multi-paese ed analisi sui dati relativi a offerta e domanda di acqua e servizi igienico-sanitari in America Latina
 ]
-#resume-entry(title: "Sr. Monitoring & Evaluation Specialist",location: "Washington DC, USA",date: "03-2009 - 4-2018",description: "Banca Mondiale",)
+#resume-entry(title: "Sr. Monitoring & Evaluation Specialist",location: "Washington DC, USA",date: "Mar-2009 - Apr-2018",description: "Banca Mondiale",)
 #resume-item[
 - Ideazione e gestione di 2 framework M&E e redazione di 3 articoli 'peer-reviewed' e vari rapport periodici per i finanziatori Europei dei Fondi Fiduciari
 ]
-#resume-entry(title: "Research Assistant",location: "Washington DC, USA",date: "10-2008 - 2-2009",description: "Banca Inter-Americana dello Sviluppo",)
+#resume-entry(title: "Research Assistant",location: "Washington DC, USA",date: "Ott-2008 - Feb-2009",description: "Banca Inter-Americana dello Sviluppo",)
 #resume-item[
 - Supporto a cooperazione tecnica con il Municipio di Fortaleza (Brasile) sul 'Programma Integrato di Inclusione Sociale per i Giovani' e preparazione di successivo prestito finalizzato
 ]
-#resume-entry(title: "Stagista",location: "Rio e Belo Horizonte, Brasile",date: "6-2007 - 8-2007",description: "AVSI",)
+#resume-entry(title: "Stagista",location: "Rio e Belo Horizonte, Brasile",date: "Giu-2007 - Ago-2007",description: "AVSI",)
 #resume-item[
 - Partecipazione ad attività sul campo e raccolta dati sul progetto 'Conviver' promosso da AVSI e CEMIG per l'accesso legale e sostenibile all'energia elettrica dei residenti in alcune favelas di Belo Horizonte
 ]
-#resume-entry(title: "Business Intelligence Analyst",location: "Milano, Italia",date: "10-2001 - 6-2006",description: "Value Partners S.p.A.",)
+#resume-entry(title: "Business Intelligence Analyst",location: "Milano, Italia",date: "Ott-2001 - Giu-2006",description: "Value Partners S.p.A.",)
 #resume-item[
 - Valutazione posizionamento competitivo e business intelligence per clienti pubblici e privati attivi in Italia, Europa, America Latina, Asia Sud-Orientale e Nord Africa
 ]
 = Competenze
 <competenze>
-• #strong[Competenze Analitiche];: Eccellenti capacità di pensiero critico e creativo, applicata alla soluzione di problemi complessi di carattere quantitativo, perfezionate nell’ambito di programmi internazionali di sviluppo economico \
-• #strong[Competenze Organizzative];: Affidabilità, intraprendenza, e capacità di lavorare in squadra dimostrata in ruoli di #emph[leadership] ricoperti nella conduzione di progetti di ricerca e assistenza tecnica con diversi #emph[stakeholders] \
-• #strong[Competenze di Comunicazione];: Efficaci capacità interpersonali e comunicative, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni
+• Eccellenti #strong[competenze analitiche] e critiche per la soluzione di problemi complessi, perfezionate nell’ambito di programmi internazionali di sviluppo economico \
+• #strong[Affidabilità, intraprendenza, e capacità di lavorare in squadra] dimostrate in ruoli di #emph[leadership] nella gestopme di progetti di ricerca e assistenza tecnica in vari contesti professionali diversi \
+• Efficaci #strong[capacità di relazione e comunicazione];, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni \
+• #strong[Forte orientamento ai risultati] e capacità di lavorare in modo autonomo e in condizioni di stress
 
 #pagebreak()
 = Istruzione
 <istruzione>
-#resume-entry(title: "Master in Politiche Pubbliche (2 anni)",location: "Georgetown University",date: "5 - 2008",description: "Politica Internazionale e Sviluppo",)
-#resume-entry(title: "Laurea in Economia e Commercio (4 anni)",location: "Università di Pavia",date: "4 - 2001",description: "Economia Industriale",)
-#resume-entry(title: "Programma Erasmus EU (2 semestri)",location: "Universidad Autonoma de Madrid",date: "7 - 1998",description: "Economia della UE",)
-#resume-entry(title: "Diploma di Maturità (5 anni)",location: "Liceo Scientifico T. Olivelli",date: "6 - 1994",description: "Maturità scientifica",)
+#resume-entry(title: "Master in Politiche Pubbliche (2 anni)",location: "Georgetown University",date: "Mag-2008",description: "Politica Internazionale e Sviluppo",)
+#resume-entry(title: "Laurea in Economia e Commercio (4 anni)",location: "Università di Pavia",date: "Apr-2001",description: "Economia Industriale",)
+#resume-entry(title: "Programma Erasmus EU (2 semestri)",location: "Universidad Autonoma de Madrid",date: "Lug-1998",description: "Economia della UE",)
+#resume-entry(title: "Diploma di Maturità (5 anni)",location: "Liceo Scientifico T. Olivelli",date: "Giu-1994",description: "Maturità scientifica",)
 = Lingue e software
 <lingue-e-software>
 #resume-entry(title: "Lingue",description: "Italiano (madrelingua), English (C2), Spanish (C2), Portuguese (B1)",)
 #resume-entry(title: "Pacchetti Office",description: "MS Office, GSuite, LibreOffice",)
-#resume-entry(title: "Linguaggi di programmazione",description: "R, Stata, SQL, Unix Shell, git",)
-#resume-entry(title: "Altri Software",description: " Markdown, Quarto, HTML&CSS",)
+#resume-entry(title: "Linguaggi di programmazione",description: "R, Stata, SQL",)
+#resume-entry(title: "Altri Strumenti",description: " Git, Zsh, Markdown, RStudio, Quarto, HTML & CSS",)
 = Pubblicazioni
 <pubblicazioni>
 == Peer-reviewed
 <peer-reviewed>
-#resume-entry(title: "An Econometric Study of Illegal Electricity Connections in the Urban Favelas of {{Belo Horizonte}}, {{Brazil}}",location: "Energy Policy",date: "2010-09",description: "Luisa M. Mimmi and Sencer Ecer",)
-#resume-item[
-- http://linkinghub.elsevier.com/retrieve/pii/S0301421510003113
-]
-#resume-entry(title: "From Informal to Authorized Electricity Service in Urban Slums: {{Findings}} from a Household Level Survey in {{Mumbai}}",location: "Energy for Sustainable Development",date: "2014-08",description: "Luisa M. Mimmi",)
-#resume-item[
-- http://linkinghub.elsevier.com/retrieve/pii/S0973082614000507
-]
-#resume-entry(title: "Italy in Front of the Challenge of Infrastructure Maintenance: Existing Issues and Promising Responses",location: "Public Works Management \& Policy",date: "2024-04",description: "Luisa M. Mimmi",)
+#resume-entry(title: "Italy in Front of the Challenge of Infrastructure Maintenance: Existing Issues and Promising Responses",location: "Public Works Management \& Policy",date: "Apr-2024",description: "Luisa M. Mimmi",)
 #resume-item[
 - https://journals.sagepub.com/doi/10.1177/1087724X231164648
 ]
-#resume-entry(title: "Predicting {{Housing Deprivation}} from {{Space}} in the {{Slums}} of {{Dhaka}}",location: "Environment and Planning B: Urban Analytics and City Science",date: "2022-09",description: "Amit Patel and Christian Borja-Vega and Luisa M. Mimmi and Tomas Soukup and Jan Kolomaznik",)
+#resume-entry(title: "Predicting Housing Deprivation from Space in the Slums of Dhaka",location: "Environment and Planning B: Urban Analytics and City Science",date: "Set-2022",description: "Amit Patel and Christian Borja-Vega and Luisa M. Mimmi and Tomas Soukup and Jan Kolomaznik",)
 #resume-item[
 - https://journals.sagepub.com/doi/10.1177/23998083221123589
+]
+#resume-entry(title: "From Informal to Authorized Electricity Service in Urban Slums: Findings from a Household Level Survey in Mumbai",location: "Energy for Sustainable Development",date: "Ago-2014",description: "Luisa M. Mimmi",)
+#resume-item[
+- http://linkinghub.elsevier.com/retrieve/pii/S0973082614000507
+]
+#resume-entry(title: "An Econometric Study of Illegal Electricity Connections in the Urban Favelas of Belo Horizonte, Brazil",location: "Energy Policy",date: "Set-2010",description: "Luisa M. Mimmi and Sencer Ecer",)
+#resume-item[
+- http://linkinghub.elsevier.com/retrieve/pii/S0301421510003113
 ]
 == Altre pubblicazioni tecniche
 <altre-pubblicazioni-tecniche>

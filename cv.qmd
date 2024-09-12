@@ -51,20 +51,53 @@ execute:
 library(typstcv)
 library(dplyr)
 library(stringr)
+library(lubridate)
 ```
+
+```{r func_date}
+#| output: false
+
+# Check locale for base::format().
+Sys.getlocale("LC_TIME")
+
+# --------- FUNCTION Define the function to process date columns
+f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_month_col) {
+	
+	df %>%
+		# Combine month and year into a date, assuming the first day of the month
+		mutate(
+			# !!sym() converts the column names (passed as strings) to symbols, allowing them to be used dynamically inside mutate().
+			start_m_y = lubridate::make_date(!!sym(start_year_col), !!sym(start_month_col), 1),
+			end_m_y = lubridate::make_date(!!sym(end_year_col), !!sym(end_month_col), 1) 
+		) %>%
+		
+		# If NA in end_m_y, set the end date to today
+		mutate(end_m_y = if_else(is.na(end_m_y), lubridate::today(), end_m_y)) %>%
+		
+		# Format the date as "month-year"
+		mutate(
+			start_m_y = base::format(start_m_y, "%b-%Y"),
+			end_m_y = base::format(end_m_y, "%b-%Y")
+		) %>%
+		
+		# Create a resume entry as "month-year - month-year"
+		mutate(date = glue::glue("{start_m_y} - {end_m_y}"))
+}
+
+# ------- FUNCTION usage
+# Apply the function to your dataframe
+# processed_df <- f_m_y_dates(df, "start_year", "start_month", "end_year", "end_month")
+
+```
+
 
 ## Work Experience
 ```{r}
-work <- readr::read_csv(here::here("data", "work.csv"), show_col_types = FALSE)%>% 
-	#mutate(start_month = lubridate::month("start_month"))
-	mutate(start  = glue::glue("{start_month}-{start_year}"),
-			 end = glue::glue("{end_month}-{end_year}")) %>% 
-	mutate(end = if_else(end == "NA-NA", "Present", end),
-			 date = glue::glue("{start} - {end}")
-	)
+work_temp <- readr::read_csv(here::here("data", "work.csv"), show_col_types = FALSE)
 
-# names(work )
-#work$end
+# call function to process dates
+work <- work_temp %>% 
+	f_m_y_dates("start_year", "start_month", "end_year", "end_month")
 ```
 
 ```{r}
@@ -85,29 +118,27 @@ work %>%
 
 ## Professional Skills
  
- •	<!-- \faIcon{calculator}--> Exceptional critical thinking, and **data analysis skills**, showcased in international development programs    
- •	<!-- \faIcon{sitemap}--> Demonstrated drive and resourcefulness in **leadership roles** for complex projects with multiple stakeholders      
- •	<!-- \faIcon{users}--> Effective **communication skills**, proven by record of multilingual publications and public speaking 
+ •	Exceptional critical thinking and **data analysis skills**, showcased in international contexts and across diverse sectors  
+ •	Demonstrated drive and resourcefulness in **leadership roles** for complex projects with multiple stakeholders  •	Effective **communication skills**, proven by record of multilingual publications and public speaking for diverse audiences
+ 
 
 \newpage
 
 ## Education
 
 ```{r}
-educ <- readr::read_csv(here::here("data", "edu.csv"), show_col_types = FALSE)
+educ_temp <- readr::read_csv(here::here("data", "edu.csv"), show_col_types = FALSE)
 ```
 
 ```{r}
 #| output: asis
-educ %>% 
-mutate( end_m_y = glue::glue("{end_month} - {end_year}"))  %>% 
+educ <- educ_temp %>% 
+	f_m_y_dates("start_year", "start_month", "end_year", "end_month") %>% 
 	resume_entry(title = "degree",
 					 location = "inst",
 					 date = "end_m_y",
 					 description = "detail")
 ```
- 
-
 
 ## Skills
 
@@ -119,33 +150,48 @@ read.csv("data/skill.csv") |>
 ```
 
 
- 
- 
+
 ## Publications
 
 ### Peer-reviewed  
 
-
 ```{r}
-# filter blogs
-peer_pub <- RefManageR::ReadBib(
+# Retrieve .bib and transform it into a data frame
+peer_pub_temp <- RefManageR::ReadBib(
 	file = here::here("data", "Lula-MyPublication-Narrow.bib"),
 	.Encoding ="UTF-8")  %>%
-	as.data.frame() %>%
+	base::as.data.frame() %>%
+	# filter articles 
 	dplyr::filter(bibtype == "Article") # %>% 
 	#mutate(url = if_else(is.na(url), url_preprint, url) )
 
+# Clean the date column and format it as "month-year"
+peer_pub <- peer_pub_temp %>% 
+	mutate(parsed_date = case_when(
+		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings
+		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format
+		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format
+		TRUE ~ NA_Date_))  %>% 
+	dplyr::arrange(desc(parsed_date)) %>%
+	# Format the parsed date as "month-year"
+	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y")))  %>% 
+	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
+	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
+         clean_title = gsub("\\}\\}", "", clean_title))  # Remove "}}"
+
 ```
+
 
 ```{r}
 #| output: asis
 peer_pub |>
-	resume_entry(title = "title",
-					 description =  "author",
+	resume_entry(title = "clean_title",
+					 description = "author",
 					 location = "journaltitle",
-					 date =  "date" ,
+					 date =  "month_year" ,
 					 details = "url")
 ```
+
 
 
 ### Other Publications  

@@ -6,14 +6,7 @@ git status
 git add -A # ALL
 git add -u # tracked
 
-git add docs/*
-git add images/*
-git add tools/*
-    git add   _quarto.yml
-    git add     r/00_useful.qmd
-=======
-
-git commit -m "___render_deploy.sh"
+git commit -m "cv_ita.qmd cv_ita.typ"
 git commit -m "worked r/02_r_vscode.qmd 😵‍💫"
 		# git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 
