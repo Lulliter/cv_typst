@@ -9,8 +9,8 @@ git status
 git add -A # ALL
 git add -u # tracked
 
-git commit -m "README.md"
-git commit -m "worked r/02_r_vscode.qmd 😵‍💫"
+
+git commit -m "small chg"
 		# git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 
 # Push local source (master branch) to remote reference (origin)

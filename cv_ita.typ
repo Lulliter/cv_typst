@@ -455,14 +455,6 @@
       url: unescape_text("https:\/\/www.linkedin.com/in/luisa-m-mimmi"),
       icon: unescape_text("fa brands linkedin"),
     ), (
-      text: unescape_text("Luisa M. Mimmi"),
-      url: unescape_text("https:\/\/scholar.google.com/citations?user\=OBYla5gAAAAJ&hl\=en&oi\=ao"),
-      icon: unescape_text("assets/icon/fa-google-scholar.svg"),
-    ), (
-      text: unescape_text("Luisa M. Mimmi"),
-      url: unescape_text("https:\/\/www.researchgate.net/profile/Luisa-Mimmi"),
-      icon: unescape_text("fa brands researchgate"),
-    ), (
       text: unescape_text("lulliter"),
       url: unescape_text("https:\/\/github.com/lulliter"),
       icon: unescape_text("fa brands github"),
@@ -471,13 +463,13 @@
 )
 = Esperienza professionale
 <esperienza-professionale>
-#resume-entry(title: "Analista di Politiche Pubbliche e Settoriali",location: "Milano, Italia & remoto",date: "Gen-2022 - Set-2024",description: "Libera Professione",)
+#resume-entry(title: "Consulente in economia e valutazione di politiche pubbliche",location: "Milano, Italia & remoto",date: "Gen-2022 - Set-2024",description: "Libera Professione",)
 #resume-item[
-- Consulenza e formazione su analisi statistiche, econometriche e di ML per per enti pubblici, ricercatori universitari e centri studi
+- Consulenza e formazione su gestione di dati e statistica/machine learning per enti pubblici, università, e centri studi
 ]
-#resume-entry(title: "Esperto in Analisi di Fondi UE",location: "Roma, Italia",date: "Feb-2023 - Ago-2024",description: "Presidenza del Consiglio dei Ministri",)
+#resume-entry(title: "Esperto in Analisi di dati su fondi UE",location: "Roma, Italia",date: "Feb-2023 - Ago-2024",description: "Presidenza del Consiglio dei Ministri",)
 #resume-item[
-- Contributo al servizio monitoraggio per gli interventi in ambito PNRR M5C3 (coesione territoriale)
+- Contributo al servizio di monitoraggio su interventi in ambito PNRR M5-C3 (coesione territoriale)
 ]
 #resume-entry(title: "Sr. Economic Advisor - dossier infrastrutture",location: "Roma, Italia",date: "Feb-2020 - Dic-2021",description: "Ministero dell'Economia e delle Finanze",)
 #resume-item[
@@ -493,7 +485,7 @@
 ]
 #resume-entry(title: "Sr. Monitoring & Evaluation Specialist",location: "Washington DC, USA",date: "Mar-2009 - Apr-2018",description: "Banca Mondiale",)
 #resume-item[
-- Ideazione e gestione di 2 framework M&E e redazione di 3 articoli 'peer-reviewed' e vari rapport periodici per i finanziatori Europei dei Fondi Fiduciari
+- Ideazione e gestione di 2 sistemi di monitoraggio e valutazione (M&E); redazione di 3 articoli 'peer-reviewed' e vari rapport periodici per i finanziatori Europei di 2 Fondi Fiduciari
 ]
 #resume-entry(title: "Research Assistant",location: "Washington DC, USA",date: "Ott-2008 - Feb-2009",description: "Banca Inter-Americana dello Sviluppo",)
 #resume-item[
@@ -507,10 +499,10 @@
 #resume-item[
 - Valutazione posizionamento competitivo e business intelligence per clienti pubblici e privati attivi in Italia, Europa, America Latina, Asia Sud-Orientale e Nord Africa
 ]
-= Competenze
-<competenze>
-• Eccellenti #strong[competenze analitiche] e critiche, perfezionate nell’ambito di programmi internazionali di sviluppo economico \
-• #strong[Affidabilità, intraprendenza, e capacità di lavorare in squadra] dimostrate in ruoli di #emph[leadership] nella gestione di progetti di ricerca e assistenza tecnica in vari contesti \
+= Competenze professionali
+<competenze-professionali>
+• Eccellenti #strong[competenze analitiche];, perfezionate nell’ambito di programmi internazionali di sviluppo economico \
+• #strong[Affidabilità, intraprendenza, e capacità di lavorare in squadra] dimostrate in ruoli di leadership nella gestione di progetti di ricerca e assistenza tecnica in vari contesti \
 • Efficaci #strong[capacità di relazione e comunicazione];, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni \
 
 #pagebreak()
@@ -520,12 +512,12 @@
 #resume-entry(title: "Laurea in Economia e Commercio (4 anni)",location: "Università di Pavia",date: "Apr-2001",description: "Economia Industriale",)
 #resume-entry(title: "Programma Erasmus EU (2 semestri)",location: "Universidad Autonoma de Madrid",date: "Lug-1998",description: "Economia della UE",)
 #resume-entry(title: "Diploma di Maturità (5 anni)",location: "Liceo Scientifico T. Olivelli",date: "Giu-1994",description: "Maturità scientifica",)
-= Lingue e software
-<lingue-e-software>
-#resume-entry(title: "Lingue",description: "Italiano (madrelingua), English (C2), Spanish (C2), Portuguese (B1)",)
+= Competenze linguistiche e informatiche
+<competenze-linguistiche-e-informatiche>
+#resume-entry(title: "Lingue",description: "Italiano (madrelingua), Inglese (C2), Spagnolo (C2), Portoghese (B1)",)
 #resume-entry(title: "Pacchetti Office",description: "MS Office, GSuite, LibreOffice",)
 #resume-entry(title: "Linguaggi di programmazione",description: "R, Stata, SQL",)
-#resume-entry(title: "Altri Strumenti",description: " Git, Zsh, Markdown, RStudio, Quarto, HTML & CSS",)
+#resume-entry(title: "Altri Strumenti",description: " git, zsh, Markdown, RStudio, VSCode, Quarto, HTML & CSS",)
 = Pubblicazioni sottoposte a revisione paritaria
 <pubblicazioni-sottoposte-a-revisione-paritaria>
 #resume-entry(title: "Italy in Front of the Challenge of Infrastructure Maintenance: Existing Issues and Promising Responses",location: "Public Works Management \& Policy",date: "Apr-2024",description: "Luisa M. Mimmi",)

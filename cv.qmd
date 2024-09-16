@@ -21,12 +21,12 @@ author:
     - icon: fa brands linkedin
       text: Luisa M. Mimmi
       url: https://www.linkedin.com/in/luisa-m-mimmi
-    - icon: assets/icon/fa-google-scholar.svg
-      text: Luisa M. Mimmi
-      url: https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao
-    - icon: fa brands researchgate
-      text: Luisa M. Mimmi
-      url: https://www.researchgate.net/profile/Luisa-Mimmi
+    # - icon: assets/icon/fa-google-scholar.svg
+    #   text: Luisa M. Mimmi
+    #   url: https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao
+    # - icon: fa brands researchgate
+    #   text: Luisa M. Mimmi
+    #   url: https://www.researchgate.net/profile/Luisa-Mimmi
     - icon: fa brands github
       text: lulliter
       url: https://github.com/lulliter
