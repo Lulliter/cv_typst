@@ -95,7 +95,7 @@
   body
 }
 
-/// Right section of a tertiaty headers. 
+/// Right section of a tertiaty headers.
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
   set text(
@@ -153,7 +153,7 @@
   firstname: "",
   lastname: "",
 ) = {
-  
+
   pad(bottom: 5pt)[
     #block[
       #set text(
@@ -174,13 +174,13 @@
       above: 0.75em,
       below: 0.75em,
     )
-  
+
   set text(
     color-accent,
     size: 9pt,
     weight: "regular",
   )
-    
+
   smallcaps[
     #position
   ]
@@ -253,7 +253,7 @@
         fit: "contain",
         profile-photo
       )
-    ) 
+    )
   }
 }
 
@@ -282,7 +282,7 @@
       ]
     ]
   } else {
-    
+
     create-header-info(
       firstname: firstname,
       lastname: lastname,
@@ -334,19 +334,19 @@
   profile-photo: "",
   body,
 ) = {
-  
+
   set document(
     author: author.firstname + " " + author.lastname,
     title: title,
   )
-  
+
   set text(
     font: (font-text),
     size: 11pt,
     fill: color-darkgray,
     fallback: true,
   )
-  
+
   set page(
     paper: "a4",
     margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
@@ -369,14 +369,14 @@
       ]
     ],
   )
-  
+
   // set paragraph spacing
 
   set heading(
     numbering: none,
     outlined: false,
   )
-  
+
   show heading.where(level: 1): it => [
     #set block(
       above: 1.5em,
@@ -386,13 +386,13 @@
       size: 16pt,
       weight: "regular",
     )
-    
+
     #align(left)[
       #text[#strong[#text(color-accent)[#it.body.text.slice(0, 3)]#text(color-darkgray)[#it.body.text.slice(3)]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]
-  
+
   show heading.where(level: 2): it => {
     set text(
       color-middledarkgray,
@@ -401,7 +401,7 @@
     )
     it.body
   }
-  
+
   show heading.where(level: 3): it => {
     set text(
       size: 10pt,
@@ -410,7 +410,7 @@
     )
     smallcaps[#it.body]
   }
-  
+
   // Contents
   create-header(firstname: author.firstname,
                 lastname: author.lastname,
@@ -526,10 +526,8 @@
 #resume-entry(title: "Pacchetti Office",description: "MS Office, GSuite, LibreOffice",)
 #resume-entry(title: "Linguaggi di programmazione",description: "R, Stata, SQL",)
 #resume-entry(title: "Altri Strumenti",description: " Git, Zsh, Markdown, RStudio, Quarto, HTML & CSS",)
-= Pubblicazioni
-<pubblicazioni>
-== Peer-reviewed
-<peer-reviewed>
+= Pubblicazioni sottoposte a revisione paritaria
+<pubblicazioni-sottoposte-a-revisione-paritaria>
 #resume-entry(title: "Italy in Front of the Challenge of Infrastructure Maintenance: Existing Issues and Promising Responses",location: "Public Works Management \& Policy",date: "Apr-2024",description: "Luisa M. Mimmi",)
 #resume-item[
 - https://journals.sagepub.com/doi/10.1177/1087724X231164648
@@ -546,7 +544,10 @@
 #resume-item[
 - http://linkinghub.elsevier.com/retrieve/pii/S0301421510003113
 ]
-== Altre pubblicazioni tecniche
-<altre-pubblicazioni-tecniche>
+= Altre pubblicazioni
+<altre-pubblicazioni>
 
 Vedere lista completa su #link("https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao")[#strong[Profilo Google Scholar];]
+
+== #emph[\[Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n.~196 e del GDPR \(Regolamento UE 2016/679).\]]
+<autorizzo-il-trattamento-dei-miei-dati-personali-ai-sensi-del-decreto-legislativo-30-giugno-2003-n.-196-e-del-gdpr-regolamento-ue-2016679.>

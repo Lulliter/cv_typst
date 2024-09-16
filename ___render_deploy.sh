@@ -9,13 +9,14 @@ git status
 git add -A # ALL
 git add -u # tracked
 
-git commit -m "CLEANED cv_ita.qmd | cv.qmd ⭐️"
+git commit -m "README.md"
 git commit -m "worked r/02_r_vscode.qmd 😵‍💫"
 		# git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 
 # Push local source (master branch) to remote reference (origin)
 #cd .
 git push origin master
+
 
 #=========================================== tutto insieme  ================================================#
 git add -u && git commit -a -m "added Shell/*" && git push
@@ -37,5 +38,14 @@ FILE_NAME="cv.pdf"
 cp "$SOURCE_DIR/$FILE_NAME" "$DEST_DIR/"
 
 # List the files in the destination directory
-echo "Files in $DEST_DIR:"
-ls "$DEST_DIR"
+echo "PDF Files in $DEST_DIR:"
+# ls -l "$DEST_DIR" | grep ".pdf"
+ls -l "$DEST_DIR" | grep ".pdf" | awk '{print $6, $7, $8, $9}'
+# `ls -l` lists the files in long format (including last modification)
+# `awk '{print $6, $7, $8, $9}` extracts the mod date and time ($6, $7, $8 )
+# and the file name ($9)
+
+ls -l "$DEST_DIR" | grep ".pdf" | awk -v dir="$DEST_DIR" '{print dir, "->",  $9 " (saved on", $6, $7, $8, ")"}'
+
+#=========================================== Tracked by mistake in git   ================================================#
+git rm --cached _freeze/cv/execute-results/typ.json

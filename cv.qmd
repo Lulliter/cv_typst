@@ -3,7 +3,7 @@ title: "Luisa M. Mimmi"
 author:
   firstname: Luisa M.
   lastname: Mimmi
-  address: Pavia, Italy
+  address: "Based in Pavia, Italy"
   position: "Economist | Policy Analyst | Freelance consultant"
   contacts:
     - icon: fa envelope
@@ -152,9 +152,9 @@ read.csv("data/skill.csv") |>
 
 
 
-## Publications
+## Peer-reviewed Publications
 
-### Peer-reviewed  
+<!-- ### Peer-reviewed   -->
 
 ```{r}
 # Retrieve .bib and transform it into a data frame
@@ -194,8 +194,7 @@ peer_pub |>
 ```
 
 
-
-### Other Publications  
+## Other Publications  
 <br><br>
 
 See complete list on  [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao)

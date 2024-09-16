@@ -161,9 +161,8 @@ read.csv("data/skill_ita.csv") |>
 ```
 
 
-## Pubblicazioni
-
-### Peer-reviewed  
+## Pubblicazioni sottoposte a revisione paritaria 
+  
 
 ```{r}
 # Retrieve .bib and transform it into a data frame
@@ -203,12 +202,11 @@ peer_pub |>
 ```
 
 
-### Altre pubblicazioni tecniche 
+## Altre pubblicazioni 
 
 <br><br>
 
-Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao)
-
+Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) 
 
 <!-- ### Media Divulgativi -->
 <!-- ```{r} -->
@@ -262,3 +260,17 @@ Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com
   Sys.setlocale("LC_TIME", original_locale)
 ```
 
+
+
+### *[Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 e del GDPR (Regolamento UE 2016/679).]*{style="color: magenta;"}
+ 
+
+<!-- \vspace*{\fill} -->
+<!-- \footnotesize \textcolor{magenta}{Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 e del GDPR (Regolamento UE 2016/679).}  -->
+
+<!-- <span style="color: red;">Questo è un testo rosso</span> -->
+
+
+<!-- #color(blue, [Questo testo dovrebbe essere blu in Typst.]) -->
+
+<!-- <span style="color: red;">Questo testo dovrebbe essere rosso in HTML.</span> -->
