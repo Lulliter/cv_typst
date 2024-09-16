@@ -1,3 +1,6 @@
+# empty docs/ folder
+rm -rf docs/cv_ita.pdf docs/cv.pdf
+
 # render the project
 quarto render
 
@@ -19,7 +22,7 @@ git push origin master
 
 
 #=========================================== tutto insieme  ================================================#
-git add -u && git commit -a -m "added Shell/*" && git push
+git add -u && git commit  -m "small correc" && git push origin master
 
 #=========================================== COPIO FILE SU WEBSITE DIR  ================================================#
 #!/bin/zsh
@@ -38,14 +41,13 @@ FILE_NAME="cv.pdf"
 cp "$SOURCE_DIR/$FILE_NAME" "$DEST_DIR/"
 
 # List the files in the destination directory
-echo "PDF Files in $DEST_DIR:"
 # ls -l "$DEST_DIR" | grep ".pdf"
-ls -l "$DEST_DIR" | grep ".pdf" | awk '{print $6, $7, $8, $9}'
-# `ls -l` lists the files in long format (including last modification)
-# `awk '{print $6, $7, $8, $9}` extracts the mod date and time ($6, $7, $8 )
-# and the file name ($9)
+# ls -l "$DEST_DIR" | grep ".pdf" | awk '{print $6, $7, $8, $9}'
+		# `ls -l` lists the files in long format (including last modification)
+		# `awk '{print $6, $7, $8, $9}` extracts the mod date and time ($6, $7, $8 )
+		# and the file name ($9)
 
-ls -l "$DEST_DIR" | grep ".pdf" | awk -v dir="$DEST_DIR" '{print dir, "->",  $9 " (saved on", $6, $7, $8, ")"}'
+ls -l "$DEST_DIR" | grep ".pdf" | awk -v dir="$DEST_DIR" '{print dir, "->",  $9 " (last saved on", $6, $7, $8, ")"}'
 
 #=========================================== Tracked by mistake in git   ================================================#
 git rm --cached _freeze/cv/execute-results/typ.json

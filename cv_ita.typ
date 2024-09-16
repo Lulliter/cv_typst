@@ -541,5 +541,12 @@
 
 Vedere lista completa su #link("https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao")[#strong[Profilo Google Scholar];]
 
-== #emph[\[Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n.~196 e del GDPR \(Regolamento UE 2016/679).\]]
-<autorizzo-il-trattamento-dei-miei-dati-personali-ai-sensi-del-decreto-legislativo-30-giugno-2003-n.-196-e-del-gdpr-regolamento-ue-2016679.>
+#block(
+fill:luma(221),
+inset:8pt,
+radius:4pt,
+[
+#set text(size: 8pt, weight: "medium", fill: rgb("#85144b"))
+
+Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 e del GDPR (Regolamento UE 2016/679)
+])

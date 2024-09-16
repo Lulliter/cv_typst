@@ -14,6 +14,10 @@ It can be installed on macOS with
 brew install typst
 ```
 
+### How do `typst` and `Quarto` interact? 
+
+Check it out [here](https://quarto.org/docs/output-formats/typst.html)
+
 ### What is `typstcv`?
 
 [`typstcv`](https://kazuyanagimoto.com/typstcv/) provides helper functions for rendering a CV like [this](kazuyanagimoto/quarto-awesomecv-typst).  
