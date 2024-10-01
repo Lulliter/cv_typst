@@ -83,26 +83,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="cv" class="level1">
 <h1>CV</h1>
 <p>My CV (in ENG and ITA) made with quarto &amp; <code>typstcv</code> pckg.</p>
-<section id="what-is-typst" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-typst">What is <code>typst</code>?</h3>
-<p><a href="https://github.com/typst/typst"><code>typst</code></a> is a new markup-based typesetting system that is designed to be as powerful as LaTeX while being much easier to learn and use.</p>
+<section id="what-is-typst" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-typst">What is <code>typst</code>?</h2>
+<p><a href="https://github.com/typst/typst"><code>typst</code></a> is a new markup-based typesetting system that is designed to be as powerful as <code>LaTeX</code> while being much easier to learn and use.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/typst.png" class="img-fluid figure-img" width="339"></p>
+<figcaption>Source: <a href="https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/">Nicola Rennie’s blog post</a></figcaption>
+</figure>
+</div>
 <p>It can be installed on macOS with</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># shell</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install typst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="how-do-typst-and-quarto-interact" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-typst-and-quarto-interact">How do <code>typst</code> and <code>Quarto</code> interact?</h3>
+<p>Check it out <a href="https://quarto.org/docs/output-formats/typst.html">here</a></p>
+<p>With the latest 1.4 release of Quarto, you can now use <code>typst</code> as an output format!</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># shell</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> <span class="at">--version</span> <span class="co"># 1.4.550</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="what-is-typstcv" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-typstcv">What is <code>typstcv</code>?</h3>
+<section id="how-to-use-typst-as-a-format" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-use-typst-as-a-format">How to use <code>typst</code> as a format?</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YAML</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Hello Typst!"</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> typst</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="how-to-use-typstcv-specifically-as-a-format" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-use-typstcv-specifically-as-a-format">How to use <code>typstcv</code> (specifically) as a format?</h3>
 <p><a href="https://kazuyanagimoto.com/typstcv/"><code>typstcv</code></a> provides helper functions for rendering a CV like <a href="kazuyanagimoto/quarto-awesomecv-typst">this</a>.</p>
 <p>This can be installed with:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"typstcv"</span>, <span class="at">repos =</span> <span class="st">"https://kazuyanagimoto.r-universe.dev"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Basically it is a <code>*.qmd</code> file that has format</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YAML </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">awesomecv-typst</span><span class="kw">:</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">font-paths</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"PATH_TO_FONT"</span><span class="kw">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>and is rendered into a <code>*.pdf</code> file.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"typstcv"</span>, <span class="at">repos =</span> <span class="st">"https://kazuyanagimoto.r-universe.dev"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Basically it is a <code>*.qmd</code> file that has format…</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YAML </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">awesomecv-typst</span><span class="kw">:</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">font-paths</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"PATH_TO_FONT"</span><span class="kw">]</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---    </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>…and is rendered into a <code>*.pdf</code> file.</p>
 <ul>
 <li>it allows fontawesome icons</li>
 <li>it allows SVG icons</li>
@@ -111,6 +132,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>the final, rendered, <code>cv*.pdf</code> files are saved in the <code>docs/</code> folder</li>
 <li>hopefully, with <code>renv.lock</code> in the mix, this won’t break too soon 🤞🏻</li>
 </ul>
+<p>Under the hood, the extension <code>awesomecv-typst</code> has 2 key files:</p>
+<ul>
+<li><code>_extensions/kazuyanagimoto/awesomecv/typst-template.typ</code> ~ the core template file. It defines the styling of the document.</li>
+<li><code>_extensions/kazuyanagimoto/awesomecv/typst-show.typ</code> ~ a file that calls the template. It maps Pandoc metadata to template function arguments. .</li>
+</ul>
+</section>
 </section>
 </section>
 <section id="acknowledgments" class="level1">

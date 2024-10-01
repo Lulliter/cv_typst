@@ -11,6 +11,9 @@
 #let color-gray = rgb("#5d5d5d")
 #let color-lightgray = rgb("#999999")
 
+#let color-darklue = rgb("#004980")
+#let color-accent = rgb("#0088cc") // deciso  in YAML
+
 // Default style
 #let color-accent-default = rgb("#dc3522")
 #let font-header-default = ("Roboto", "Arial", "Helvetica", "Dejavu Sans")
@@ -18,7 +21,7 @@
 #let align-header-default = center
 
 // User defined style
-#let color-accent = rgb("0088cc")
+#let color-accent = rgb("7c1c2d")
 #let font-header = font-header-default
 #let font-text = font-text-default
 
@@ -388,7 +391,8 @@
     )
 
     #align(left)[
-      #text[#strong[#text(color-accent)[#it.body.text.slice(0, 3)]#text(color-darkgray)[#it.body.text.slice(3)]]]
+      // #text[#strong[#text(color-accent)[#it.body.text.slice(0, 3)]#text(color-darkgray)[#it.body.text.slice(3)]]]
+      #text[#strong[#text(color-darklue)[#it.body.text.slice(0, 3)]#text(color-darklue)[#it.body.text.slice(3)]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]
@@ -463,7 +467,7 @@
 )
 = Esperienza professionale
 <esperienza-professionale>
-#resume-entry(title: "Consulente in economia e valutazione di politiche pubbliche",location: "Milano, Italia & remoto",date: "Gen-2022 - Set-2024",description: "Libera Professione",)
+#resume-entry(title: "Consulente in economia e valutazione di politiche pubbliche",location: "Milano, Italia & remoto",date: "Gen-2022 - Ott-2024",description: "Libera Professione",)
 #resume-item[
 - Consulenza e formazione su gestione di dati e statistica/machine learning per enti pubblici, università, e centri studi
 ]

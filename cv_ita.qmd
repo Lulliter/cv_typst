@@ -4,7 +4,7 @@ author:
   firstname: Luisa M.
   lastname: Mimmi
   address: Pavia, Italia
-  position: "Economista | Analista di politiche pubbliche | Consulente freelance"
+  position: "Economista | Analista di politiche pubbliche | Consulente freelance" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
@@ -31,7 +31,7 @@ author:
       text: lulliter
       url: https://github.com/lulliter
 style:
-  color-accent: 0088cc #516db0
+  color-accent: 7c1c2d #004B72 #516db0
 format:
   awesomecv-typst:
     font-paths: ["assets/fonts/"]

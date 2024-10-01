@@ -11,6 +11,9 @@
 #let color-gray = rgb("#5d5d5d")
 #let color-lightgray = rgb("#999999")
 
+#let color-darklue = rgb("#004980")
+#let color-accent = rgb("#0088cc") // deciso  in YAML
+
 // Default style
 #let color-accent-default = rgb("#dc3522")
 #let font-header-default = ("Roboto", "Arial", "Helvetica", "Dejavu Sans")
@@ -400,7 +403,8 @@ $endif$
     )
 
     #align(left)[
-      #text[#strong[#text(color-accent)[#it.body.text.slice(0, 3)]#text(color-darkgray)[#it.body.text.slice(3)]]]
+      // #text[#strong[#text(color-accent)[#it.body.text.slice(0, 3)]#text(color-darkgray)[#it.body.text.slice(3)]]]
+      #text[#strong[#text(color-darklue)[#it.body.text.slice(0, 3)]#text(color-darklue)[#it.body.text.slice(3)]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]
