@@ -11,9 +11,9 @@ git status
 # Add changes to git Index.
 git add -A # ALL
 git add -u # tracked
+git add images/*
 
-
-git commit -m "small chg"
+git commit -m "small chg in typst-template.typ 🎨❗️"
 		# git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 
 # Push local source (master branch) to remote reference (origin)

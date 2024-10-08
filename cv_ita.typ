@@ -524,7 +524,7 @@
 #resume-entry(title: "Altri Strumenti",description: " git, zsh, Markdown, RStudio, VSCode, Quarto, HTML & CSS",)
 = Pubblicazioni sottoposte a revisione paritaria
 <pubblicazioni-sottoposte-a-revisione-paritaria>
-#resume-entry(title: "Italy in Front of the Challenge of Infrastructure Maintenance: Existing Issues and Promising Responses",location: "Public Works Management \& Policy",date: "Apr-2024",description: "Luisa M. Mimmi",)
+#resume-entry(title: "Italy in Front of the Challenge of Infrastructure Maintenance: Existing Issues and Promising Responses",location: "Public Works Management and Policy",date: "Apr-2024",description: "Luisa M. Mimmi",)
 #resume-item[
 - https://journals.sagepub.com/doi/10.1177/1087724X231164648
 ]
