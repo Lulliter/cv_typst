@@ -473,7 +473,7 @@
 ]
 #resume-entry(title: "Esperto in Analisi di dati su fondi UE",location: "Roma, Italia",date: "Feb-2023 - Ago-2024",description: "Presidenza del Consiglio dei Ministri",)
 #resume-item[
-- Contributo al servizio di monitoraggio su interventi in ambito PNRR M5-C3 (coesione territoriale)
+- Contributo al servizio di monitoraggio su interventi finanziati dal PNRR nella missione M5-C3 (coesione territoriale)
 ]
 #resume-entry(title: "Sr. Economic Advisor - dossier infrastrutture",location: "Roma, Italia",date: "Feb-2020 - Dic-2021",description: "Ministero dell'Economia e delle Finanze",)
 #resume-item[
@@ -485,30 +485,31 @@
 ]
 #resume-entry(title: "Research Fellow",location: "Washington DC, USA",date: "Mag-2018 - Ott-2019",description: "Banca Inter-Americana dello Sviluppo",)
 #resume-item[
-- Indagini statistiche multi-paese ed analisi sui dati relativi a offerta e domanda di acqua e servizi igienico-sanitari in America Latina
+- Indagini statistiche multi-paese per l'analisi di offerta e domanda di acqua e servizi igienico-sanitari in America Latina
 ]
 #resume-entry(title: "Sr. Monitoring & Evaluation Specialist",location: "Washington DC, USA",date: "Mar-2009 - Apr-2018",description: "Banca Mondiale",)
 #resume-item[
-- Ideazione e gestione di 2 sistemi di monitoraggio e valutazione (M&E); redazione di 3 articoli 'peer-reviewed' e vari rapport periodici per i finanziatori Europei di 2 Fondi Fiduciari
+- Ideazione e gestione di sistemi M&E e redazione di rapport periodici per i finanziatori UE di 2 fondi fiduciari
 ]
 #resume-entry(title: "Research Assistant",location: "Washington DC, USA",date: "Ott-2008 - Feb-2009",description: "Banca Inter-Americana dello Sviluppo",)
 #resume-item[
-- Supporto a cooperazione tecnica con il Municipio di Fortaleza (Brasile) sul 'Programma Integrato di Inclusione Sociale per i Giovani' e preparazione di successivo prestito finalizzato
+- Supporto a progetto di assistenza  al Municipio di Fortaleza (Brasile) per un 'Programma di Inclusione Sociale dei Giovani'
 ]
-#resume-entry(title: "Stagista",location: "Rio e Belo Horizonte, Brasile",date: "Giu-2007 - Ago-2007",description: "AVSI",)
+#resume-entry(title: "Stagista",location: "Belo Horizonte, Brasile",date: "Giu-2007 - Ago-2007",description: "AVSI",)
 #resume-item[
-- Partecipazione ad attività sul campo e raccolta dati sul progetto 'Conviver' promosso da AVSI e CEMIG per l'accesso legale e sostenibile all'energia elettrica dei residenti in alcune favelas di Belo Horizonte
+- Attività sul campo e raccolta dati sul progetto 'Conviver' per l'accesso sicuro all'energia elettrica in alcune favelas
 ]
 #resume-entry(title: "Business Intelligence Analyst",location: "Milano, Italia",date: "Ott-2001 - Giu-2006",description: "Value Partners S.p.A.",)
 #resume-item[
-- Valutazione posizionamento competitivo e business intelligence per clienti pubblici e privati attivi in Italia, Europa, America Latina, Asia Sud-Orientale e Nord Africa
+- Valutazione posizionamento competitivo e business intelligence per clienti pubblici e privati attivi in Italia e all'estero
 ]
-= Competenze professionali
-<competenze-professionali>
-• Eccellenti #strong[competenze analitiche];, perfezionate nell’ambito di programmi internazionali di sviluppo economico \
-• #strong[Affidabilità, intraprendenza, e capacità di lavorare in squadra] dimostrate in ruoli di leadership nella gestione di progetti di ricerca e assistenza tecnica in vari contesti \
-• Efficaci #strong[capacità di relazione e comunicazione];, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni \
-
+= Competenze
+<competenze>
+#resume-entry(title: "Lingue",description: "Italiano (madrelingua), Inglese (C2), Spagnolo (C2), Portoghese (B1)",)
+#resume-entry(title: "Pacchetti Office",description: "MS Office, GSuite, LibreOffice",)
+#resume-entry(title: "Linguaggi di programmazione",description: "R, Stata, SQL",)
+#resume-entry(title: "Altri Strumenti",description: " git, zsh, Markdown, RStudio, VSCode, Quarto, HTML & CSS",)
+#resume-entry(title: "Competenze Personali",description: " Eccellenti capacità di pensiero critico e analisi dei dati; Determinazione e spirito d'iniziativa in progetti complessi; Abilità comunicative efficaci",)
 #pagebreak()
 = Istruzione
 <istruzione>
@@ -516,12 +517,6 @@
 #resume-entry(title: "Laurea in Economia e Commercio (4 anni)",location: "Università di Pavia",date: "Apr-2001",description: "Economia Industriale",)
 #resume-entry(title: "Programma Erasmus EU (2 semestri)",location: "Universidad Autonoma de Madrid",date: "Lug-1998",description: "Economia della UE",)
 #resume-entry(title: "Diploma di Maturità (5 anni)",location: "Liceo Scientifico T. Olivelli",date: "Giu-1994",description: "Maturità scientifica",)
-= Competenze linguistiche e informatiche
-<competenze-linguistiche-e-informatiche>
-#resume-entry(title: "Lingue",description: "Italiano (madrelingua), Inglese (C2), Spagnolo (C2), Portoghese (B1)",)
-#resume-entry(title: "Pacchetti Office",description: "MS Office, GSuite, LibreOffice",)
-#resume-entry(title: "Linguaggi di programmazione",description: "R, Stata, SQL",)
-#resume-entry(title: "Altri Strumenti",description: " git, zsh, Markdown, RStudio, VSCode, Quarto, HTML & CSS",)
 = Pubblicazioni sottoposte a revisione paritaria
 <pubblicazioni-sottoposte-a-revisione-paritaria>
 #resume-entry(title: "Italy in Front of the Challenge of Infrastructure Maintenance: Existing Issues and Promising Responses",location: "Public Works Management and Policy",date: "Apr-2024",description: "Luisa M. Mimmi",)

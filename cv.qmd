@@ -132,14 +132,14 @@ educ <- educ_temp %>%
 
 \newpage
 
-## Professional Skills
- 
- •	Strong critical thinking and **data analysis skills**, showcased in international contexts and across diverse sectors  
- •	Demonstrated drive and resourcefulness in **leadership roles** for complex projects with multiple stakeholders  
- •	Effective **communication skills**, proven by record of multilingual publications and public speaking for diverse audiences  
+<!-- ## Professional Skills -->
+
+<!--  •	Strong critical thinking and **data analysis skills**, showcased in international contexts and across diverse sectors   -->
+<!--  •	Demonstrated drive and resourcefulness in **leadership roles** for complex projects with multiple stakeholders   -->
+<!--  •	Effective **communication skills**, proven by record of multilingual publications and public speaking for diverse audiences   -->
  
 
-<!-- ## Skills -->
+## Skills
 
 ```{r}
 #| output: asis
@@ -226,11 +226,28 @@ See complete list on  [**Google Scholar profile**](https://scholar.google.com/ci
 
 ```{r}
 # filter recent and....
-talks <- RefManageR::ReadBib(
+talks_temp <- RefManageR::ReadBib(
 	file = here::here("data", "Lula-MyTalks.bib"),
 	.Encoding ="UTF-8")  %>%
-	as.data.frame() %>%
-	mutate(year = stringr::str_extract(date,pattern = "^.{1,4}")) %>%
+	as.data.frame() %>% 
+	# Keep only portion of string before "/" in the "date" column [2018-09-05/2018-09-06]
+	mutate(date = stringr::str_extract(date, pattern = "^[^/]+")) %>% 
+	# Clean the date column and format it as "month-year"
+	mutate(parsed_date = case_when(
+		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings
+		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format
+		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format
+		TRUE ~ NA_Date_))  %>% 
+	relocate(parsed_date, .after = date) %>%
+	dplyr::arrange(desc(parsed_date)) %>%
+	# Format the parsed date as "month-year"
+	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y"))) %>% 
+	relocate(month_year, .after = date) %>% 
+	mutate(year = stringr::str_extract(date,pattern = "^.{1,4}"))  
+
+
+# filter 2020 and after & use `month_year` for date
+talks <- talks_temp %>%
 	dplyr::filter(year >2020 & type != "Invited Talk")  %>%
 #mutate(url = if_else(is.na(url), url_preprint, url) ) %>%
 	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
@@ -239,7 +256,6 @@ talks <- RefManageR::ReadBib(
 			 clean_eventtitle = gsub("\\{\\{", "", eventtitle),  # Remove "{{"
 			 clean_eventtitle = gsub("\\}\\}", "", clean_eventtitle)   # Remove "}}"
 	)
-
 ```
 
 ```{r}
@@ -247,7 +263,7 @@ talks <- RefManageR::ReadBib(
 
 talks %>%
 	resume_entry(title = "clean_title",
-					 date = "date" ,
+					 date = "month_year",
 					 description = "clean_eventtitle",
 					 location = "venue")
 ```

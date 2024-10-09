@@ -125,13 +125,22 @@ work %>%
 ```
 
 
-## Competenze professionali
+<!-- ## Competenze professionali -->
+
+<!--  •	Eccellenti **competenze analitiche**, perfezionate nell'ambito di programmi internazionali di sviluppo economico   -->
+<!--  •	**Affidabilità, intraprendenza, e capacità di lavorare in squadra** dimostrate in ruoli di leadership nella gestione di progetti di ricerca e assistenza tecnica in vari contesti   -->
+<!--  •	Efficaci **capacità di relazione e comunicazione**, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni   -->
+<!--  <!-- •	**Forte orientamento ai risultati** e capacità di lavorare in modo autonomo e in condizioni di stress  --> 
  
- •	Eccellenti **competenze analitiche**, perfezionate nell'ambito di programmi internazionali di sviluppo economico  
- •	**Affidabilità, intraprendenza, e capacità di lavorare in squadra** dimostrate in ruoli di leadership nella gestione di progetti di ricerca e assistenza tecnica in vari contesti  
- •	Efficaci **capacità di relazione e comunicazione**, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni  
- <!-- •	**Forte orientamento ai risultati** e capacità di lavorare in modo autonomo e in condizioni di stress  -->
- 
+## Competenze
+
+```{r}
+#| output: asis
+read.csv("data/skill_ita.csv") |>
+  resume_entry(title = "area",
+               description = "skills")
+```
+
 
 \newpage
 
@@ -151,15 +160,6 @@ educ <- educ_temp %>%
 					 description = "detail")
 ```
  
-## Competenze linguistiche e informatiche
-
-```{r}
-#| output: asis
-read.csv("data/skill_ita.csv") |>
-  resume_entry(title = "area",
-               description = "skills")
-```
-
 
 ## Pubblicazioni sottoposte a revisione paritaria 
   
