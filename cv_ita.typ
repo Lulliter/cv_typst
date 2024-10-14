@@ -489,7 +489,7 @@
 ]
 #resume-entry(title: "Sr. Monitoring & Evaluation Specialist",location: "Washington DC, USA",date: "Mar-2009 - Apr-2018",description: "Banca Mondiale",)
 #resume-item[
-- Ideazione e gestione di sistemi M&E e redazione di rapport periodici per i finanziatori UE di 2 fondi fiduciari
+- Ideazione e gestione di sistemi M&E per i finanziatori UE di 2 fondi fiduciari per lo sviluppo di infrastrutture
 ]
 #resume-entry(title: "Research Assistant",location: "Washington DC, USA",date: "Ott-2008 - Feb-2009",description: "Banca Inter-Americana dello Sviluppo",)
 #resume-item[
@@ -509,7 +509,7 @@
 #resume-entry(title: "Pacchetti Office",description: "MS Office, GSuite, LibreOffice",)
 #resume-entry(title: "Linguaggi di programmazione",description: "R, Stata, SQL",)
 #resume-entry(title: "Altri Strumenti",description: " git, zsh, Markdown, RStudio, VSCode, Quarto, HTML & CSS",)
-#resume-entry(title: "Competenze Personali",description: " Eccellenti capacità di pensiero critico e analisi dei dati; Determinazione e spirito d'iniziativa in progetti complessi; Abilità comunicative efficaci",)
+#resume-entry(title: "Competenze Personali",description: " Eccellenti capacità di pensiero critico e analisi dei dati; Determinazione e spirito d'iniziativa in progetti complessi; Abilità comunicative efficaci; Passione e attitudine per la formazione",)
 #pagebreak()
 = Istruzione
 <istruzione>
