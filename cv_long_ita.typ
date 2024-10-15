@@ -21,21 +21,9 @@
 #let align-header-default = center
 
 // User defined style
-$if(style.color-accent)$
-#let color-accent = rgb("$style.color-accent$")
-$else$
-#let color-accent = color-accent-default
-$endif$
-$if(style.font-header)$
-#let font-header = "$style.font-header$"
-$else$
+#let color-accent = rgb("7c1c2d")
 #let font-header = font-header-default
-$endif$
-$if(style.font-text)$
-#let font-text = "$style.font-text$"
-$else$
 #let font-text = font-text-default
-$endif$
 
 //------------------------------------------------------------------------------
 // Helper functions
@@ -438,3 +426,132 @@ $endif$
   body
 }
 
+// Typst custom formats typically consist of a 'typst-template.typ' (which is
+// the source code for a typst template) and a 'typst-show.typ' which calls the
+// template's function (forwarding Pandoc metadata values as required)
+//
+// This is an example 'typst-show.typ' file (based on the default template  
+// that ships with Quarto). It calls the typst function named 'article' which 
+// is defined in the 'typst-template.typ' file. 
+//
+// If you are creating or packaging a custom typst template you will likely
+// want to replace this file and 'typst-template.typ' entirely. You can find
+// documentation on creating typst templates here and some examples here:
+//   - https://typst.app/docs/tutorial/making-a-template/
+//   - https://github.com/typst/templates
+
+#show: resume.with(
+  title: [Luisa M. Mimmi],
+  author: (
+    firstname: unescape_text("Luisa M."),
+    lastname: unescape_text("Mimmi"),
+    address: unescape_text("Pavia, Italia"),
+    position: unescape_text("Economista | Analista di politiche pubbliche | Consulente freelance"),
+    contacts: ((
+      text: unescape_text("lmm76\@georgetown.edu"),
+      url: unescape_text("mailto:lmm76\@georgetown.edu"),
+      icon: unescape_text("fa envelope"),
+    ), (
+      text: unescape_text("luisamimmi.org"),
+      url: unescape_text("https:\/\/luisamimmi.org"),
+      icon: unescape_text("assets/icon/bi-house-fill.svg"),
+    ), (
+      text: unescape_text("Luisa M. Mimmi"),
+      url: unescape_text("https:\/\/www.linkedin.com/in/luisa-m-mimmi"),
+      icon: unescape_text("fa brands linkedin"),
+    ), (
+      text: unescape_text("lulliter"),
+      url: unescape_text("https:\/\/github.com/lulliter"),
+      icon: unescape_text("fa brands github"),
+    )),
+  ),
+)
+= Esperienza professionale
+<esperienza-professionale>
+#resume-entry(title: "Consulente in economia e valutazione di politiche pubbliche",location: "Milano, Italia & remoto",date: "Gen-2022 - Ott-2024",description: "Libera Professione",)
+#resume-item[
+- Consulenza e formazione su gestione di dati e statistica/machine learning per enti pubblici, università, e centri studi
+]
+#resume-entry(title: "Esperto in Analisi di dati su fondi UE",location: "Roma, Italia",date: "Feb-2023 - Ago-2024",description: "Presidenza del Consiglio dei Ministri",)
+#resume-item[
+- Contributo al servizio di monitoraggio su interventi finanziati dal PNRR nella missione M5-C3 (coesione territoriale)
+]
+#resume-entry(title: "Sr. Economic Advisor - dossier infrastrutture",location: "Roma, Italia",date: "Feb-2020 - Dic-2021",description: "Ministero dell'Economia e delle Finanze",)
+#resume-item[
+- Supporto alla preparazione della Presidenza Italiana del G20 (2021) nel Gruppo di Lavoro Infrastrutture
+]
+#resume-entry(title: "Advisor",location: "Milano, Italia",date: "Feb-2020 - Mar-2020",description: "CSIL",)
+#resume-item[
+- Contributo alla preparazione di una proposta di ricerca su 'EU Lagging Regions: state of play and future challenges'
+]
+#resume-entry(title: "Research Fellow",location: "Washington DC, USA",date: "Mag-2018 - Ott-2019",description: "Banca Inter-Americana dello Sviluppo",)
+#resume-item[
+- Indagini statistiche multi-paese per l'analisi di offerta e domanda di acqua e servizi igienico-sanitari in America Latina
+]
+#resume-entry(title: "Sr. Monitoring & Evaluation Specialist",location: "Washington DC, USA",date: "Mar-2009 - Apr-2018",description: "Banca Mondiale",)
+#resume-item[
+- Ideazione e gestione di sistemi M&E per i finanziatori UE di 2 fondi fiduciari per lo sviluppo di infrastrutture
+]
+#resume-entry(title: "Research Assistant",location: "Washington DC, USA",date: "Ott-2008 - Feb-2009",description: "Banca Inter-Americana dello Sviluppo",)
+#resume-item[
+- Supporto a progetto di assistenza  al Municipio di Fortaleza (Brasile) per un 'Programma di Inclusione Sociale dei Giovani'
+]
+#resume-entry(title: "Stagista",location: "Belo Horizonte, Brasile",date: "Giu-2007 - Ago-2007",description: "AVSI",)
+#resume-item[
+- Attività sul campo e raccolta dati sul progetto 'Conviver' per l'accesso sicuro all'energia elettrica in alcune favelas
+]
+#resume-entry(title: "Business Intelligence Analyst",location: "Milano, Italia",date: "Ott-2001 - Giu-2006",description: "Value Partners S.p.A.",)
+#resume-item[
+- Valutazione posizionamento competitivo e business intelligence per clienti pubblici e privati attivi in Italia e all'estero
+]
+= Competenze
+<competenze>
+#resume-entry(title: "Lingue",description: "Italiano (madrelingua), Inglese (C2), Spagnolo (C2), Portoghese (B1)",)
+#resume-entry(title: "Pacchetti Office",description: "MS Office, GSuite, LibreOffice",)
+#resume-entry(title: "Linguaggi di programmazione",description: "R, Stata, SQL",)
+#resume-entry(title: "Altri Strumenti",description: " git, zsh, Markdown, RStudio, VSCode, Quarto, HTML & CSS",)
+#resume-entry(title: "Competenze Personali",description: " Eccellenti capacità di pensiero critico e analisi dei dati; Determinazione e spirito d'iniziativa in progetti complessi; Abilità comunicative efficaci; Passione e attitudine per la formazione",)
+#pagebreak()
+= Istruzione
+<istruzione>
+#resume-entry(title: "Master in Politiche Pubbliche (2 anni)",location: "Georgetown University",date: "Mag-2008",description: "Politica Internazionale e Sviluppo",)
+#resume-entry(title: "Laurea in Economia e Commercio (4 anni)",location: "Università di Pavia",date: "Apr-2001",description: "Economia Industriale",)
+#resume-entry(title: "Programma Erasmus EU (2 semestri)",location: "Universidad Autonoma de Madrid",date: "Lug-1998",description: "Economia della UE",)
+#resume-entry(title: "Diploma di Maturità (5 anni)",location: "Liceo Scientifico T. Olivelli",date: "Giu-1994",description: "Maturità scientifica",)
+= Pubblicazioni sottoposte a revisione paritaria
+<pubblicazioni-sottoposte-a-revisione-paritaria>
+#resume-entry(title: "Italy in Front of the Challenge of Infrastructure Maintenance: Existing Issues and Promising Responses",location: "Public Works Management and Policy",date: "Apr-2024",description: "Luisa M. Mimmi",)
+#resume-item[
+- https://journals.sagepub.com/doi/10.1177/1087724X231164648
+]
+#resume-entry(title: "Predicting Housing Deprivation from Space in the Slums of Dhaka",location: "Environment and Planning B: Urban Analytics and City Science",date: "Set-2022",description: "Amit Patel and Christian Borja-Vega and Luisa M. Mimmi and Tomas Soukup and Jan Kolomaznik",)
+#resume-item[
+- https://journals.sagepub.com/doi/10.1177/23998083221123589
+]
+#resume-entry(title: "From Informal to Authorized Electricity Service in Urban Slums: Findings from a Household Level Survey in Mumbai",location: "Energy for Sustainable Development",date: "Ago-2014",description: "Luisa M. Mimmi",)
+#resume-item[
+- http://linkinghub.elsevier.com/retrieve/pii/S0973082614000507
+]
+#resume-entry(title: "An Econometric Study of Illegal Electricity Connections in the Urban Favelas of Belo Horizonte, Brazil",location: "Energy Policy",date: "Set-2010",description: "Luisa M. Mimmi and Sencer Ecer",)
+#resume-item[
+- http://linkinghub.elsevier.com/retrieve/pii/S0301421510003113
+]
+= Altre pubblicazioni
+<altre-pubblicazioni>
+
+Vedere lista completa su #link("https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao")[#strong[Profilo Google Scholar];]
+
+= Presentazioni e Seminari recenti
+<presentazioni-e-seminari-recenti>
+#resume-entry(title: "Una prospettiva europea per il patrimonio italiano: l'Italia di fronte alla sfida della manutenzione delle infrastrutture: questioni aperte e passi promettenti",location: "Pavia",date: "Feb-2024",description: "Lions Club Pavia Host, Distretto 108 Ib3",)
+#resume-entry(title: "Principi, Tecniche e Strumenti per l'analisi Riproducibile Dei Dati",location: "Roma",date: "Lug-2023",description: "Seminario Formativo per Uff. PNRR (Presidenza Del Consiglio)",)
+#resume-entry(title: "Infrastructure Maintenance among G20 Top Priorities",location: "online",date: "Nov-2021",description: "MOOC on 'QII and Green, Resilient and Inclusive Development'",)
+#block(
+fill:luma(221),
+inset:8pt,
+radius:4pt,
+[
+#set text(size: 8pt, weight: "medium", fill: rgb("#85144b"))
+
+Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 e del GDPR (Regolamento UE 2016/679)
+])
