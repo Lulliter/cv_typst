@@ -20,6 +20,17 @@
 #let font-text-default = ("Source Sans Pro", "Arial", "Helvetica", "Dejavu Sans")
 #let align-header-default = center
 
+// // Lula LINK style 
+// #let link-style = (content) => {
+// box(
+//     highlight: rgb("#f5ff90"),  // Apply the highlight color as a background
+//     text(
+//       color: rgb("#0054cc"),    // Apply the font color
+//       underline: true           // Apply underline
+//     )
+//   )[content]  // Apply the styles to the content
+// }
+
 // User defined style
 #let color-accent = rgb("7c1c2d")
 #let font-header = font-header-default
@@ -91,7 +102,7 @@
 #let secondary-right-header(body) = {
   set text(
     size: 10pt,
-    weight: "thin",
+    weight: "light",
     style: "italic",
     fill: color-accent,
   )
@@ -102,10 +113,10 @@
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
   set text(
-    weight: "light",
-    size: 9pt,
+    weight: "light", // weight: "light", 
+    size: 10pt,
     style: "italic",
-    fill: color-gray,
+    fill: color-darklue,// fill: color-gray,
   )
   body
 }
@@ -157,14 +168,15 @@
   lastname: "",
 ) = {
 
-  pad(bottom: 5pt)[
+  pad(bottom: 7pt)[
     #block[
       #set text(
-        size: 32pt,
+        size: 26pt,
         style: "normal",
         font: (font-header),
       )
-      #text(fill: color-gray, weight: "thin")[#firstname]
+      #text(weight: "bold")[#firstname]
+      //#text(fill: color-gray, weight: "thin")[#firstname]
       #text(weight: "bold")[#lastname]
     ]
   ]
@@ -180,7 +192,7 @@
 
   set text(
     color-accent,
-    size: 9pt,
+    size: 10pt,
     weight: "regular",
   )
 
@@ -198,7 +210,7 @@
   )
   set text(
     color-lightgray,
-    size: 9pt,
+    size: 10pt,
     style: "italic",
   )
 
@@ -212,13 +224,13 @@
   if(contacts.len() > 1) {
     block[
       #set text(
-        size: 9pt,
+        size: 10pt,
         weight: "regular",
         style: "normal",
       )
       #align(horizon)[
         #for contact in contacts [
-          #set box(height: 9pt)
+          #set box(height: 10pt)
           #box[#parse_icon_string(contact.icon) #link(contact.url)[#contact.text]]
           #separator
         ]
@@ -471,39 +483,49 @@
 #resume-entry(title: "Consulente in economia e valutazione di politiche pubbliche",location: "Milano, Italia & remoto",date: "Gen-2022 - Ott-2024",description: "Libera Professione",)
 #resume-item[
 - Consulenza e formazione su gestione di dati e statistica/machine learning per enti pubblici, università, e centri studi
+- Corsi intensivi di introduzione alla statistica/machine learning e analisi riproducibile dei dati
 ]
 #resume-entry(title: "Esperto in Analisi di dati su fondi UE",location: "Roma, Italia",date: "Feb-2023 - Ago-2024",description: "Presidenza del Consiglio dei Ministri",)
 #resume-item[
 - Contributo al servizio di monitoraggio su interventi finanziati dal PNRR nella missione M5-C3 (coesione territoriale)
+- Preparazione di report e dashboard con R/Quarto per il monitoraggio dei finanziamenti
 ]
 #resume-entry(title: "Sr. Economic Advisor - dossier infrastrutture",location: "Roma, Italia",date: "Feb-2020 - Dic-2021",description: "Ministero dell'Economia e delle Finanze",)
 #resume-item[
 - Supporto alla preparazione della Presidenza Italiana del G20 (2021) nel Gruppo di Lavoro Infrastrutture
+- Coordinamento di 3 risorse Junior e del dossier su resilienza e manutenzione delle infrastrutture
 ]
 #resume-entry(title: "Advisor",location: "Milano, Italia",date: "Feb-2020 - Mar-2020",description: "CSIL",)
 #resume-item[
 - Contributo alla preparazione di una proposta di ricerca su 'EU Lagging Regions: state of play and future challenges'
+- Proposta tecnica e finanziaria presentati al Parlamento Europeo  - Committee on Regional Development (REGI)
 ]
 #resume-entry(title: "Research Fellow",location: "Washington DC, USA",date: "Mag-2018 - Ott-2019",description: "Banca Inter-Americana dello Sviluppo",)
 #resume-item[
 - Indagini statistiche multi-paese per l'analisi di offerta e domanda di acqua e servizi igienico-sanitari in America Latina
+- Cordinamento e controllo di qualità di team multi-paese di consulenti per le indagini sul campo
 ]
 #resume-entry(title: "Sr. Monitoring & Evaluation Specialist",location: "Washington DC, USA",date: "Mar-2009 - Apr-2018",description: "Banca Mondiale",)
 #resume-item[
 - Ideazione e gestione di sistemi M&E per i finanziatori UE di 2 fondi fiduciari per lo sviluppo di infrastrutture
+- Supervisione di alcune valutazioni di impatto condotte con analisi sul campo a Mumbai (India), Nairobi (Kenya), Kampala (Uganda) e di villaggi rurali della periferia di Dhaka (Bangladesh)
 ]
 #resume-entry(title: "Research Assistant",location: "Washington DC, USA",date: "Ott-2008 - Feb-2009",description: "Banca Inter-Americana dello Sviluppo",)
 #resume-item[
 - Supporto a progetto di assistenza  al Municipio di Fortaleza (Brasile) per un 'Programma di Inclusione Sociale dei Giovani'
+- Analisi comparata di 8 casi internazionali di promozione della imprenditorialità giovanile e microcredito in contesti svantaggiati
 ]
 #resume-entry(title: "Stagista",location: "Belo Horizonte, Brasile",date: "Giu-2007 - Ago-2007",description: "AVSI",)
 #resume-item[
 - Attività sul campo e raccolta dati sul progetto 'Conviver' per l'accesso sicuro all'energia elettrica in alcune favelas
+- Consulenza su modalità e strumenti di condivisione dei dati per progetti AVSI in diverse città
 ]
 #resume-entry(title: "Business Intelligence Analyst",location: "Milano, Italia",date: "Ott-2001 - Giu-2006",description: "Value Partners S.p.A.",)
 #resume-item[
 - Valutazione posizionamento competitivo e business intelligence per clienti pubblici e privati attivi in Italia e all'estero
+- Analisi della fattibilità e profittabilità di iniziative di Corporate Social Responsability per vari clienti in diversi settori
 ]
+#pagebreak()
 = Competenze
 <competenze>
 #resume-entry(title: "Lingue",description: "Italiano (madrelingua), Inglese (C2), Spagnolo (C2), Portoghese (B1)",)
@@ -511,7 +533,6 @@
 #resume-entry(title: "Linguaggi di programmazione",description: "R, Stata, SQL",)
 #resume-entry(title: "Altri Strumenti",description: " git, zsh, Markdown, RStudio, VSCode, Quarto, HTML & CSS",)
 #resume-entry(title: "Competenze Personali",description: " Eccellenti capacità di pensiero critico e analisi dei dati; Determinazione e spirito d'iniziativa in progetti complessi; Abilità comunicative efficaci; Passione e attitudine per la formazione",)
-#pagebreak()
 = Istruzione
 <istruzione>
 #resume-entry(title: "Master in Politiche Pubbliche (2 anni)",location: "Georgetown University",date: "Mag-2008",description: "Politica Internazionale e Sviluppo",)
@@ -541,6 +562,7 @@
 
 Vedere lista completa su #link("https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao")[#strong[Profilo Google Scholar];]
 
+#pagebreak()
 = Presentazioni e Seminari recenti
 <presentazioni-e-seminari-recenti>
 #resume-entry(title: "Una prospettiva europea per il patrimonio italiano: l'Italia di fronte alla sfida della manutenzione delle infrastrutture: questioni aperte e passi promettenti",location: "Pavia",date: "Feb-2024",description: "Lions Club Pavia Host, Distretto 108 Ib3",)

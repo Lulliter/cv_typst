@@ -20,6 +20,17 @@
 #let font-text-default = ("Source Sans Pro", "Arial", "Helvetica", "Dejavu Sans")
 #let align-header-default = center
 
+// // Lula LINK style 
+// #let link-style = (content) => {
+// box(
+//     highlight: rgb("#f5ff90"),  // Apply the highlight color as a background
+//     text(
+//       color: rgb("#0054cc"),    // Apply the font color
+//       underline: true           // Apply underline
+//     )
+//   )[content]  // Apply the styles to the content
+// }
+
 // User defined style
 $if(style.color-accent)$
 #let color-accent = rgb("$style.color-accent$")
@@ -103,7 +114,7 @@ $endif$
 #let secondary-right-header(body) = {
   set text(
     size: 10pt,
-    weight: "thin",
+    weight: "light",
     style: "italic",
     fill: color-accent,
   )
@@ -114,10 +125,10 @@ $endif$
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
   set text(
-    weight: "light",
-    size: 9pt,
+    weight: "light", // weight: "light", 
+    size: 10pt,
     style: "italic",
-    fill: color-gray,
+    fill: color-darklue,// fill: color-gray,
   )
   body
 }
@@ -169,14 +180,15 @@ $endif$
   lastname: "",
 ) = {
 
-  pad(bottom: 5pt)[
+  pad(bottom: 7pt)[
     #block[
       #set text(
-        size: 32pt,
+        size: 26pt,
         style: "normal",
         font: (font-header),
       )
-      #text(fill: color-gray, weight: "thin")[#firstname]
+      #text(weight: "bold")[#firstname]
+      //#text(fill: color-gray, weight: "thin")[#firstname]
       #text(weight: "bold")[#lastname]
     ]
   ]
@@ -192,7 +204,7 @@ $endif$
 
   set text(
     color-accent,
-    size: 9pt,
+    size: 10pt,
     weight: "regular",
   )
 
@@ -210,7 +222,7 @@ $endif$
   )
   set text(
     color-lightgray,
-    size: 9pt,
+    size: 10pt,
     style: "italic",
   )
 
@@ -224,13 +236,13 @@ $endif$
   if(contacts.len() > 1) {
     block[
       #set text(
-        size: 9pt,
+        size: 10pt,
         weight: "regular",
         style: "normal",
       )
       #align(horizon)[
         #for contact in contacts [
-          #set box(height: 9pt)
+          #set box(height: 10pt)
           #box[#parse_icon_string(contact.icon) #link(contact.url)[#contact.text]]
           #separator
         ]

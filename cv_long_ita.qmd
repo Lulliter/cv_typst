@@ -118,9 +118,9 @@ work %>%
 					 description = "org",
 					 location = "where",
 					 date = "date",
-					 details = c("description_1" )
-					 #details = c("description_1", "description_2" )
-					 ) 
+					 #details = c("description_1" )
+					 details = c("description_1", "description_2" )
+	) 
 	
 ```
 
@@ -132,6 +132,9 @@ work %>%
 <!--  •	Efficaci **capacità di relazione e comunicazione**, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni   -->
 <!--  <!-- •	**Forte orientamento ai risultati** e capacità di lavorare in modo autonomo e in condizioni di stress  --> 
  
+ 
+\newpage
+ 
 ## Competenze
 
 ```{r}
@@ -140,9 +143,6 @@ read.csv("data/skill_ita.csv") |>
   resume_entry(title = "area",
                description = "skills")
 ```
-
-
-\newpage
 
 ## Istruzione
 
@@ -228,6 +228,7 @@ Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com
 <!-- 					 details = "url") -->
 <!-- ``` -->
 
+\newpage
 
 ## Presentazioni e Seminari recenti
 
