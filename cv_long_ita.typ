@@ -568,6 +568,7 @@ Vedere lista completa su #link("https://scholar.google.com/citations?user=OBYla5
 #resume-entry(title: "Una prospettiva europea per il patrimonio italiano: l'Italia di fronte alla sfida della manutenzione delle infrastrutture: questioni aperte e passi promettenti",location: "Pavia",date: "Feb-2024",description: "Lions Club Pavia Host, Distretto 108 Ib3",)
 #resume-entry(title: "Principi, Tecniche e Strumenti per l'analisi Riproducibile Dei Dati",location: "Roma",date: "Lug-2023",description: "Seminario Formativo per Uff. PNRR (Presidenza Del Consiglio)",)
 #resume-entry(title: "Infrastructure Maintenance among G20 Top Priorities",location: "online",date: "Nov-2021",description: "MOOC on 'QII and Green, Resilient and Inclusive Development'",)
+#box(height: 65%) // #box(height: 60pt)  
 #block(
 fill:luma(221),
 inset:8pt,
@@ -575,5 +576,5 @@ radius:4pt,
 [
 #set text(size: 8pt, weight: "medium", fill: rgb("#85144b"))
 
-Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 e del GDPR (Regolamento UE 2016/679)
+Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 101/2018, n. 196 e del GDPR (Regolamento UE 2016/679)
 ])

@@ -553,6 +553,7 @@
 
 Vedere lista completa su #link("https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao")[#strong[Profilo Google Scholar];]
 
+#box(height: 20%) // #box(height: 60pt)  
 #block(
 fill:luma(221),
 inset:8pt,
@@ -560,5 +561,5 @@ radius:4pt,
 [
 #set text(size: 8pt, weight: "medium", fill: rgb("#85144b"))
 
-Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 e del GDPR (Regolamento UE 2016/679)
+Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 101/2018, n. 196 e del GDPR (Regolamento UE 2016/679)
 ])
