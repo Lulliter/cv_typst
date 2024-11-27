@@ -22,7 +22,7 @@ git push origin master
 
 
 #=========================================== tutto insieme  ================================================#
-git add -u && git commit  -m "small correc" && git push origin master
+git add -u && git commit  -m "small correct" && git push origin master
 
 #=========================================== COPIO FILE SU WEBSITE DIR  ================================================#
 #!/bin/zsh

@@ -256,13 +256,16 @@ talks_temp <- RefManageR::ReadBib(
 
 # filter 2020 and after & use `month_year` for date
 talks <- talks_temp %>%
-	dplyr::filter(year >2020 & type != "Invited Talk")  %>%
+	dplyr::filter(year > 2015 & type != "Invited Talk")  %>%
 #mutate(url = if_else(is.na(url), url_preprint, url) ) %>%
 	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
 	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
 			 clean_title = gsub("\\}\\}", "", clean_title),  # Remove "}}"
 			 clean_eventtitle = gsub("\\{\\{", "", eventtitle),  # Remove "{{"
-			 clean_eventtitle = gsub("\\}\\}", "", clean_eventtitle)   # Remove "}}"
+			 clean_eventtitle = gsub("\\}\\}", "", clean_eventtitle),   # Remove "}}" 
+			  clean_eventtitle = gsub('"', "", clean_eventtitle)        # Remove stray quotes
+			 
+			 
 	)
 ```
 
@@ -278,14 +281,12 @@ talks %>%
 
 ```{r}
 #| output: false
-
-
-  Sys.setlocale("LC_TIME", original_locale)
+Sys.setlocale("LC_TIME", original_locale)
 ```
 
 
 ```{=typst} 
-#box(height: 65%) // #box(height: 60pt)  
+#box(height: 45%) // #box(height: 60pt)  
 ```
 
 <!-- quarto  typst-->

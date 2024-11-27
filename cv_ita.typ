@@ -480,7 +480,7 @@
 )
 = Esperienza professionale
 <esperienza-professionale>
-#resume-entry(title: "Consulente in economia e valutazione di politiche pubbliche",location: "Milano, Italia & remoto",date: "Gen-2022 - Ott-2024",description: "Libera Professione",)
+#resume-entry(title: "Consulente in economia e valutazione di politiche pubbliche",location: "Milano, Italia & remoto",date: "Gen-2022 - Nov-2024",description: "Libera Professione",)
 #resume-item[
 - Consulenza e formazione su gestione di dati e statistica/machine learning per enti pubblici, università, e centri studi
 ]
