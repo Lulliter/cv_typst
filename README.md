@@ -44,7 +44,7 @@ This can be installed with:
 
 ``` r
 # R
-install.packages("typstcv", repos = "https://kazuyanagimoto.r-universe.dev")
+install.packages("typstcv", repos = "https://kazuyanagimoto.r-universe.dev") 
 ```
 
 Basically it is a `*.qmd` file that has format...

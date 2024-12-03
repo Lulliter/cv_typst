@@ -20,16 +20,13 @@
 #let font-text-default = ("Source Sans Pro", "Arial", "Helvetica", "Dejavu Sans")
 #let align-header-default = center
 
-// // Lula LINK style 
-// #let link-style = (content) => {
-// box(
-//     highlight: rgb("#f5ff90"),  // Apply the highlight color as a background
-//     text(
-//       color: rgb("#0054cc"),    // Apply the font color
-//       underline: true           // Apply underline
-//     )
-//   )[content]  // Apply the styles to the content
-// }
+// Lula LINK style (more visible )
+#let link-style = (content) => {
+  text(
+    fill: rgb("#0054cc"), // Replace with your desired color
+    underline: true       // Apply underline if needed
+  )[content]
+}
 
 // User defined style
 #let color-accent = rgb("7c1c2d")
@@ -321,6 +318,7 @@
     weight: "light",
     fill: color-darknight,
   )
+  
   set par(leading: 0.65em)
   set list(indent: 1em)
   body
@@ -480,7 +478,7 @@
 )
 = Esperienza professionale
 <esperienza-professionale>
-#resume-entry(title: "Consulente in economia e valutazione di politiche pubbliche",location: "Milano, Italia & remoto",date: "Gen-2022 - Nov-2024",description: "Libera Professione",)
+#resume-entry(title: "Consulente in economia e valutazione di politiche pubbliche",location: "Milano, Italia & remoto",date: "Gen-2022 - Dic-2024",description: "Libera Professione",)
 #resume-item[
 - Consulenza e formazione su gestione di dati e statistica/machine learning per enti pubblici, università, e centri studi
 - Corsi intensivi di introduzione alla statistica/machine learning e analisi riproducibile dei dati
@@ -568,9 +566,9 @@ Vedere lista completa su #link("https://scholar.google.com/citations?user=OBYla5
 #resume-entry(title: "Una prospettiva europea per il patrimonio italiano: l'Italia di fronte alla sfida della manutenzione delle infrastrutture: questioni aperte e passi promettenti",location: "Pavia",date: "Feb-2024",description: "Lions Club Pavia Host, Distretto 108 Ib3",)
 #resume-entry(title: "Principi, Tecniche e Strumenti per l'analisi Riproducibile Dei Dati",location: "Roma",date: "Lug-2023",description: "Seminario Formativo per Uff. PNRR (Presidenza Del Consiglio)",)
 #resume-entry(title: "Infrastructure Maintenance among G20 Top Priorities",location: "online",date: "Nov-2021",description: "MOOC on 'QII and Green, Resilient and Inclusive Development'",)
-#resume-entry(title: "Potenziali priorit\`a per la Presidenza Italiana G20 nell'area tematica Infrastrutture",location: "Roma",date: "Mag-2020",description: "Seminario interno MEF",)
+#resume-entry(title: "Potenziali priorita' per la Presidenza Italiana G20 nell'area tematica Infrastrutture",location: "Roma",date: "Mag-2020",description: "Seminario interno MEF",)
 #resume-entry(title: "NYE Fundraising Data What Have We Learned This Past Year?",location: "Washington, D.C.",date: "Mar-2019",description: "Strategy Meeting with Non Profit Advisors",)
-#resume-entry(title: "The Regulation of Public Utilities of the Future in Latin America and the Caribbean - Water and Sewerage Sector",location: "Inter-American Development Bank",date: "Set-2018",description: "Red De Centros 1st Seminar",)
+#resume-entry(title: "The Regulation of Public Utilities of the Future in Latin America and the Caribbean - Water and Sewerage Sector",location: "Washington, D.C.",date: "Set-2018",description: "Red De Centros 1st Seminar",)
 #resume-entry(title: "Integrating Multi-Dimensional Data for Inclusive and Sustainable Development of Urban Slums - Preliminary Findings from Dhaka Pilot (Phase I)",location: "Washington, D.C.",date: "Set-2017",description: "World Bank Staff Seminar",)
 #box(height: 45%) // #box(height: 60pt)  
 #block(

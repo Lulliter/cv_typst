@@ -20,16 +20,13 @@
 #let font-text-default = ("Source Sans Pro", "Arial", "Helvetica", "Dejavu Sans")
 #let align-header-default = center
 
-// // Lula LINK style 
-// #let link-style = (content) => {
-// box(
-//     highlight: rgb("#f5ff90"),  // Apply the highlight color as a background
-//     text(
-//       color: rgb("#0054cc"),    // Apply the font color
-//       underline: true           // Apply underline
-//     )
-//   )[content]  // Apply the styles to the content
-// }
+// Lula LINK style (more visible )
+#let link-style = (content) => {
+  text(
+    fill: rgb("#0054cc"), // Replace with your desired color
+    underline: true       // Apply underline if needed
+  )[content]
+}
 
 // User defined style
 $if(style.color-accent)$
@@ -333,6 +330,7 @@ $endif$
     weight: "light",
     fill: color-darknight,
   )
+  
   set par(leading: 0.65em)
   set list(indent: 1em)
   body

@@ -13,7 +13,7 @@ git add -A # ALL
 git add -u # tracked
 git add images/*
 
-git commit -m " 🙀 _extensions/kazuyanagimoto/awesomecv/typst-template.typ "
+git commit -m " rivisto cv_long_ita.qmd"
 		# git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 
 # Push local source (master branch) to remote reference (origin)
