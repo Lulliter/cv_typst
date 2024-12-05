@@ -1,0 +1,334 @@
+---
+title: "Luisa M. Mimmi"
+author:
+  firstname: Luisa M.
+  lastname: Mimmi
+  address: Pavia, Italia
+  position: "Economista | Analista di politiche pubbliche | Consulente freelance" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
+  contacts:
+    - icon: fa envelope
+      text: lmm76@georgetown.edu
+      url: "mailto:lmm76@georgetown.edu"
+    - icon: assets/icon/bi-house-fill.svg
+      text: luisamimmi.org
+      url: https://luisamimmi.org
+    # - icon: fa brands orcid
+    #   text: 0000-0002-2244-8282
+    #   url: https://orcid.org/0000-0002-2244-8282
+    # - icon: fa brands x-twitter
+    #   text: Lulliter
+    #   url: https://x.com/Lulliter
+    - icon: fa brands linkedin
+      text: Luisa M. Mimmi
+      url: https://www.linkedin.com/in/luisa-m-mimmi
+    # - icon: assets/icon/fa-google-scholar.svg
+    #   text: Luisa M. Mimmi
+    #   url: https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao
+    # - icon: fa brands researchgate
+    #   text: Luisa M. Mimmi
+    #   url: https://www.researchgate.net/profile/Luisa-Mimmi
+    - icon: fa brands github
+      text: lulliter
+      url: https://github.com/lulliter
+style:
+  color-accent: 7c1c2d #004B72 #516db0
+format:
+  awesomecv-typst:
+    font-paths: ["assets/fonts/"]
+    keep-typ: true
+execute: 
+  echo: false
+  warning: false
+---
+
+```{r}
+#| output: false
+
+# fonte 
+# pckg https://kazuyanagimoto.com/typstcv/
+# EXE https://kazuyanagimoto.com/cv/cv.pdf
+# GH https://github.com/kazuyanagimoto/cv
+
+# install.packages("typstcv", repos = "https://kazuyanagimoto.r-universe.dev")
+library(typstcv)
+library(dplyr)
+library(stringr)
+library(lubridate)
+library(RefManageR)
+
+# Set locale to Italian function before calling base::format().
+original_locale <- Sys.getlocale("LC_TIME")  # Save the original locale
+Sys.setlocale("LC_TIME", "it_IT")  # Set locale to Italian
+```
+
+
+```{r func_date}
+#| output: false
+
+# --------- FUNCTION Define the function to process date columns
+f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_month_col) {
+	
+	df %>%
+		# Combine month and year into a date, assuming the first day of the month
+		mutate(
+			# !!sym() converts the column names (passed as strings) to symbols, allowing them to be used dynamically inside mutate().
+			start_m_y = lubridate::make_date(!!sym(start_year_col), !!sym(start_month_col), 1),
+			end_m_y = lubridate::make_date(!!sym(end_year_col), !!sym(end_month_col), 1) 
+		) %>%
+		
+		# If NA in end_m_y, set the end date to today
+		mutate(end_m_y = if_else(is.na(end_m_y), lubridate::today(), end_m_y)) %>%
+		
+		# Format the date as "month-year"
+		mutate(
+			start_m_y = base::format(start_m_y, "%b-%Y"),
+			end_m_y = base::format(end_m_y, "%b-%Y")
+		) %>%
+		
+		# Create a resume entry as "month-year - month-year"
+		mutate(date = glue::glue("{start_m_y} - {end_m_y}"))
+}
+
+# ------- FUNCTION usage
+# Apply the function to your dataframe
+# processed_df <- f_m_y_dates(df, "start_year", "start_month", "end_year", "end_month")
+
+```
+
+
+
+
+## Esperienza professionale
+```{r}
+work_temp <- readr::read_csv(here::here("data", "work_ita.csv"), show_col_types = FALSE) 
+
+work <- work_temp %>% 
+	f_m_y_dates("start_year", "start_month", "end_year", "end_month")
+
+# names(work )
+#work$end
+```
+
+```{r}
+#| output: asis
+work %>% 
+	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
+	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
+	resume_entry(title = "title",
+					 description = "org",
+					 location = "where",
+					 date = "date",
+					 #details = c("description_1" )
+					 details = c("description_1", "description_2" )
+	) 
+	
+```
+
+
+<!-- ## Competenze professionali -->
+
+<!--  •	Eccellenti **competenze analitiche**, perfezionate nell'ambito di programmi internazionali di sviluppo economico   -->
+<!--  •	**Affidabilità, intraprendenza, e capacità di lavorare in squadra** dimostrate in ruoli di leadership nella gestione di progetti di ricerca e assistenza tecnica in vari contesti   -->
+<!--  •	Efficaci **capacità di relazione e comunicazione**, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni   -->
+<!--  <!-- •	**Forte orientamento ai risultati** e capacità di lavorare in modo autonomo e in condizioni di stress  --> 
+ 
+ 
+\newpage
+ 
+## Competenze
+
+```{r}
+#| output: asis
+read.csv("data/skill_ita.csv") |>
+  resume_entry(title = "area",
+               description = "skills")
+```
+
+## Istruzione
+
+```{r}
+educ_temp <- readr::read_csv(here::here("data", "edu_ita.csv"), show_col_types = FALSE)
+```
+
+```{r}
+#| output: asis
+educ <- educ_temp %>% 
+	f_m_y_dates("start_year", "start_month", "end_year", "end_month") %>% 
+	resume_entry(title = "degree",
+					 location = "inst",
+					 date = "end_m_y",
+					 description = "detail")
+```
+ 
+
+## Pubblicazioni sottoposte a revisione paritaria 
+  
+
+```{r}
+# Retrieve .bib and transform it into a data frame
+peer_pub_temp <- RefManageR::ReadBib(
+	file = here::here("data", "Lula-MyPublication-Narrow.bib"),
+	.Encoding ="UTF-8")  %>%
+	base::as.data.frame() %>%
+	# filter articles 
+	dplyr::filter(bibtype == "Article") # %>% 
+	#mutate(url = if_else(is.na(url), url_preprint, url) )
+
+# Clean the date column and format it as "month-year"
+peer_pub <- peer_pub_temp %>% 
+	mutate(parsed_date = case_when(
+		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings
+		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format
+		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format
+		TRUE ~ NA_Date_))  %>% 
+	dplyr::arrange(desc(parsed_date)) %>%
+	# Format the parsed date as "month-year"
+	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y")))  %>% 
+	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
+	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
+         clean_title = gsub("\\}\\}", "", clean_title))  # Remove "}}"
+
+```
+
+
+```{r}
+#| output: asis
+peer_pub |>
+	resume_entry(title = "clean_title",
+					 description = "author",
+					 location = "journaltitle",
+					 date =  "month_year" ,
+					 details = "url")
+```
+
+
+## Altre pubblicazioni 
+
+<br><br>
+
+Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) 
+
+<!-- ### Media Divulgativi -->
+<!-- ```{r} -->
+<!-- # filter blogs -->
+<!-- lula_blog <- RefManageR::ReadBib( -->
+<!--   file = here::here("data", "Lula-MyPublication-Narrow.bib"), -->
+<!--   .Encoding ="UTF-8")  %>% -->
+<!--   as.data.frame() %>% -->
+<!--   dplyr::filter(bibtype  == "Online") -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- lula_blog |> -->
+<!-- 	resume_entry(title = "title", -->
+<!-- 					 location = "type", -->
+<!-- 					 description = "author", -->
+<!-- 					 date = "date", -->
+<!-- 					 details = "url") -->
+<!-- ``` -->
+
+\newpage
+
+## Presentazioni e Seminari recenti
+
+```{r}
+# filter recent and....
+talks_temp <- RefManageR::ReadBib(
+	file = here::here("data", "Lula-MyTalks.bib"),
+	.Encoding ="UTF-8")  %>%
+	as.data.frame() %>% 
+	# Keep only portion of string before "/" in the "date" column [2018-09-05/2018-09-06]
+	mutate(date = stringr::str_extract(date, pattern = "^[^/]+")) %>% 
+	# Clean the date column and format it as "month-year"
+	mutate(parsed_date = case_when(
+		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings
+		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format
+		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format
+		TRUE ~ NA_Date_))  %>% 
+	relocate(parsed_date, .after = date) %>%
+	dplyr::arrange(desc(parsed_date)) %>%
+	# Format the parsed date as "month-year"
+	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y"))) %>% 
+	relocate(month_year, .after = date) %>% 
+	mutate(year = stringr::str_extract(date,pattern = "^.{1,4}"))  
+
+
+# filter 2020 and after & use `month_year` for date
+talks <- talks_temp %>%
+	dplyr::filter(year > 2015 & type != "Invited Talk")  %>%
+#mutate(url = if_else(is.na(url), url_preprint, url) ) %>%
+	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
+	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
+			 clean_title = gsub("\\}\\}", "", clean_title),  # Remove "}}"
+			 clean_eventtitle = gsub("\\{\\{", "", eventtitle),  # Remove "{{"
+			 clean_eventtitle = gsub("\\}\\}", "", clean_eventtitle),   # Remove "}}" 
+			  clean_eventtitle = gsub('"', "", clean_eventtitle)        # Remove stray quotes
+			 
+			 
+	)
+```
+
+```{r}
+#| output: asis
+
+talks %>%
+	resume_entry(title = "clean_title",
+					 date = "month_year",
+					 description = "clean_eventtitle",
+					 location = "venue")
+```
+
+```{r}
+#| output: false
+Sys.setlocale("LC_TIME", original_locale)
+```
+
+## Selezione di Progetti di Data Science
+
+```{r}
+proj_temp <- readr::read_csv(here::here("data", "projects_ita.csv"), show_col_types = FALSE)
+```
+
+```{r}
+#| output: asis
+#  "area"           "year"           "accomplishment" "where"          "link"  
+proj <- proj_temp %>% 
+	as_tibble() %>%
+	mutate(
+		link_typst = str_replace_all(
+			link,
+			"\\\\href\\{([^}]+)\\}\\{([^}]+)\\}",
+			"[\\2](\\1)"
+		)) %>%
+	 slice(c(1, 2, 5)) %>% 
+	resume_entry(title = "area",
+					 date = "year",
+					 description = "accomplishment",
+					 location = "where",
+					 details = c("link_typst"))
+```
+```{=typst} 
+#box(height: 15%) // #box(height: 60pt)  
+```
+
+<!-- quarto  typst-->
+::: {.block fill=luma(221) inset="8pt" radius="4pt"}
+<!-- raw  typst block -->
+```{=typst} 
+#set text(size: 8pt, weight: "medium", fill: rgb("#85144b"))
+
+Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 101/2018, n. 196 e del GDPR (Regolamento UE 2016/679)
+```
+:::
+
+
+<!-- \vspace*{\fill} -->
+<!-- \footnotesize \textcolor{magenta}{Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 e del GDPR (Regolamento UE 2016/679).}  -->
+
+<!-- <span style="color: red;">Questo è un testo rosso</span> -->
+
+
+<!-- #color(blue, [Questo testo dovrebbe essere blu in Typst.]) -->
+
+<!-- <span style="color: red;">Questo testo dovrebbe essere rosso in HTML.</span> -->

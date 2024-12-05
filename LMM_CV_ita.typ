@@ -481,49 +481,39 @@
 #resume-entry(title: "Consulente in economia e valutazione di politiche pubbliche",location: "Milano, Italia & remoto",date: "Gen-2022 - Dic-2024",description: "Libera Professione",)
 #resume-item[
 - Consulenza e formazione su gestione di dati e statistica/machine learning per enti pubblici, università, e centri studi
-- Corsi intensivi di introduzione alla statistica/machine learning e analisi riproducibile dei dati
 ]
 #resume-entry(title: "Esperto in Analisi di dati su fondi UE",location: "Roma, Italia",date: "Feb-2023 - Ago-2024",description: "Presidenza del Consiglio dei Ministri",)
 #resume-item[
 - Contributo al servizio di monitoraggio su interventi finanziati dal PNRR nella missione M5-C3 (coesione territoriale)
-- Preparazione di report e dashboard con R/Quarto per il monitoraggio dei finanziamenti
 ]
 #resume-entry(title: "Sr. Economic Advisor - dossier infrastrutture",location: "Roma, Italia",date: "Feb-2020 - Dic-2021",description: "Ministero dell'Economia e delle Finanze",)
 #resume-item[
 - Supporto alla preparazione della Presidenza Italiana del G20 (2021) nel Gruppo di Lavoro Infrastrutture
-- Coordinamento di 3 risorse Junior e del dossier su resilienza e manutenzione delle infrastrutture
 ]
 #resume-entry(title: "Advisor",location: "Milano, Italia",date: "Feb-2020 - Mar-2020",description: "CSIL",)
 #resume-item[
 - Contributo alla preparazione di una proposta di ricerca su 'EU Lagging Regions: state of play and future challenges'
-- Proposta tecnica e finanziaria presentati al Parlamento Europeo  - Committee on Regional Development (REGI)
 ]
 #resume-entry(title: "Research Fellow",location: "Washington DC, USA",date: "Mag-2018 - Ott-2019",description: "Banca Inter-Americana dello Sviluppo",)
 #resume-item[
 - Indagini statistiche multi-paese per l'analisi di offerta e domanda di acqua e servizi igienico-sanitari in America Latina
-- Cordinamento e controllo di qualità di team multi-paese di consulenti per le indagini sul campo
 ]
 #resume-entry(title: "Sr. Monitoring & Evaluation Specialist",location: "Washington DC, USA",date: "Mar-2009 - Apr-2018",description: "Banca Mondiale",)
 #resume-item[
 - Ideazione e gestione di sistemi M&E per i finanziatori UE di 2 fondi fiduciari per lo sviluppo di infrastrutture
-- Supervisione di alcune valutazioni di impatto condotte con analisi sul campo a Mumbai (India), Nairobi (Kenya), Kampala (Uganda) e di villaggi rurali della periferia di Dhaka (Bangladesh)
 ]
 #resume-entry(title: "Research Assistant",location: "Washington DC, USA",date: "Ott-2008 - Feb-2009",description: "Banca Inter-Americana dello Sviluppo",)
 #resume-item[
 - Supporto a progetto di assistenza  al Municipio di Fortaleza (Brasile) per un 'Programma di Inclusione Sociale dei Giovani'
-- Analisi comparata di 8 casi internazionali di promozione della imprenditorialità giovanile e microcredito in contesti svantaggiati
 ]
 #resume-entry(title: "Stagista",location: "Belo Horizonte, Brasile",date: "Giu-2007 - Ago-2007",description: "AVSI",)
 #resume-item[
 - Attività sul campo e raccolta dati sul progetto 'Conviver' per l'accesso sicuro all'energia elettrica in alcune favelas
-- Consulenza su modalità e strumenti di condivisione dei dati per progetti AVSI in diverse città
 ]
 #resume-entry(title: "Business Intelligence Analyst",location: "Milano, Italia",date: "Ott-2001 - Giu-2006",description: "Value Partners S.p.A.",)
 #resume-item[
 - Valutazione posizionamento competitivo e business intelligence per clienti pubblici e privati attivi in Italia e all'estero
-- Analisi della fattibilità e profittabilità di iniziative di Corporate Social Responsability per vari clienti in diversi settori
 ]
-#pagebreak()
 = Competenze
 <competenze>
 #resume-entry(title: "Lingue",description: "Italiano (madrelingua), Inglese (C2), Spagnolo (C2), Portoghese (B1)",)
@@ -531,6 +521,7 @@
 #resume-entry(title: "Linguaggi di programmazione",description: "R, Stata, SQL",)
 #resume-entry(title: "Altri Strumenti",description: "git, zsh, Markdown, RStudio, VSCode, Quarto, HTML & CSS",)
 #resume-entry(title: "Competenze Personali",description: "Eccellenti capacità di pensiero critico e analisi dei dati; Determinazione e spirito d'iniziativa in progetti complessi; Abilità comunicative efficaci; Passione e attitudine per la formazione",)
+#pagebreak()
 = Istruzione
 <istruzione>
 #resume-entry(title: "Master in Politiche Pubbliche (2 anni)",location: "Georgetown University",date: "Mag-2008",description: "Politica Internazionale e Sviluppo",)
@@ -560,17 +551,7 @@
 
 Vedere lista completa su #link("https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao")[#strong[Profilo Google Scholar];]
 
-#pagebreak()
-= Presentazioni e Seminari recenti
-<presentazioni-e-seminari-recenti>
-#resume-entry(title: "Una prospettiva europea per il patrimonio italiano: l'Italia di fronte alla sfida della manutenzione delle infrastrutture: questioni aperte e passi promettenti",location: "Pavia",date: "Feb-2024",description: "Lions Club Pavia Host, Distretto 108 Ib3",)
-#resume-entry(title: "Principi, Tecniche e Strumenti per l'analisi Riproducibile Dei Dati",location: "Roma",date: "Lug-2023",description: "Seminario Formativo per Uff. PNRR (Presidenza Del Consiglio)",)
-#resume-entry(title: "Infrastructure Maintenance among G20 Top Priorities",location: "online",date: "Nov-2021",description: "MOOC on 'QII and Green, Resilient and Inclusive Development'",)
-#resume-entry(title: "Potenziali priorita' per la Presidenza Italiana G20 nell'area tematica Infrastrutture",location: "Roma",date: "Mag-2020",description: "Seminario interno MEF",)
-#resume-entry(title: "NYE Fundraising Data What Have We Learned This Past Year?",location: "Washington, D.C.",date: "Mar-2019",description: "Strategy Meeting with Non Profit Advisors",)
-#resume-entry(title: "The Regulation of Public Utilities of the Future in Latin America and the Caribbean - Water and Sewerage Sector",location: "Washington, D.C.",date: "Set-2018",description: "Red De Centros 1st Seminar",)
-#resume-entry(title: "Integrating Multi-Dimensional Data for Inclusive and Sustainable Development of Urban Slums - Preliminary Findings from Dhaka Pilot (Phase I)",location: "Washington, D.C.",date: "Set-2017",description: "World Bank Staff Seminar",)
-#box(height: 45%) // #box(height: 60pt)  
+#box(height: 20%) // #box(height: 60pt)  
 #block(
 fill:luma(221),
 inset:8pt,
