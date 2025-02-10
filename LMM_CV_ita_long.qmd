@@ -42,6 +42,8 @@ execute:
 ---
 
 ```{r}
+#| output: false
+
 # fonte 
 # pckg https://kazuyanagimoto.com/typstcv/
 # EXE https://kazuyanagimoto.com/cv/cv.pdf
@@ -53,18 +55,16 @@ library(dplyr)
 library(stringr)
 library(lubridate)
 library(RefManageR)
+
+# Set locale to Italian function before calling base::format().
+original_locale <- Sys.getlocale("LC_TIME")  # Save the original locale
+Sys.setlocale("LC_TIME", "it_IT")  # Set locale to Italian
 ```
 
 
 ```{r func_date}
 #| output: false
 
-# Set locale to Italian function before calling base::format().
-original_locale <- Sys.getlocale("LC_TIME")  # Save the original locale
-Sys.setlocale("LC_TIME", "it_IT")  # Set locale to Italian
-
-
-  
 # --------- FUNCTION Define the function to process date columns
 f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_month_col) {
 	
@@ -118,9 +118,9 @@ work %>%
 					 description = "org",
 					 location = "where",
 					 date = "date",
-					 details = c("description_1" )
-					 #details = c("description_1", "description_2" )
-					 ) 
+					 #details = c("description_1" )
+					 details = c("description_1", "description_2" )
+	) 
 	
 ```
 
@@ -132,6 +132,9 @@ work %>%
 <!--  •	Efficaci **capacità di relazione e comunicazione**, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni   -->
 <!--  <!-- •	**Forte orientamento ai risultati** e capacità di lavorare in modo autonomo e in condizioni di stress  --> 
  
+ 
+\newpage
+ 
 ## Competenze
 
 ```{r}
@@ -140,9 +143,6 @@ read.csv("data/skill_ita.csv") |>
   resume_entry(title = "area",
                description = "skills")
 ```
-
-
-\newpage
 
 ## Istruzione
 
@@ -228,41 +228,88 @@ Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com
 <!-- 					 details = "url") -->
 <!-- ``` -->
 
+\newpage
 
-<!-- ## Presentazioni e Seminari -->
+## Presentazioni e Seminari recenti
 
-<!-- ```{r} -->
-<!-- # filter recent and.... -->
-<!-- talks <- RefManageR::ReadBib( -->
-<!-- 	file = here::here("data", "Lula-MyTalks.bib"), -->
-<!-- 	.Encoding ="UTF-8")  %>% -->
-<!-- 	as.data.frame() %>% -->
-<!-- 	mutate(year = stringr::str_extract(date,pattern = "^.{1,4}")) %>% -->
-<!-- 	dplyr::filter(year >2020 & type != "Invited Talk") # %>% -->
-<!-- #mutate(url = if_else(is.na(url), url_preprint, url) ) -->
+```{r}
+# filter recent and....
+talks_temp <- RefManageR::ReadBib(
+	file = here::here("data", "Lula-MyTalks.bib"),
+	.Encoding ="UTF-8")  %>%
+	as.data.frame() %>% 
+	# Keep only portion of string before "/" in the "date" column [2018-09-05/2018-09-06]
+	mutate(date = stringr::str_extract(date, pattern = "^[^/]+")) %>% 
+	# Clean the date column and format it as "month-year"
+	mutate(parsed_date = case_when(
+		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings
+		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format
+		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format
+		TRUE ~ NA_Date_))  %>% 
+	relocate(parsed_date, .after = date) %>%
+	dplyr::arrange(desc(parsed_date)) %>%
+	# Format the parsed date as "month-year"
+	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y"))) %>% 
+	relocate(month_year, .after = date) %>% 
+	mutate(year = stringr::str_extract(date,pattern = "^.{1,4}"))  
 
-<!-- ``` -->
 
-<!-- ```{r} -->
-<!-- #| output: asis -->
+# filter 2020 and after & use `month_year` for date
+talks <- talks_temp %>%
+	dplyr::filter(year > 2015 & type != "Invited Talk")  %>%
+#mutate(url = if_else(is.na(url), url_preprint, url) ) %>%
+	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
+	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
+			 clean_title = gsub("\\}\\}", "", clean_title),  # Remove "}}"
+			 clean_eventtitle = gsub("\\{\\{", "", eventtitle),  # Remove "{{"
+			 clean_eventtitle = gsub("\\}\\}", "", clean_eventtitle),   # Remove "}}" 
+			  clean_eventtitle = gsub('"', "", clean_eventtitle)        # Remove stray quotes
+			 
+			 
+	)
+```
 
-<!-- talks %>% -->
-<!-- 	resume_entry(title = "title", -->
-<!-- 					 date = "date" , -->
-<!-- 					 description = "eventtitle",location = "venue" -->
-<!-- 	) -->
-<!-- ``` -->
+```{r}
+#| output: asis
+
+talks %>%
+	resume_entry(title = "clean_title",
+					 date = "month_year",
+					 description = "clean_eventtitle",
+					 location = "venue")
+```
 
 ```{r}
 #| output: false
-
-
-  Sys.setlocale("LC_TIME", original_locale)
+Sys.setlocale("LC_TIME", original_locale)
 ```
 
+## Selezione di Progetti di Data Science
 
+```{r}
+proj_temp <- readr::read_csv(here::here("data", "projects_ita.csv"), show_col_types = FALSE)
+```
+
+```{r}
+#| output: asis
+#  "area"           "year"           "accomplishment" "where"          "link"  
+proj <- proj_temp %>% 
+	as_tibble() %>%
+	mutate(
+		link_typst = str_replace_all(
+			link,
+			"\\\\href\\{([^}]+)\\}\\{([^}]+)\\}",
+			"[\\2](\\1)"
+		)) %>%
+	 slice(c(1, 2, 5)) %>% 
+	resume_entry(title = "area",
+					 date = "year",
+					 description = "accomplishment",
+					 location = "where",
+					 details = c("link_typst"))
+```
 ```{=typst} 
-#box(height: 20%) // #box(height: 60pt)  
+#box(height: 15%) // #box(height: 60pt)  
 ```
 
 <!-- quarto  typst-->
@@ -274,7 +321,6 @@ Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com
 Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 101/2018, n. 196 e del GDPR (Regolamento UE 2016/679)
 ```
 :::
- 
 
 
 <!-- \vspace*{\fill} -->

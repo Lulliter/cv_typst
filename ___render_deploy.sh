@@ -13,7 +13,7 @@ git add -A # ALL
 git add -u # tracked
 git add images/*
 
-git commit -m "rifatto renv with R 4.4"
+git commit -m "LONG ITA E ENG"
 		# git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 
 # Push local source (master branch) to remote reference (origin)
@@ -49,5 +49,19 @@ cp "$SOURCE_DIR/$FILE_NAME" "$DEST_DIR/"
 
 ls -l "$DEST_DIR" | grep ".pdf" | awk -v dir="$DEST_DIR" '{print dir, "->",  $9 " (last saved on", $6, $7, $8, ")"}'
 
-#=========================================== Tracked by mistake in git   ================================================#
+#===================================== Tracked by mistake in git =====================================#
 git rm --cached _freeze/cv/execute-results/typ.json
+
+
+
+#=========================================== (QUARTO EXTENSIONS) ======================================#
+# ====== Font Awesome Extension for Quarto
+# https://github.com/quarto-ext/fontawesome https://fontawesome.com/search?m=free
+quarto add quarto-ext/fontawesome
+# ====== icons extensions
+quarto add mcanouil/quarto-iconify
+# https://github.com/shafayetShafee/bsicons https://icons.getbootstrap.com/
+quarto install extension shafayetShafee/bsicons
+# ====== Multiple bibliographies
+quarto install extension pandoc-ext/section-bibliographies
+

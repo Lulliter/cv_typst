@@ -9,41 +9,45 @@ author:
     - icon: fa envelope
       text: lmm76@georgetown.edu
       url: "mailto:lmm76@georgetown.edu"
-    - icon: assets/icon/bi-house-fill.svg
+    - icon: assets/icon/phone-solid.svg # need icon file!!??
+      text: "+39-348-9528360"
+      # url: "tel:+393489528360"
+    - icon: assets/icon/bi-house-fill.svg # need icon file!!??
       text: luisamimmi.org
       url: https://luisamimmi.org
+    - icon: fa brands linkedin
+      text: Luisa M. Mimmi
+      url: https://www.linkedin.com/in/luisa-m-mimmi
+    - icon: fa brands github
+      text: lulliter
+      url: https://github.com/lulliter
     # - icon: fa brands orcid
     #   text: 0000-0002-2244-8282
     #   url: https://orcid.org/0000-0002-2244-8282
     # - icon: fa brands x-twitter
     #   text: Lulliter
     #   url: https://x.com/Lulliter
-    - icon: fa brands linkedin
-      text: Luisa M. Mimmi
-      url: https://www.linkedin.com/in/luisa-m-mimmi
     # - icon: assets/icon/fa-google-scholar.svg
     #   text: Luisa M. Mimmi
     #   url: https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao
     # - icon: fa brands researchgate
     #   text: Luisa M. Mimmi
     #   url: https://www.researchgate.net/profile/Luisa-Mimmi
-    - icon: fa brands github
-      text: lulliter
-      url: https://github.com/lulliter
+profile-photo: assets/img/profile.jpg
+profile-photo-width: 3cm
+profile-photo-height: 3cm
 style:
   color-accent: 7c1c2d #004B72 #516db0
 format:
   awesomecv-typst:
     font-paths: ["assets/fonts/"]
-    keep-typ: true
+    keep-typ: false
 execute: 
   echo: false
   warning: false
 ---
 
 ```{r}
-#| output: false
-
 # fonte 
 # pckg https://kazuyanagimoto.com/typstcv/
 # EXE https://kazuyanagimoto.com/cv/cv.pdf
@@ -54,14 +58,13 @@ library(typstcv)
 library(dplyr)
 library(stringr)
 library(lubridate)
-library(glue)
-
-# Check locale for base::format().
-Sys.getlocale("LC_TIME")
 ```
 
 ```{r func_date}
 #| output: false
+
+# Check locale for base::format().
+Sys.getlocale("LC_TIME")
 
 # --------- FUNCTION Define the function to process date columns
 f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_month_col) {
@@ -93,8 +96,8 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 
 ```
 
-
 ## Work Experience
+
 ```{r}
 work_temp <- readr::read_csv(here::here("data", "work.csv"), show_col_types = FALSE)
 
@@ -112,15 +115,11 @@ work %>%
 					 description = "org",
 					 location = "where",
 					 date = "date",
-					 details = c("description_1", "description_2" )
+					 details = c("description_1" )
 					 #details = c("description_1", "description_2" )
 					 ) 
 	
 ```
-
- 
-\newpage
-
 ## Education
 
 ```{r}
@@ -137,6 +136,7 @@ educ <- educ_temp %>%
 					 description = "detail")
 ```
 
+\newpage
 
 <!-- ## Professional Skills -->
 
@@ -227,7 +227,6 @@ See complete list on  [**Google Scholar profile**](https://scholar.google.com/ci
 <!-- 					 details = "url") -->
 <!-- ``` -->
 
-\newpage
 
 ## Conferences and Talks
 
@@ -255,7 +254,7 @@ talks_temp <- RefManageR::ReadBib(
 
 # filter 2020 and after & use `month_year` for date
 talks <- talks_temp %>%
-	dplyr::filter(year >2015 & type != "Invited Talk")  %>%
+	dplyr::filter(year >2020 & type != "Invited Talk")  %>%
 #mutate(url = if_else(is.na(url), url_preprint, url) ) %>%
 	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
 	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
@@ -274,46 +273,3 @@ talks %>%
 					 description = "clean_eventtitle",
 					 location = "venue")
 ```
-
-
-## Illustrative Data Science Projects
-
-```{r}
-proj_temp <- readr::read_csv(here::here("data", "projects.csv"), show_col_types = FALSE)
-```
-
-```{r}
-#| output: asis
-#  "area"           "year"           "accomplishment" "where"          "link"  
-proj <- proj_temp %>% 
-	as_tibble() %>%
-	mutate(
-		link_typst = str_replace_all(
-			link,
-			"\\\\href\\{([^}]+)\\}\\{([^}]+)\\}",
-			"[\\2](\\1)"
-		)) %>%
-	 slice(c(1, 2, 5)) %>% 
-	resume_entry(title = "area",
-					 date = "year",
-					 description = "accomplishment",
-					 location = "where",
-					 details = c("link_typst"))
-```
-
-
-```{=typst} 
-#box(height: 15%) // #box(height: 60pt)  
-```
-
-<!-- quarto  typst-->
-::: {.block fill=luma(221) inset="8pt" radius="4pt"}
-<!-- raw  typst block -->
-```{=typst} 
-#set text(size: 8pt, weight: "medium", fill: rgb("#85144b"))
-
-I hereby authorize the processing of my personal data in accordance with GDPR (Regulation EU 2016/679) for recruitment purposes.
-
-```
-:::
-

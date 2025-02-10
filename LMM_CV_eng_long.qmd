@@ -3,8 +3,8 @@ title: "Luisa M. Mimmi"
 author:
   firstname: Luisa M.
   lastname: Mimmi
-  address: Pavia, Italia
-  position: "Economista | Analista di politiche pubbliche | Consulente freelance" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
+  address: "Italian citizen | Green card holder"
+  position: "Economist | Policy Analyst | Freelance consultant"
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
@@ -35,7 +35,7 @@ style:
 format:
   awesomecv-typst:
     font-paths: ["assets/fonts/"]
-    keep-typ: true
+    keep-typ: false
 execute: 
   echo: false
   warning: false
@@ -54,13 +54,11 @@ library(typstcv)
 library(dplyr)
 library(stringr)
 library(lubridate)
-library(RefManageR)
+library(glue)
 
-# Set locale to Italian function before calling base::format().
-original_locale <- Sys.getlocale("LC_TIME")  # Save the original locale
-Sys.setlocale("LC_TIME", "it_IT")  # Set locale to Italian
+# Check locale for base::format().
+Sys.getlocale("LC_TIME")
 ```
-
 
 ```{r func_date}
 #| output: false
@@ -96,17 +94,13 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 ```
 
 
-
-
-## Esperienza professionale
+## Work Experience
 ```{r}
-work_temp <- readr::read_csv(here::here("data", "work_ita.csv"), show_col_types = FALSE) 
+work_temp <- readr::read_csv(here::here("data", "work.csv"), show_col_types = FALSE)
 
+# call function to process dates
 work <- work_temp %>% 
 	f_m_y_dates("start_year", "start_month", "end_year", "end_month")
-
-# names(work )
-#work$end
 ```
 
 ```{r}
@@ -118,36 +112,19 @@ work %>%
 					 description = "org",
 					 location = "where",
 					 date = "date",
-					 #details = c("description_1" )
 					 details = c("description_1", "description_2" )
-	) 
+					 #details = c("description_1", "description_2" )
+					 ) 
 	
 ```
 
-
-<!-- ## Competenze professionali -->
-
-<!--  •	Eccellenti **competenze analitiche**, perfezionate nell'ambito di programmi internazionali di sviluppo economico   -->
-<!--  •	**Affidabilità, intraprendenza, e capacità di lavorare in squadra** dimostrate in ruoli di leadership nella gestione di progetti di ricerca e assistenza tecnica in vari contesti   -->
-<!--  •	Efficaci **capacità di relazione e comunicazione**, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni   -->
-<!--  <!-- •	**Forte orientamento ai risultati** e capacità di lavorare in modo autonomo e in condizioni di stress  --> 
- 
  
 \newpage
- 
-## Competenze
+
+## Education
 
 ```{r}
-#| output: asis
-read.csv("data/skill_ita.csv") |>
-  resume_entry(title = "area",
-               description = "skills")
-```
-
-## Istruzione
-
-```{r}
-educ_temp <- readr::read_csv(here::here("data", "edu_ita.csv"), show_col_types = FALSE)
+educ_temp <- readr::read_csv(here::here("data", "edu.csv"), show_col_types = FALSE)
 ```
 
 ```{r}
@@ -159,10 +136,29 @@ educ <- educ_temp %>%
 					 date = "end_m_y",
 					 description = "detail")
 ```
+
+
+<!-- ## Professional Skills -->
+
+<!--  •	Strong critical thinking and **data analysis skills**, showcased in international contexts and across diverse sectors   -->
+<!--  •	Demonstrated drive and resourcefulness in **leadership roles** for complex projects with multiple stakeholders   -->
+<!--  •	Effective **communication skills**, proven by record of multilingual publications and public speaking for diverse audiences   -->
  
 
-## Pubblicazioni sottoposte a revisione paritaria 
-  
+## Skills
+
+```{r}
+#| output: asis
+read.csv("data/skill.csv") |>
+  resume_entry(title = "area",
+               description = "skills")
+```
+
+
+
+## Peer-reviewed Publications
+
+<!-- ### Peer-reviewed   -->
 
 ```{r}
 # Retrieve .bib and transform it into a data frame
@@ -202,26 +198,29 @@ peer_pub |>
 ```
 
 
-## Altre pubblicazioni 
-
+## Other Publications  
 <br><br>
 
-Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) 
+See complete list on  [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao)
 
-<!-- ### Media Divulgativi -->
+ 
+<!-- ### Blog posts -->
 <!-- ```{r} -->
 <!-- # filter blogs -->
 <!-- lula_blog <- RefManageR::ReadBib( -->
 <!--   file = here::here("data", "Lula-MyPublication-Narrow.bib"), -->
 <!--   .Encoding ="UTF-8")  %>% -->
 <!--   as.data.frame() %>% -->
-<!--   dplyr::filter(bibtype  == "Online") -->
+<!--   dplyr::filter(bibtype  == "Online")  %>%  -->
+<!-- 	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns -->
+<!-- 	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{" -->
+<!--          clean_title = gsub("\\}\\}", "", clean_title))  # Remove "}}" -->
 <!-- ``` -->
 
 <!-- ```{r} -->
 <!-- #| output: asis -->
 <!-- lula_blog |> -->
-<!-- 	resume_entry(title = "title", -->
+<!-- 	resume_entry(title = "clean_title", -->
 <!-- 					 location = "type", -->
 <!-- 					 description = "author", -->
 <!-- 					 date = "date", -->
@@ -230,7 +229,7 @@ Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com
 
 \newpage
 
-## Presentazioni e Seminari recenti
+## Conferences and Talks
 
 ```{r}
 # filter recent and....
@@ -256,16 +255,13 @@ talks_temp <- RefManageR::ReadBib(
 
 # filter 2020 and after & use `month_year` for date
 talks <- talks_temp %>%
-	dplyr::filter(year > 2015 & type != "Invited Talk")  %>%
+	dplyr::filter(year >2015 & type != "Invited Talk")  %>%
 #mutate(url = if_else(is.na(url), url_preprint, url) ) %>%
 	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
 	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
 			 clean_title = gsub("\\}\\}", "", clean_title),  # Remove "}}"
 			 clean_eventtitle = gsub("\\{\\{", "", eventtitle),  # Remove "{{"
-			 clean_eventtitle = gsub("\\}\\}", "", clean_eventtitle),   # Remove "}}" 
-			  clean_eventtitle = gsub('"', "", clean_eventtitle)        # Remove stray quotes
-			 
-			 
+			 clean_eventtitle = gsub("\\}\\}", "", clean_eventtitle)   # Remove "}}"
 	)
 ```
 
@@ -279,15 +275,11 @@ talks %>%
 					 location = "venue")
 ```
 
-```{r}
-#| output: false
-Sys.setlocale("LC_TIME", original_locale)
-```
 
-## Selezione di Progetti di Data Science
+## Illustrative Data Science Projects
 
 ```{r}
-proj_temp <- readr::read_csv(here::here("data", "projects_ita.csv"), show_col_types = FALSE)
+proj_temp <- readr::read_csv(here::here("data", "projects.csv"), show_col_types = FALSE)
 ```
 
 ```{r}
@@ -308,6 +300,8 @@ proj <- proj_temp %>%
 					 location = "where",
 					 details = c("link_typst"))
 ```
+
+
 ```{=typst} 
 #box(height: 15%) // #box(height: 60pt)  
 ```
@@ -318,17 +312,8 @@ proj <- proj_temp %>%
 ```{=typst} 
 #set text(size: 8pt, weight: "medium", fill: rgb("#85144b"))
 
-Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 101/2018, n. 196 e del GDPR (Regolamento UE 2016/679)
+I hereby authorize the processing of my personal data in accordance with GDPR (Regulation EU 2016/679) for recruitment purposes.
+
 ```
 :::
 
-
-<!-- \vspace*{\fill} -->
-<!-- \footnotesize \textcolor{magenta}{Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 e del GDPR (Regolamento UE 2016/679).}  -->
-
-<!-- <span style="color: red;">Questo è un testo rosso</span> -->
-
-
-<!-- #color(blue, [Questo testo dovrebbe essere blu in Typst.]) -->
-
-<!-- <span style="color: red;">Questo testo dovrebbe essere rosso in HTML.</span> -->

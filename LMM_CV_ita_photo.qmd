@@ -3,39 +3,48 @@ title: "Luisa M. Mimmi"
 author:
   firstname: Luisa M.
   lastname: Mimmi
-  address: Pavia, Italia
-  position: "Economista | Analista di politiche pubbliche | Consulente freelance" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
+  address: Cittadina italiana residente a Pavia (PV)
+  position: "Economista | Business Analyst | Consulente freelance" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
       url: "mailto:lmm76@georgetown.edu"
-    - icon: assets/icon/bi-house-fill.svg
+    - icon: assets/icon/phone-solid.svg # need icon file!!??
+      text: "+39-348-9528360"
+      # url: "tel:+393489528360"
+    - icon: assets/icon/bi-house-fill.svg # need icon file!!??
       text: luisamimmi.org
       url: https://luisamimmi.org
+    - icon: fa brands linkedin
+      text: Luisa M. Mimmi
+      url: https://www.linkedin.com/in/luisa-m-mimmi
+    - icon: fa brands github
+      text: lulliter
+      url: https://github.com/lulliter
     # - icon: fa brands orcid
     #   text: 0000-0002-2244-8282
     #   url: https://orcid.org/0000-0002-2244-8282
     # - icon: fa brands x-twitter
     #   text: Lulliter
     #   url: https://x.com/Lulliter
-    - icon: fa brands linkedin
-      text: Luisa M. Mimmi
-      url: https://www.linkedin.com/in/luisa-m-mimmi
     # - icon: assets/icon/fa-google-scholar.svg
     #   text: Luisa M. Mimmi
     #   url: https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao
     # - icon: fa brands researchgate
     #   text: Luisa M. Mimmi
     #   url: https://www.researchgate.net/profile/Luisa-Mimmi
-    - icon: fa brands github
-      text: lulliter
-      url: https://github.com/lulliter
+profile-photo: assets/img/profile.jpg
+profile-photo-width: 3cm
+profile-photo-height: 3cm
 style:
   color-accent: 7c1c2d #004B72 #516db0
 format:
   awesomecv-typst:
     font-paths: ["assets/fonts/"]
     keep-typ: false
+  typst-pdf:
+    include-in-header:
+      - text: "@import \"fontawesome.typ\""    
 execute: 
   echo: false
   warning: false
@@ -63,8 +72,6 @@ library(RefManageR)
 original_locale <- Sys.getlocale("LC_TIME")  # Save the original locale
 Sys.setlocale("LC_TIME", "it_IT")  # Set locale to Italian
 
-
-  
 # --------- FUNCTION Define the function to process date columns
 f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_month_col) {
 	
@@ -81,12 +88,12 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 		
 		# Format the date as "month-year"
 		mutate(
-			start_m_y = base::format(start_m_y, "%b-%Y"),
-			end_m_y = base::format(end_m_y, "%b-%Y")
+			start_m_y = base::format(start_m_y, "%b—%Y"),
+			end_m_y = base::format(end_m_y, "%b—%Y")
 		) %>%
 		
 		# Create a resume entry as "month-year - month-year"
-		mutate(date = glue::glue("{start_m_y} - {end_m_y}"))
+		mutate(date = glue::glue("{start_m_y} — {end_m_y}"))
 }
 
 # ------- FUNCTION usage
@@ -96,14 +103,25 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 ```
 
 
+<!-- ## Sommario -->
 
+<!-- Economista con esperienza internazionale nella valutazione di politiche di sviluppo. Dopo l'inizio come *Business Analyst*, ho vissuto 14 anni a Washington, DC, lavorando come *M&E Specialist* per organizzazioni internazionali su monitoraggio e valutazione d'impatto di programmi di sviluppo socio-economico. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici, istituti di ricerca e non profit, con focus su analisi quantitativa, gestione di fondi UE/PNRR, ecc. Ho al mio attivo varie pubblicazioni e ho svolto con successo corsi di formazione su applicazioni di statistica e *machine learning*. Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche; per questo mi tengo aggiornata su linguaggi di programmazione e tecniche per l'analisi riproducibile dei dati.  -->
+
+Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando come *M&E Specialist* per organizzazioni internazionali su monitoraggio e valutazione d'impatto di programmi di sviluppo. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici, istituti di ricerca e nonprofit, con focus su analisi quantitativa, gestione di fondi UE/PNRR, ecc. Ho al mio attivo varie pubblicazioni e ho svolto corsi di formazione su applicazioni di statistica e *machine learning*.  
+Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche; per questo mi piace imparare linguaggi di programmazione e tecniche per l'analisi riproducibile dei dati. 
 
 ## Esperienza professionale
+
+### [2020–Oggi] Consulente in data science e analisi di politiche pubbliche
+
 ```{r}
 work_temp <- readr::read_csv(here::here("data", "work_ita.csv"), show_col_types = FALSE) 
 
 work <- work_temp %>% 
-	f_m_y_dates("start_year", "start_month", "end_year", "end_month")
+	f_m_y_dates("start_year", "start_month", "end_year", "end_month") %>% 
+	mutate(org_where = glue::glue("{org} ({where})"),
+			 location_date = glue::glue("{where} ({date})")
+			 )
 
 # names(work )
 #work$end
@@ -114,35 +132,55 @@ work <- work_temp %>%
 work %>% 
 	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
 	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
-	resume_entry(title = "title",
-					 description = "org",
+	filter(start_year >= 2020) %>%
+	filter(org != "CSIL") %>%
+	resume_entry(title = "org", #"title",
+					 #description = "org",
 					 location = "where",
 					 date = "date",
-					 details = c("description_1" )
-					 #details = c("description_1", "description_2" )
-					 ) 
+					 #details = c("description_1" )
+					 details = c("description_1", "description_2", "description_3" )
+	)	
+```
+
+
+### [2008–2019] Monitoring & Evaluation Specialist per programmi di sviluppo economico
+
+```{r}
+#| output: asis
+work %>% 
+	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
+	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
+	filter(start_year >= 2007 & start_year <= 2019) %>%
+	resume_entry(title =  "org", #"title",
+					 #description = "org",
+					 location = "where",
+					 date = "date",
+					 #details = c("description_1" )
+					 details = c("description_1", "description_2", "description_3" )
+	)	
 	
 ```
 
 
-<!-- ## Competenze professionali -->
-
-<!--  •	Eccellenti **competenze analitiche**, perfezionate nell'ambito di programmi internazionali di sviluppo economico   -->
-<!--  •	**Affidabilità, intraprendenza, e capacità di lavorare in squadra** dimostrate in ruoli di leadership nella gestione di progetti di ricerca e assistenza tecnica in vari contesti   -->
-<!--  •	Efficaci **capacità di relazione e comunicazione**, comprovate da proficue collaborazioni professionali e svariate pubblicazioni e presentazioni   -->
-<!--  <!-- •	**Forte orientamento ai risultati** e capacità di lavorare in modo autonomo e in condizioni di stress  --> 
- 
-## Competenze
+### [2001–2006] Business Intelligence Analyst per consulenza aziendale		
 
 ```{r}
 #| output: asis
-read.csv("data/skill_ita.csv") |>
-  resume_entry(title = "area",
-               description = "skills")
+
+work %>% 
+	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
+	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
+	filter(start_year >= 2001 & start_year <= 2006) %>%
+	resume_entry(title =  "org", #"title",
+					 #description = "org",
+					 location = "where",
+					 date = "date",
+					 #details = c("description_1" )
+					 details = c("description_1", "description_2", "description_3" )
+	)	
 ```
 
-
-\newpage
 
 ## Istruzione
 
@@ -159,12 +197,28 @@ educ <- educ_temp %>%
 					 date = "end_m_y",
 					 description = "detail")
 ```
- 
 
-## Pubblicazioni sottoposte a revisione paritaria 
-  
+
+## Competenze
 
 ```{r}
+#| output: asis
+read.csv("data/skill_ita.csv") |>
+  resume_entry(title = "area",
+               description = "skills")
+```
+
+
+## Pubblicazioni
+  
+Le mie pubblicazioni (tra cui alcune su riviste con revisione paritaria) sono accessibili sul mio [**profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) 
+
+
+```{r}
+#| eval: false
+#| echo: false
+#| output: false
+#| 
 # Retrieve .bib and transform it into a data frame
 peer_pub_temp <- RefManageR::ReadBib(
 	file = here::here("data", "Lula-MyPublication-Narrow.bib"),
@@ -192,7 +246,10 @@ peer_pub <- peer_pub_temp %>%
 
 
 ```{r}
-#| output: asis
+#| eval: false
+#| echo: false
+#| output: false
+
 peer_pub |>
 	resume_entry(title = "clean_title",
 					 description = "author",
@@ -201,68 +258,19 @@ peer_pub |>
 					 details = "url")
 ```
 
+## Progetti di data science
 
-## Altre pubblicazioni 
+Qui alcuni progetti di interesse personale, in cui ho utilizzato soprattutto il software **R** per l'esplorazione, modellazione e visualizzazione di dati, o per analisi socio-economiche: [**www.luisamimmi.org/projects/**](https://luisamimmi.org/projects/)
 
-<br><br>
-
-Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) 
-
-<!-- ### Media Divulgativi -->
-<!-- ```{r} -->
-<!-- # filter blogs -->
-<!-- lula_blog <- RefManageR::ReadBib( -->
-<!--   file = here::here("data", "Lula-MyPublication-Narrow.bib"), -->
-<!--   .Encoding ="UTF-8")  %>% -->
-<!--   as.data.frame() %>% -->
-<!--   dplyr::filter(bibtype  == "Online") -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- lula_blog |> -->
-<!-- 	resume_entry(title = "title", -->
-<!-- 					 location = "type", -->
-<!-- 					 description = "author", -->
-<!-- 					 date = "date", -->
-<!-- 					 details = "url") -->
-<!-- ``` -->
-
-
-<!-- ## Presentazioni e Seminari -->
-
-<!-- ```{r} -->
-<!-- # filter recent and.... -->
-<!-- talks <- RefManageR::ReadBib( -->
-<!-- 	file = here::here("data", "Lula-MyTalks.bib"), -->
-<!-- 	.Encoding ="UTF-8")  %>% -->
-<!-- 	as.data.frame() %>% -->
-<!-- 	mutate(year = stringr::str_extract(date,pattern = "^.{1,4}")) %>% -->
-<!-- 	dplyr::filter(year >2020 & type != "Invited Talk") # %>% -->
-<!-- #mutate(url = if_else(is.na(url), url_preprint, url) ) -->
-
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-
-<!-- talks %>% -->
-<!-- 	resume_entry(title = "title", -->
-<!-- 					 date = "date" , -->
-<!-- 					 description = "eventtitle",location = "venue" -->
-<!-- 	) -->
-<!-- ``` -->
 
 ```{r}
 #| output: false
 
-
-  Sys.setlocale("LC_TIME", original_locale)
+Sys.setlocale("LC_TIME", original_locale)
 ```
 
-
 ```{=typst} 
-#box(height: 20%) // #box(height: 60pt)  
+#box(height: 10%) // #box(height: 60pt)  
 ```
 
 <!-- quarto  typst-->
@@ -272,10 +280,10 @@ Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com
 #set text(size: 8pt, weight: "medium", fill: rgb("#85144b"))
 
 Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 101/2018, n. 196 e del GDPR (Regolamento UE 2016/679)
+
 ```
 :::
  
-
 
 <!-- \vspace*{\fill} -->
 <!-- \footnotesize \textcolor{magenta}{Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 e del GDPR (Regolamento UE 2016/679).}  -->

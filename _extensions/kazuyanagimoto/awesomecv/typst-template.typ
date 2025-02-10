@@ -1,3 +1,6 @@
+//------------------------------------------------------------------------------
+// ICONS
+//------------------------------------------------------------------------------
 #import "@preview/fontawesome:0.1.0": *
 
 //------------------------------------------------------------------------------
@@ -122,7 +125,7 @@ $endif$
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
   set text(
-    weight: "light", // weight: "light", 
+    weight: "light", // weight: "light",
     size: 10pt,
     style: "italic",
     fill: color-darklue,// fill: color-gray,
@@ -330,7 +333,7 @@ $endif$
     weight: "light",
     fill: color-darknight,
   )
-  
+
   set par(leading: 0.65em)
   set list(indent: 1em)
   body
@@ -420,16 +423,23 @@ $endif$
     ]
   ]
 
-  show heading.where(level: 2): it => {
-    set text(
-      color-middledarkgray,
-      size: 12pt,
-      weight: "thin"
-    )
-    it.body
-  }
+// LULA: QUESTO IN REALTA CORRISPONDE A "###" !!!!!!!!!
+show heading.where(level: 2): it => {
+  set text(
+    size: 14pt,
+    weight: "regular",
+    style: "italic",
+    fill: rgb("#004980"), //color-accent,
+  )
+  it.body
+
+}
 
   show heading.where(level: 3): it => {
+	set block(
+		above: 1em,
+		below: 0.5em,
+	)
     set text(
       size: 10pt,
       weight: "regular",
