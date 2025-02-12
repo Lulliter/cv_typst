@@ -36,15 +36,13 @@ author:
 profile-photo: assets/img/profile.jpg
 profile-photo-width: 3cm
 profile-photo-height: 3cm
+
 style:
   color-accent: 7c1c2d #004B72 #516db0
 format:
   awesomecv-typst:
     font-paths: ["assets/fonts/"]
     keep-typ: false
-  typst-pdf:
-    include-in-header:
-      - text: "@import \"fontawesome.typ\""    
 execute: 
   echo: false
   warning: false
@@ -88,12 +86,12 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 		
 		# Format the date as "month-year"
 		mutate(
-			start_m_y = base::format(start_m_y, "%b—%Y"),
-			end_m_y = base::format(end_m_y, "%b—%Y")
+			start_m_y = base::format(start_m_y, "%b-%Y"),
+			end_m_y = base::format(end_m_y, "%b-%Y")
 		) %>%
 		
 		# Create a resume entry as "month-year - month-year"
-		mutate(date = glue::glue("{start_m_y} — {end_m_y}"))
+		mutate(date = glue::glue("{start_m_y} - {end_m_y}"))
 }
 
 # ------- FUNCTION usage
@@ -270,7 +268,7 @@ Sys.setlocale("LC_TIME", original_locale)
 ```
 
 ```{=typst} 
-#box(height: 10%) // #box(height: 60pt)  
+#box(height: 5%) // #box(height: 60pt)  
 ```
 
 <!-- quarto  typst-->

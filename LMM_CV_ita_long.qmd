@@ -3,33 +3,40 @@ title: "Luisa M. Mimmi"
 author:
   firstname: Luisa M.
   lastname: Mimmi
-  address: Pavia, Italia
+  address: Cittadina italiana residente a Pavia (PV)
   position: "Economista | Analista di politiche pubbliche | Consulente freelance" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
       url: "mailto:lmm76@georgetown.edu"
-    - icon: assets/icon/bi-house-fill.svg
+    - icon: assets/icon/phone-solid.svg # need icon file!!??
+      text: "+39-348-9528360"
+      # url: "tel:+393489528360"
+    - icon: assets/icon/bi-house-fill.svg # need icon file!!??
       text: luisamimmi.org
       url: https://luisamimmi.org
+    - icon: fa brands linkedin
+      text: Luisa M. Mimmi
+      url: https://www.linkedin.com/in/luisa-m-mimmi
+    - icon: fa brands github
+      text: lulliter
+      url: https://github.com/lulliter
     # - icon: fa brands orcid
     #   text: 0000-0002-2244-8282
     #   url: https://orcid.org/0000-0002-2244-8282
     # - icon: fa brands x-twitter
     #   text: Lulliter
     #   url: https://x.com/Lulliter
-    - icon: fa brands linkedin
-      text: Luisa M. Mimmi
-      url: https://www.linkedin.com/in/luisa-m-mimmi
     # - icon: assets/icon/fa-google-scholar.svg
     #   text: Luisa M. Mimmi
     #   url: https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao
     # - icon: fa brands researchgate
     #   text: Luisa M. Mimmi
     #   url: https://www.researchgate.net/profile/Luisa-Mimmi
-    - icon: fa brands github
-      text: lulliter
-      url: https://github.com/lulliter
+profile-photo: assets/img/profile.jpg
+profile-photo-width: 3cm
+profile-photo-height: 3cm
+
 style:
   color-accent: 7c1c2d #004B72 #516db0
 format:
@@ -119,7 +126,7 @@ work %>%
 					 location = "where",
 					 date = "date",
 					 #details = c("description_1" )
-					 details = c("description_1", "description_2" )
+					 details = c("description_1", "description_2", "description_3")
 	) 
 	
 ```

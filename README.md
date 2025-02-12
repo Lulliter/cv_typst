@@ -1,6 +1,11 @@
 # CV
 
-My CV (in ENG and ITA) made with quarto & `typstcv` pckg.
+My CV (in ENG and ITA, with or without photos) made with quarto & **`typstcv`** pckg.
+
+
+# TO DO 
+
++ remake as Chiara suggested also the ENG version
 
 ## What is `typst`?
 

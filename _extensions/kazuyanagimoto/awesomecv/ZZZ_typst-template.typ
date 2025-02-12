@@ -14,23 +14,11 @@
 #let color-gray = rgb("#5d5d5d")
 #let color-lightgray = rgb("#999999")
 
-// Lula's
-#let color-darklue = rgb("#004980")
-#let color-accent = rgb("#0088cc") // deciso  in YAML
-
 // Default style
 #let color-accent-default = rgb("#dc3522")
 #let font-header-default = ("Roboto", "Arial", "Helvetica", "Dejavu Sans")
 #let font-text-default = ("Source Sans Pro", "Arial", "Helvetica", "Dejavu Sans")
 #let align-header-default = center
-
-// Lula's LINK style (more visible )
-#let link-style = (content) => {
-  text(
-    fill: rgb("#0054cc"), // Replace with your desired color
-    underline: true       // Apply underline if needed
-  )[content]
-}
 
 // User defined style
 $if(style.color-accent)$
@@ -115,7 +103,7 @@ $endif$
 #let secondary-right-header(body) = {
   set text(
     size: 10pt,
-    weight: "light",
+    weight: "thin",
     style: "italic",
     fill: color-accent,
   )
@@ -126,10 +114,10 @@ $endif$
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
   set text(
-    weight: "light", // weight: "light",
-    size: 10pt,
+    weight: "light",
+    size: 9pt,
     style: "italic",
-    fill: color-darklue,// fill: color-gray,
+    fill: color-gray,
   )
   body
 }
@@ -181,15 +169,14 @@ $endif$
   lastname: "",
 ) = {
 
-  pad(bottom: 7pt)[
+  pad(bottom: 5pt)[
     #block[
       #set text(
-        size: 26pt,
+        size: 32pt,
         style: "normal",
         font: (font-header),
       )
-      #text(weight: "bold")[#firstname] // Lula's
-      //#text(fill: color-gray, weight: "thin")[#firstname]
+      #text(fill: color-gray, weight: "thin")[#firstname]
       #text(weight: "bold")[#lastname]
     ]
   ]
@@ -205,7 +192,7 @@ $endif$
 
   set text(
     color-accent,
-    size: 10pt,
+    size: 9pt,
     weight: "regular",
   )
 
@@ -223,7 +210,7 @@ $endif$
   )
   set text(
     color-lightgray,
-    size: 10pt,
+    size: 9pt,
     style: "italic",
   )
 
@@ -237,13 +224,13 @@ $endif$
   if(contacts.len() > 1) {
     block[
       #set text(
-        size: 10pt,
+        size: 9pt,
         weight: "regular",
         style: "normal",
       )
       #align(horizon)[
         #for contact in contacts [
-          #set box(height: 10pt)
+          #set box(height: 9pt)
           #box[#parse_icon_string(contact.icon) #link(contact.url)[#contact.text]]
           #separator
         ]
@@ -334,7 +321,6 @@ $endif$
     weight: "light",
     fill: color-darknight,
   )
-
   set par(leading: 0.65em)
   set list(indent: 1em)
   body
@@ -351,7 +337,6 @@ $endif$
     #secondary-justified-header(description, date)
   ]
 }
-
 
 //------------------------------------------------------------------------------
 // Data to Resume Entries
@@ -386,8 +371,7 @@ $endif$
 #let resume(
   title: "CV",
   author: (:),
-//  date: datetime.today().display("[month repr:long] [day], [year]"),
-  date: datetime.today().display("[day]/[month]/[year]"), // Lula's
+  date: datetime.today().display("[month repr:long] [day], [year]"),
   profile-photo: "",
   body,
 ) = {
@@ -445,26 +429,22 @@ $endif$
     )
 
     #align(left)[
-      // #text[#strong[#text(color-accent)[#it.body.text.slice(0, 3)]#text(color-darkgray)[#it.body.text.slice(3)]]]
-      #text[#strong[#text(color-darklue)[#it.body.text.slice(0, 3)]#text(color-darklue)[#it.body.text.slice(3)]]]
+      #text[#strong[#text(color-accent)[#it.body.text.slice(0, 3)]#text(color-darkgray)[#it.body.text.slice(3)]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]
 
-// LULA: QUESTO IN REALTA CORRISPONDE A "###" !!!!!!!!!
-show heading.where(level: 2): it => {
-  set text(
-    size: 14pt,
-    weight: "regular",
-    style: "italic",
-    fill: rgb("#004980"), //color-accent,
-  )
-  it.body
-
-}
+  show heading.where(level: 2): it => {
+    set text(
+      color-middledarkgray,
+      size: 12pt,
+      weight: "thin"
+    )
+    it.body
+  }
 
   show heading.where(level: 3): it => {
-	   set text(
+    set text(
       size: 10pt,
       weight: "regular",
       fill: color-gray,
@@ -481,3 +461,4 @@ show heading.where(level: 2): it => {
                 profile-photo: profile-photo,)
   body
 }
+
