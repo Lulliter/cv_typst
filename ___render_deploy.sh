@@ -13,7 +13,7 @@ git add -A # ALL
 git add -u # tracked
 git add images/*
 
-git commit -m "ITA rivisto come da Chiara 🩰"
+git commit -m "fixed stupid building error + minor upds"
 		# git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 
 # Push local source (master branch) to remote reference (origin)

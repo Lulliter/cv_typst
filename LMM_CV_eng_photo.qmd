@@ -96,6 +96,10 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 
 ```
 
+Economist with international experience in development economics and policy analysis. I lived in Washington, DC, for 14 years, where I worked as M&E Specialist for international organizations focusing on sustainable development programs. Since returning to Italy in 2020, I have been a consultant for public and private entities, research institutes, and nonprofits --data analysis, monitoring of EU funds (PNRR), redaction of grant proposals, etc. I have authored several publications and delivered training courses on statistical applications and machine learning.  
+I am passionate about empirical research and leveraging data to inform evidence-based public policies. I also enjoy exploring programming languages and techniques for open and reproducible data analysis.
+
+
 ## Work Experience
 
 ```{r}
@@ -106,20 +110,61 @@ work <- work_temp %>%
 	f_m_y_dates("start_year", "start_month", "end_year", "end_month")
 ```
 
+### [2020-Present] Freelance Consultant in data analysis and policy evaluation
+
 ```{r}
 #| output: asis
 work %>% 
 	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
 	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
-	resume_entry(title = "title",
-					 description = "org",
+	filter(start_year >= 2020) %>%
+	filter(org != "CSIL") %>%
+	resume_entry(title = "org", #"title",
+					 #description = "org",
 					 location = "where",
 					 date = "date",
-					 details = c("description_1" )
-					 #details = c("description_1", "description_2" )
-					 ) 
+					 #details = c("description_1" )
+					 details = c("description_1", "description_2", "description_3" )
+	)	
+```
+
+### [2008-2019] Monitoring and Evaluation Specialist in international development
+
+```{r}
+#| output: asis
+work %>% 
+	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
+	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
+	filter(start_year >= 2007 & start_year <= 2019) %>%
+	resume_entry(title =  "org", #"title",
+					 #description = "org",
+					 location = "where",
+					 date = "date",
+					 #details = c("description_1" )
+					 details = c("description_1", "description_2", "description_3" )
+	)	
 	
 ```
+
+### [2001–2006] Business Intelligence Analyst in strategic consulting		
+
+```{r}
+#| output: asis
+
+work %>% 
+	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
+	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
+	filter(start_year >= 2001 & start_year <= 2006) %>%
+	resume_entry(title =  "org", #"title",
+					 #description = "org",
+					 location = "where",
+					 date = "date",
+					 #details = c("description_1" )
+					 details = c("description_1", "description_2", "description_3" )
+	)	
+```
+
+
 ## Education
 
 ```{r}
@@ -135,8 +180,6 @@ educ <- educ_temp %>%
 					 date = "end_m_y",
 					 description = "detail")
 ```
-
-\newpage
 
 <!-- ## Professional Skills -->
 
@@ -156,11 +199,18 @@ read.csv("data/skill.csv") |>
 
 
 
-## Peer-reviewed Publications
+## Publications
+
+My [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) lists my publications and citations. 
 
 <!-- ### Peer-reviewed   -->
 
 ```{r}
+#| eval: false
+#| echo: false
+#| output: false
+
+
 # Retrieve .bib and transform it into a data frame
 peer_pub_temp <- RefManageR::ReadBib(
 	file = here::here("data", "Lula-MyPublication-Narrow.bib"),
@@ -188,6 +238,10 @@ peer_pub <- peer_pub_temp %>%
 
 
 ```{r}
+#| eval: false
+#| echo: false
+#| output: false
+
 #| output: asis
 peer_pub |>
 	resume_entry(title = "clean_title",
@@ -197,79 +251,21 @@ peer_pub |>
 					 details = "url")
 ```
 
+## Projects
 
-## Other Publications  
-<br><br>
-
-See complete list on  [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao)
-
+My website ([**www.luisamimmi.org/projects/**](https://luisamimmi.org/projects/)) showcases some of my recent projects, including workshop materials, software I developed for data analysis, writings on various socio-economic topics, and more.
  
-<!-- ### Blog posts -->
-<!-- ```{r} -->
-<!-- # filter blogs -->
-<!-- lula_blog <- RefManageR::ReadBib( -->
-<!--   file = here::here("data", "Lula-MyPublication-Narrow.bib"), -->
-<!--   .Encoding ="UTF-8")  %>% -->
-<!--   as.data.frame() %>% -->
-<!--   dplyr::filter(bibtype  == "Online")  %>%  -->
-<!-- 	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns -->
-<!-- 	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{" -->
-<!--          clean_title = gsub("\\}\\}", "", clean_title))  # Remove "}}" -->
-<!-- ``` -->
 
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- lula_blog |> -->
-<!-- 	resume_entry(title = "clean_title", -->
-<!-- 					 location = "type", -->
-<!-- 					 description = "author", -->
-<!-- 					 date = "date", -->
-<!-- 					 details = "url") -->
-<!-- ``` -->
+<!-- quarto  typst-->
+::: {.block fill=luma(221) inset="8pt" radius="4pt"}
+<!-- raw  typst block -->
+```{=typst} 
+#set text(size: 8pt, weight: "medium", fill: rgb("#85144b"))
 
+I hereby authorize the processing of my personal data in accordance with GDPR (Regulation EU 2016/679) for recruitment purposes.
 
-## Conferences and Talks
-
-```{r}
-# filter recent and....
-talks_temp <- RefManageR::ReadBib(
-	file = here::here("data", "Lula-MyTalks.bib"),
-	.Encoding ="UTF-8")  %>%
-	as.data.frame() %>% 
-	# Keep only portion of string before "/" in the "date" column [2018-09-05/2018-09-06]
-	mutate(date = stringr::str_extract(date, pattern = "^[^/]+")) %>% 
-	# Clean the date column and format it as "month-year"
-	mutate(parsed_date = case_when(
-		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings
-		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format
-		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format
-		TRUE ~ NA_Date_))  %>% 
-	relocate(parsed_date, .after = date) %>%
-	dplyr::arrange(desc(parsed_date)) %>%
-	# Format the parsed date as "month-year"
-	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y"))) %>% 
-	relocate(month_year, .after = date) %>% 
-	mutate(year = stringr::str_extract(date,pattern = "^.{1,4}"))  
-
-
-# filter 2020 and after & use `month_year` for date
-talks <- talks_temp %>%
-	dplyr::filter(year >2020 & type != "Invited Talk")  %>%
-#mutate(url = if_else(is.na(url), url_preprint, url) ) %>%
-	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
-	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
-			 clean_title = gsub("\\}\\}", "", clean_title),  # Remove "}}"
-			 clean_eventtitle = gsub("\\{\\{", "", eventtitle),  # Remove "{{"
-			 clean_eventtitle = gsub("\\}\\}", "", clean_eventtitle)   # Remove "}}"
-	)
 ```
+:::
+ 
 
-```{r}
-#| output: asis
 
-talks %>%
-	resume_entry(title = "clean_title",
-					 date = "month_year",
-					 description = "clean_eventtitle",
-					 location = "venue")
-```

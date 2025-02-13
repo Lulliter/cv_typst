@@ -33,9 +33,6 @@ author:
     # - icon: fa brands researchgate
     #   text: Luisa M. Mimmi
     #   url: https://www.researchgate.net/profile/Luisa-Mimmi
-profile-photo: assets/img/profile.jpg
-profile-photo-width: 3cm
-profile-photo-height: 3cm
 style:
   color-accent: 7c1c2d #004B72 #516db0
 format:

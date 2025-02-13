@@ -4,7 +4,7 @@ author:
   firstname: Luisa M.
   lastname: Mimmi
   address: Cittadina italiana residente a Pavia (PV)
-  position: "Economista | Business Analyst | Consulente freelance" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
+  position: "Economista | Data Analyst | Consulente indipendente" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
@@ -105,12 +105,11 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 
 <!-- Economista con esperienza internazionale nella valutazione di politiche di sviluppo. Dopo l'inizio come *Business Analyst*, ho vissuto 14 anni a Washington, DC, lavorando come *M&E Specialist* per organizzazioni internazionali su monitoraggio e valutazione d'impatto di programmi di sviluppo socio-economico. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici, istituti di ricerca e non profit, con focus su analisi quantitativa, gestione di fondi UE/PNRR, ecc. Ho al mio attivo varie pubblicazioni e ho svolto con successo corsi di formazione su applicazioni di statistica e *machine learning*. Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche; per questo mi tengo aggiornata su linguaggi di programmazione e tecniche per l'analisi riproducibile dei dati.  -->
 
-Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando come *M&E Specialist* per organizzazioni internazionali su monitoraggio e valutazione d'impatto di programmi di sviluppo. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici, istituti di ricerca e nonprofit, con focus su analisi quantitativa, gestione di fondi UE/PNRR, ecc. Ho al mio attivo varie pubblicazioni e ho svolto corsi di formazione su applicazioni di statistica e *machine learning*.  
-Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche; per questo mi piace imparare linguaggi di programmazione e tecniche per l'analisi riproducibile dei dati. 
+Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando come *M&E Specialist* per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi quantitative, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). Ho al mio attivo varie pubblicazioni e corsi di formazione su applicazioni di statistica e *machine learning*.  
+Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche e mi piace studiare linguaggi di programmazione e tecniche per l'analisi riproducibile dei dati. 
 
 ## Esperienza professionale
 
-### [2020–Oggi] Consulente in data science e analisi di politiche pubbliche
 
 ```{r}
 work_temp <- readr::read_csv(here::here("data", "work_ita.csv"), show_col_types = FALSE) 
@@ -124,6 +123,8 @@ work <- work_temp %>%
 # names(work )
 #work$end
 ```
+
+### [2020–Oggi] Consulente (con Partita IVA) in data science e analisi di politiche pubbliche
 
 ```{r}
 #| output: asis
@@ -209,8 +210,7 @@ read.csv("data/skill_ita.csv") |>
 
 ## Pubblicazioni
   
-Le mie pubblicazioni (tra cui alcune su riviste con revisione paritaria) sono accessibili sul mio [**profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) 
-
+Sul mio [**profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) sono riportate le mie pubblicazioni (tra cui 4 su riviste con revisione paritaria).
 
 ```{r}
 #| eval: false
@@ -256,10 +256,9 @@ peer_pub |>
 					 details = "url")
 ```
 
-## Progetti di data science
+## Progetti extra-curricolari
 
-Qui alcuni progetti di interesse personale, in cui ho utilizzato soprattutto il software **R** per l'esplorazione, modellazione e visualizzazione di dati, o per analisi socio-economiche: [**www.luisamimmi.org/projects/**](https://luisamimmi.org/projects/)
-
+Sul mio sito ([**www.luisamimmi.org/projects/**](https://luisamimmi.org/projects/)) si trovano alcuni progetti tra cui: corsi presentati, codice scritto per l'esplorazione, modellazione e visualizzazione di dati, o analisi su diversi temi di carattere socio-economico.
 
 ```{r}
 #| output: false
@@ -267,6 +266,7 @@ Qui alcuni progetti di interesse personale, in cui ho utilizzato soprattutto il 
 Sys.setlocale("LC_TIME", original_locale)
 ```
 
+<!--spazio vuoto-->
 ```{=typst} 
 #box(height: 5%) // #box(height: 60pt)  
 ```
