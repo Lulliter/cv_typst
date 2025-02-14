@@ -96,6 +96,11 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 
 ```
 
+```{=typst}
+#box(height: 3%) // #box(height: 60pt)
+```
+
+
 Economist with international experience in development economics and policy analysis. I lived in Washington, DC, for 14 years, where I worked as M&E Specialist for international organizations focusing on sustainable development programs. Since returning to Italy in 2020, I have been a consultant for public and private entities, research institutes, and nonprofits --data analysis, monitoring of EU funds (PNRR), redaction of grant proposals, etc. I have authored several publications and delivered training courses on statistical applications and machine learning.  
 I am passionate about empirical research and leveraging data to inform evidence-based public policies. I also enjoy exploring programming languages and techniques for open and reproducible data analysis.
 
@@ -107,7 +112,12 @@ work_temp <- readr::read_csv(here::here("data", "work.csv"), show_col_types = FA
 
 # call function to process dates
 work <- work_temp %>% 
-	f_m_y_dates("start_year", "start_month", "end_year", "end_month")
+	f_m_y_dates("start_year", "start_month", "end_year", "end_month") %>% 
+	mutate(location_date = glue::glue("{where} | {date}"))
+```
+
+```{=typst}
+#box(height: 2%) // #box(height: 60pt)
 ```
 
 ### [2020-Present] Freelance Consultant in data analysis and policy evaluation
@@ -121,12 +131,18 @@ work %>%
 	filter(org != "CSIL") %>%
 	resume_entry(title = "org", #"title",
 					 #description = "org",
+					 #location_date = "location_date",# "where",
 					 location = "where",
 					 date = "date",
 					 #details = c("description_1" )
 					 details = c("description_1", "description_2", "description_3" )
 	)	
 ```
+
+```{=typst}
+#box(height: 2%) // #box(height: 60pt)
+```
+
 
 ### [2008-2019] Monitoring and Evaluation Specialist in international development
 
@@ -145,6 +161,11 @@ work %>%
 	)	
 	
 ```
+
+```{=typst}
+#box(height: 2%) // #box(height: 60pt)
+```
+
 
 ### [2001–2006] Business Intelligence Analyst in strategic consulting		
 
@@ -199,11 +220,9 @@ read.csv("data/skill.csv") |>
 
 
 
-## Publications
+## Publications and other projects
 
-My [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) lists my publications and citations. 
-
-<!-- ### Peer-reviewed   -->
++ My [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) lists my publications and citations. 
 
 ```{r}
 #| eval: false
@@ -251,9 +270,7 @@ peer_pub |>
 					 details = "url")
 ```
 
-## Projects
-
-My website ([**www.luisamimmi.org/projects/**](https://luisamimmi.org/projects/)) showcases some of my recent projects, including workshop materials, software I developed for data analysis, writings on various socio-economic topics, and more.
++ My website ([**www.luisamimmi.org/projects/**](https://luisamimmi.org/projects/)) showcases some of my recent projects, including workshop materials, software I developed for data analysis, writings on various socio-economic topics, and more.
  
 
 <!-- quarto  typst-->

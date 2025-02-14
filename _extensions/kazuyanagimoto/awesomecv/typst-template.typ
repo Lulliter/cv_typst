@@ -78,7 +78,7 @@ $endif$
   text.replace("\\", "").replace(".~", ". ")
 }
 
-// layout utility
+// layout utility (GENERALE)
 #let __justify_align(left_body, right_body) = {
   block[
     #box(width: 4fr)[#left_body]
@@ -89,6 +89,18 @@ $endif$
     ]
   ]
 }
+// layout utility (LOCATION)
+#let __justify_align_location(left_body, right_body) = {
+  block[
+    #box(width: 5fr)[#left_body]
+    #box(width: 3fr)[
+      #align(right)[
+        #right_body
+      ]
+    ]
+  ]
+}
+
 
 #let __justify_align_3(left_body, mid_body, right_body) = {
   block[
@@ -143,7 +155,7 @@ $endif$
     below: 0.7em,
   )
   pad[
-    #__justify_align[
+    #__justify_align_location[
       #set text(
         size: 12pt,
         weight: "bold",
@@ -329,7 +341,7 @@ $endif$
 
 #let resume-item(body) = {
   set text(
-    size: 10pt,
+    size: 11pt,
     style: "normal",
     weight: "light",
     fill: color-darknight,
@@ -339,6 +351,7 @@ $endif$
   set list(indent: 1em)
   body
 }
+
 
 #let resume-entry(
   title: none,
@@ -356,7 +369,6 @@ $endif$
 //------------------------------------------------------------------------------
 // Data to Resume Entries
 //------------------------------------------------------------------------------
-
 #let data-to-resume-entries(
   data: (),
 ) = {
@@ -364,7 +376,7 @@ $endif$
   for item in arr [
     #resume-entry(
       title: if "title" in item { item.title } else { none },
-      location: if "location" in item { item.location } else { none },
+      location: if "location" in item { item.location } else { "" },
       date: if "date" in item { item.date } else { none },
       description: if "description" in item { item.description } else { none }
     )
