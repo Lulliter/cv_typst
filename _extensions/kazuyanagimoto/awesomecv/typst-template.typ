@@ -457,11 +457,12 @@ $endif$
     fill: color-darkgray,
     fallback: true,
   )
-// [LULA's] LINK color 
+  // [LULA's] LINK color 
+  // (hover behavior is automatic) 
   show link: it => {
-    set text(fill: color-link)
-    underline(offset: 2pt, stroke: 0.5pt + color-link, it)
-  }
+     text(fill: color-link)[#it]
+   }
+
 
   set page(
     paper: "a4",

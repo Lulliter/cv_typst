@@ -36,8 +36,6 @@ docs/*
 !docs/_config.yml
 /.quarto/
 _freeze/*
-cv.typ
-cv_ita.typ
 
 
 # old

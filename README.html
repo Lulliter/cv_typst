@@ -80,21 +80,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="cv" class="level1">
-<h1>CV</h1>
-<p>My CV (in ENG and ITA, with or without photos) made with quarto &amp; <strong><code>typstcv</code></strong> pckg.</p>
+<section id="cv-atomated-formatting-with-quarto-and-typstcv" class="level1">
+<h1>CV atomated formatting with Quarto and typstcv</h1>
+<p>My CV (in ENG and ITA, with or without photos) made with quarto &amp; the <strong><code>typstcv</code></strong> R pckg <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<ul>
+<li>The CV (different versions) is written in <code>*.qmd</code> files.</li>
+<li>I made some formatting changes tweaking the <code>typstcv</code> template file <code>_extensions/kazuyanagimoto/awesomecv/typst-template.typ</code>.</li>
+<li>My information are stored in <code>data/</code> folder as <code>*.csv</code> files.</li>
+<li>The final CVs are stored in the <code>docs/</code> folder (“gitignored”) as <code>*.pdf</code> files.</li>
+<li>The <code>renv.lock</code> file is used to keep track of the R environment (🤞🏻).</li>
+</ul>
 </section>
 <section id="to-do" class="level1">
 <h1>TO DO</h1>
 <ul>
-<li>remake as Chiara suggested also the ENG version</li>
+<li>…</li>
 </ul>
 <section id="what-is-typst" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-typst">What is <code>typst</code>?</h2>
 <p><a href="https://github.com/typst/typst"><code>typst</code></a> is a new markup-based typesetting system that is designed to be as powerful as <code>LaTeX</code> while being much easier to learn and use.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/typst.png" class="img-fluid figure-img" width="339"></p>
+<p><img src="images/typst.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Source: <a href="https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/">Nicola Rennie’s blog post</a></figcaption>
 </figure>
 </div>
@@ -134,9 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>it allows fontawesome icons</li>
 <li>it allows SVG icons</li>
 <li>it basically helps with a <code>resume_entry()</code> function that makes it easier to write a CV.</li>
-<li>in my case, all the CV info are <code>*.csv</code> files stored in a <code>data/</code> folder, and then called with <code>readr::read_csv()</code>.</li>
 <li>the final, rendered, <code>cv*.pdf</code> files are saved in the <code>docs/</code> folder</li>
-<li>hopefully, with <code>renv.lock</code> in the mix, this won’t break too soon 🤞🏻</li>
 </ul>
 <p>Under the hood, the extension <code>awesomecv-typst</code> has 2 key files:</p>
 <ul>
@@ -146,12 +151,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
+<section id="output" class="level1">
+<h1>Output</h1>
+<p>This is how my final CV renders:</p>
+<iframe src="docs/LMM_CV_eng.pdf#view=FitH" width="100%" height="500px" style="border:none;">
+</iframe>
+</section>
 <section id="acknowledgments" class="level1">
 <h1>Acknowledgments</h1>
-<p>I adapted the example kindly provided by <a href="https://kazuyanagimoto.com/">Kazuharu Yanagimoto</a> 👏🏻, who is the creator of the <code>typstcv</code> <a href="https://kazuyanagimoto.com/typstcv/">package</a>.</p>
+<p>I am grateful for the very helpful work of <a href="https://kazuyanagimoto.com/">Kazuharu Yanagimoto</a>, who is the creator of the <code>typstcv</code> <a href="https://kazuyanagimoto.com/typstcv/">package</a> 👏🏻.</p>
 </section>
 
-</main>
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>See <a href="https://github.com/kazuyanagimoto/typstcv">source code</a> here<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {

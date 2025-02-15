@@ -1,17 +1,22 @@
-# CV
+# CV atomated formatting with Quarto and typstcv
 
-My CV (in ENG and ITA, with or without photos) made with quarto & **`typstcv`** pckg.
+My CV (in ENG and ITA, with or without photos) made with quarto & the **`typstcv`** R pckg ^[See [source code](https://github.com/kazuyanagimoto/typstcv) here]. 
 
++ The CV (different versions) is written in `*.qmd` files.
++ I made some formatting changes tweaking the `typstcv` template file `_extensions/kazuyanagimoto/awesomecv/typst-template.typ`. 
++ My information are stored in `data/` folder as `*.csv` files.
++ The final CVs are stored in the `docs/` folder ("gitignored") as `*.pdf` files.
++ The `renv.lock` file is used to keep track of the R environment (🤞🏻).
 
 # TO DO 
 
-+ remake as Chiara suggested also the ENG version
++ ... 
 
 ## What is `typst`?
 
 [`typst`](https://github.com/typst/typst) is a new markup-based typesetting system that is designed to be as powerful as `LaTeX` while being much easier to learn and use.
 
-![Source: [Nicola Rennie's blog post](https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/)](images/typst.png){width="339"}
+![Source: [Nicola Rennie's blog post](https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/)](images/typst.png){width=50%}
 
 It can be installed on macOS with
 
@@ -68,16 +73,19 @@ format:
 -   it allows fontawesome icons
 -   it allows SVG icons
 -   it basically helps with a `resume_entry()` function that makes it easier to write a CV.
--   in my case, all the CV info are `*.csv` files stored in a `data/` folder, and then called with `readr::read_csv()`.
 -   the final, rendered, `cv*.pdf` files are saved in the `docs/` folder
--   hopefully, with `renv.lock` in the mix, this won't break too soon 🤞🏻
 
 Under the hood, the extension `awesomecv-typst` has 2 key files: 
 
 + `_extensions/kazuyanagimoto/awesomecv/typst-template.typ` \~ the core template file. It defines the styling of the document. 
 + `_extensions/kazuyanagimoto/awesomecv/typst-show.typ` \~ a file that calls the template. It maps Pandoc metadata to template function arguments. .
 
+# Output 
+This is how my final CV renders:
+
+<iframe src="docs/LMM_CV_eng.pdf#view=FitH" width="100%" height="500px" style="border:none;"></iframe>
+
 
 # Acknowledgments
 
-I adapted the example kindly provided by [Kazuharu Yanagimoto](https://kazuyanagimoto.com/) 👏🏻, who is the creator of the `typstcv` [package](https://kazuyanagimoto.com/typstcv/).
+I am grateful for the very helpful work of [Kazuharu Yanagimoto](https://kazuyanagimoto.com/), who is the creator of the `typstcv` [package](https://kazuyanagimoto.com/typstcv/) 👏🏻.
