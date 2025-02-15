@@ -1,6 +1,6 @@
 # CV atomated formatting with Quarto and typstcv
 
-My CV (in ENG and ITA, with or without photos) made with quarto & the **`typstcv`** R pckg ^[See [source code](https://github.com/kazuyanagimoto/typstcv) here]. 
+My CV (in ENG and ITA, with or without photos) made with quarto & the **`typstcv`** R pckg (See [source code](https://github.com/kazuyanagimoto/typstcv) here). 
 
 + The CV (different versions) is written in `*.qmd` files.
 + I made some formatting changes tweaking the `typstcv` template file `_extensions/kazuyanagimoto/awesomecv/typst-template.typ`. 
@@ -16,8 +16,12 @@ My CV (in ENG and ITA, with or without photos) made with quarto & the **`typstcv
 
 [`typst`](https://github.com/typst/typst) is a new markup-based typesetting system that is designed to be as powerful as `LaTeX` while being much easier to learn and use.
 
-![Source: [Nicola Rennie's blog post](https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/)](images/typst.png){width=50%}
-
+<!-- ![Source: [Nicola Rennie's blog post](https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/)](images/typst.png){width=50%} -->
+<!-- <img src="images/typst.png" alt="Source: Nicola Rennie's blog post" width="50%"/> -->
+<figure>
+  <img src="images/typst.png" alt="Typst diagram" width="50%"/>
+  <figcaption>Source: <a href="https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/">Nicola Rennie's blog post</a></figcaption>
+</figure>
 It can be installed on macOS with
 
 ``` bash

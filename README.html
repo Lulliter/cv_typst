@@ -82,7 +82,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="cv-atomated-formatting-with-quarto-and-typstcv" class="level1">
 <h1>CV atomated formatting with Quarto and typstcv</h1>
-<p>My CV (in ENG and ITA, with or without photos) made with quarto &amp; the <strong><code>typstcv</code></strong> R pckg <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>My CV (in ENG and ITA, with or without photos) made with quarto &amp; the <strong><code>typstcv</code></strong> R pckg (See <a href="https://github.com/kazuyanagimoto/typstcv">source code</a> here).</p>
 <ul>
 <li>The CV (different versions) is written in <code>*.qmd</code> files.</li>
 <li>I made some formatting changes tweaking the <code>typstcv</code> template file <code>_extensions/kazuyanagimoto/awesomecv/typst-template.typ</code>.</li>
@@ -99,12 +99,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="what-is-typst" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-typst">What is <code>typst</code>?</h2>
 <p><a href="https://github.com/typst/typst"><code>typst</code></a> is a new markup-based typesetting system that is designed to be as powerful as <code>LaTeX</code> while being much easier to learn and use.</p>
-<div class="quarto-figure quarto-figure-center">
+<!-- ![Source: [Nicola Rennie's blog post](https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/)](images/typst.png){width=50%} -->
+<!-- <img src="images/typst.png" alt="Source: Nicola Rennie's blog post" width="50%"/> -->
 <figure class="figure">
-<p><img src="images/typst.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Source: <a href="https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/">Nicola Rennie’s blog post</a></figcaption>
+<img src="images/typst.png" alt="Typst diagram" width="50%" class="figure-img">
+<figcaption>
+Source: <a href="https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/">Nicola Rennie’s blog post</a>
+</figcaption>
 </figure>
-</div>
 <p>It can be installed on macOS with</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># shell</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install typst</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -167,13 +169,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>I am grateful for the very helpful work of <a href="https://kazuyanagimoto.com/">Kazuharu Yanagimoto</a>, who is the creator of the <code>typstcv</code> <a href="https://kazuyanagimoto.com/typstcv/">package</a> 👏🏻.</p>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>See <a href="https://github.com/kazuyanagimoto/typstcv">source code</a> here<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main>
+</main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
