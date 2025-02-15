@@ -83,8 +83,8 @@ Under the hood, the extension `awesomecv-typst` has 2 key files:
 # Output 
 This is how my final CV renders:
 
-<iframe src="docs/LMM_CV_eng.pdf#view=FitH" width="100%" height="500px" style="border:none;"></iframe>
-
+<!-- <iframe src="docs/LMM_CV_eng.pdf#view=FitH" width="100%" height="500px" style="border:none;"></iframe> -->
+![CV Preview](images/cv-preview-image.png)
 
 # Acknowledgments
 
