@@ -140,7 +140,7 @@ work %>%
 <!--  <!-- •	**Forte orientamento ai risultati** e capacità di lavorare in modo autonomo e in condizioni di stress  --> 
  
  
-\newpage
+<!-- \newpage -->
  
 ## Competenze
 
@@ -235,7 +235,7 @@ Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com
 <!-- 					 details = "url") -->
 <!-- ``` -->
 
-\newpage
+<!-- \newpage -->
 
 ## Presentazioni e Seminari recenti
 
@@ -315,9 +315,10 @@ proj <- proj_temp %>%
 					 location = "where",
 					 details = c("link_typst"))
 ```
-```{=typst} 
-#box(height: 15%) // #box(height: 60pt)  
-```
+
+<!-- ```{=typst}  -->
+<!-- #box(height: 1%) // #box(height: 60pt)   -->
+<!-- ``` -->
 
 <!-- quarto  typst-->
 ::: {.block fill=luma(221) inset="8pt" radius="4pt"}

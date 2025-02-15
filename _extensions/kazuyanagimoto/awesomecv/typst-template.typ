@@ -13,24 +13,17 @@
 #let color-middledarkgray = rgb("#414141")
 #let color-gray = rgb("#5d5d5d")
 #let color-lightgray = rgb("#999999")
+#let color-link = rgb("#0063B2")
 
 // Lula's
-#let color-darklue = rgb("#004980")
-#let color-accent = rgb("#0088cc") // deciso  in YAML
+#let color-darkblue = rgb("#004980")
+#let color-accent = rgb("#0084c8") // deciso  in YAML
 
 // Default style
 #let color-accent-default = rgb("#dc3522")
 #let font-header-default = ("Roboto", "Arial", "Helvetica", "Dejavu Sans")
 #let font-text-default = ("Source Sans Pro", "Arial", "Helvetica", "Dejavu Sans")
 #let align-header-default = center
-
-// [LULA's] LINK style (more visible )
-#let link-style = (content) => {
-  text(
-    fill: rgb("#0054cc"), // Replace with your desired color
-    underline: true       // Apply underline if needed
-  )[content]
-}
 
 // User defined style
 $if(style.color-accent)$
@@ -143,7 +136,7 @@ $endif$
     weight: "light", // weight: "light",
     size: 10pt,
     style: "italic",
-    fill: color-darklue,// fill: color-gray,
+    fill: color-darkblue,// fill: color-gray,
   )
   body
 }
@@ -186,7 +179,7 @@ $endif$
   ]
 }
 
-// QUI --- 
+// Added Option when I want TITLE -- WHERE -- FROM-TO in one line  --- 
 #let single-line-header(primary, middle, secondary) = {
   set block(
     above: 0.7em,
@@ -203,7 +196,7 @@ $endif$
     ]
     #box(width: 5fr)[
       #align(right)[
-        #set text(fill: color-darklue)
+        #set text(fill: color-darkblue)
         #middle
       ]
     ]
@@ -274,6 +267,7 @@ $endif$
   block[#address]
 }
 
+// QUI link 
 #let create-header-contacts(
   contacts: (),
 ) = {
@@ -417,8 +411,6 @@ $endif$
 //------------------------------------------------------------------------------
 // Data to Resume Entries
 //------------------------------------------------------------------------------
-
-// QUI 
 #let data-to-resume-entries(
   data: (),
 ) = {
@@ -465,6 +457,11 @@ $endif$
     fill: color-darkgray,
     fallback: true,
   )
+// [LULA's] LINK color 
+  show link: it => {
+    set text(fill: color-link)
+    underline(offset: 2pt, stroke: 0.5pt + color-link, it)
+  }
 
   set page(
     paper: "a4",
@@ -508,7 +505,7 @@ $endif$
 
     #align(left)[
       // #text[#strong[#text(color-accent)[#it.body.text.slice(0, 3)]#text(color-darkgray)[#it.body.text.slice(3)]]]
-      #text[#strong[#text(color-darklue)[#it.body.text.slice(0, 3)]#text(color-darklue)[#it.body.text.slice(3)]]]
+      #text[#strong[#text(color-darkblue)[#it.body.text.slice(0, 3)]#text(color-darkblue)[#it.body.text.slice(3)]]]
       #box(width: 1fr, line(length: 100%))
     ]
   ]

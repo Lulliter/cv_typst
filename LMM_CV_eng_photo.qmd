@@ -4,7 +4,7 @@ author:
   firstname: Luisa M.
   lastname: Mimmi
   address: "Italian citizen | Green card holder"
-  position: "Economist | Policy Analyst | Freelance consultant"
+  position: "Economist | Quantitative Policy Analyst | Freelance consultant"
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
