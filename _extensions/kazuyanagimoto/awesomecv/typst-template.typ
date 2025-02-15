@@ -24,7 +24,7 @@
 #let font-text-default = ("Source Sans Pro", "Arial", "Helvetica", "Dejavu Sans")
 #let align-header-default = center
 
-// Lula's LINK style (more visible )
+// [LULA's] LINK style (more visible )
 #let link-style = (content) => {
   text(
     fill: rgb("#0054cc"), // Replace with your desired color
@@ -54,7 +54,6 @@ $endif$
 //------------------------------------------------------------------------------
 
 // icon string parser
-
 #let parse_icon_string(icon_string) = {
   if icon_string.starts-with("fa ") [
     #let parts = icon_string.split(" ")
@@ -72,36 +71,14 @@ $endif$
   }
 }
 
-// contaxt text parser
+// contact text parser
 #let unescape_text(text) = {
   // This is not a perfect solution
   text.replace("\\", "").replace(".~", ". ")
 }
 
-// layout utility (GENERALE)
-#let __justify_align(left_body, right_body) = {
-  block[
-    #box(width: 4fr)[#left_body]
-    #box(width: 1fr)[
-      #align(right)[
-        #right_body
-      ]
-    ]
-  ]
-}
-// layout utility (LOCATION)
-#let __justify_align_location(left_body, right_body) = {
-  block[
-    #box(width: 5fr)[#left_body]
-    #box(width: 3fr)[
-      #align(right)[
-        #right_body
-      ]
-    ]
-  ]
-}
 
-
+// layout FOOTER (I think!)
 #let __justify_align_3(left_body, mid_body, right_body) = {
   block[
     #box(width: 1fr)[
@@ -122,7 +99,32 @@ $endif$
   ]
 }
 
-/// Right section for the justified headers
+// -------- CV ENTRIES -----------
+// layout utility (GENERALE)
+#let __justify_align(left_body, right_body) = {
+  block[
+    #box(width: 4fr)[#left_body]
+    #box(width: 1fr)[
+      #align(right)[
+        #right_body
+      ]
+    ]
+  ]
+}
+
+// layout utility (LOCATION)
+#let __justify_align_location(left_body, right_body) = {
+  block[
+    #box(width: 5fr)[#left_body]
+    #box(width: 3fr)[
+      #align(right)[
+        #right_body
+      ]
+    ]
+  ]
+}
+
+/// Right section for the justified headers ------- (LOCATION)
 /// - body (content): The body of the right header
 #let secondary-right-header(body) = {
   set text(
@@ -134,7 +136,7 @@ $endif$
   body
 }
 
-/// Right section of a tertiaty headers.
+/// Right section of a tertiaty headers ------- (FROM-TO)
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
   set text(
@@ -147,8 +149,8 @@ $endif$
 }
 
 /// Justified header that takes a primary section and a secondary section. The primary section is on the left and the secondary section is on the right.
-/// - primary (content): The primary section of the header
-/// - secondary (content): The secondary section of the header
+/// - primary (content): The primary section of the header ------- (ORG)
+/// - secondary (content): The secondary section of the header ------- (LOCATION)
 #let justified-header(primary, secondary) = {
   set block(
     above: 0.7em,
@@ -169,8 +171,8 @@ $endif$
 }
 
 /// Justified header that takes a primary section and a secondary section. The primary section is on the left and the secondary section is on the right. This is a smaller header compared to the `justified-header`.
-/// - primary (content): The primary section of the header
-/// - secondary (content): The secondary section of the header
+/// - primary (content): The primary section of the header ------- (DESCRIPTION)
+/// - secondary (content): The secondary section of the header () ------- (FROM - TO)
 #let secondary-justified-header(primary, secondary) = {
   __justify_align[
      #set text(
@@ -181,6 +183,36 @@ $endif$
     #primary
   ][
     #tertiary-right-header[#secondary]
+  ]
+}
+
+// QUI --- 
+#let single-line-header(primary, middle, secondary) = {
+  set block(
+    above: 0.7em,
+    below: 0.7em,
+  )
+  pad[
+    #box(width: 7fr)[
+      #set text(
+        size: 12pt,
+        weight: "bold",
+        fill: color-darkgray,
+      )
+      #primary
+    ]
+    #box(width: 5fr)[
+      #align(right)[
+        #set text(fill: color-darklue)
+        #middle
+      ]
+    ]
+    #box(width: 3fr)[
+      #align(right)[
+        #set text(fill: color-accent)
+        #secondary
+      ]
+    ]
   ]
 }
 
@@ -352,23 +384,41 @@ $endif$
   body
 }
 
+// original EXPERIENCE 2- LINE HEADER
+// #let resume-entry(
+//   title: none,
+//   location: "",
+//   date: "",
+//   description: ""
+// ) = {
+//   pad[
+//     #justified-header(title, location)
+//     #secondary-justified-header(description, date)
+//   ]
+// }
 
+// QUI - REVISED EXPERIENCE 1- LINE HEADER
 #let resume-entry(
   title: none,
   location: "",
   date: "",
   description: ""
 ) = {
-  pad[
-    #justified-header(title, location)
-    #secondary-justified-header(description, date)
-  ]
+  pad(
+    if description == "" [
+      #single-line-header(title, location, date)
+    ] else [
+      #justified-header(title, location)
+      #secondary-justified-header(description, date)
+    ]
+  )
 }
-
 
 //------------------------------------------------------------------------------
 // Data to Resume Entries
 //------------------------------------------------------------------------------
+
+// QUI 
 #let data-to-resume-entries(
   data: (),
 ) = {
@@ -378,7 +428,7 @@ $endif$
       title: if "title" in item { item.title } else { none },
       location: if "location" in item { item.location } else { "" },
       date: if "date" in item { item.date } else { none },
-      description: if "description" in item { item.description } else { none }
+      description: if "description" in item { item.description } else { "" }
     )
     #if "details" in item {
       resume-item[

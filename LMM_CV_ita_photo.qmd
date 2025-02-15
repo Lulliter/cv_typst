@@ -105,9 +105,9 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 
 <!-- Economista con esperienza internazionale nella valutazione di politiche di sviluppo. Dopo l'inizio come *Business Analyst*, ho vissuto 14 anni a Washington, DC, lavorando come *M&E Specialist* per organizzazioni internazionali su monitoraggio e valutazione d'impatto di programmi di sviluppo socio-economico. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici, istituti di ricerca e non profit, con focus su analisi quantitativa, gestione di fondi UE/PNRR, ecc. Ho al mio attivo varie pubblicazioni e ho svolto con successo corsi di formazione su applicazioni di statistica e *machine learning*. Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche; per questo mi tengo aggiornata su linguaggi di programmazione e tecniche per l'analisi riproducibile dei dati.  -->
 
-```{=typst}
-#box(height: 2.5%) // #box(height: 60pt)
-```
+<!-- ```{=typst} -->
+<!-- #box(height: 2.5%) // #box(height: 60pt) -->
+<!-- ``` -->
 
 Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando come *M&E Specialist* per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi quantitative, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). Ho al mio attivo varie pubblicazioni e corsi di formazione su applicazioni di statistica e *machine learning*.  
 Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche e mi piace studiare linguaggi di programmazione e tecniche per l'analisi riproducibile dei dati. 
@@ -139,8 +139,8 @@ work %>%
 	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
 	filter(start_year >= 2020) %>%
 	filter(org != "CSIL") %>%
-	resume_entry(title = "org", #"title",
-					 #description = "org",
+	resume_entry(title = "org", 
+					 #description = "title",
 					 #location_date = "location_date",
 					 location = "where",
 					 date = "date",
@@ -148,9 +148,9 @@ work %>%
 	)	
 ```
 
-```{=typst}
-#box(height: 2.5%) // #box(height: 60pt)
-```
+<!-- ```{=typst} -->
+<!-- #box(height: 2.5%) // #box(height: 60pt) -->
+<!-- ``` -->
 
 ### [2008–2019] Monitoring & Evaluation Specialist per programmi di sviluppo economico
 
@@ -160,19 +160,18 @@ work %>%
 	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
 	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
 	filter(start_year >= 2007 & start_year <= 2019) %>%
-	resume_entry(title =  "org", #"title",
-					 #description = "org",
+	resume_entry(title = "org", 
+					 #description = "title",
+					 #location_date = "location_date",
 					 location = "where",
 					 date = "date",
-					 #details = c("description_1" )
 					 details = c("description_1", "description_2", "description_3" )
-	)	
-	
+	)
 ```
 
-```{=typst}
-#box(height: 2%) // #box(height: 60pt)
-```
+<!-- ```{=typst} -->
+<!-- #box(height: 2%) // #box(height: 60pt) -->
+<!-- ``` -->
 
 ### [2001–2006] Business Intelligence Analyst per consulenza aziendale		
 
@@ -183,13 +182,14 @@ work %>%
 	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
 	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
 	filter(start_year >= 2001 & start_year <= 2006) %>%
-	resume_entry(title =  "org", #"title",
-					 #description = "org",
+	resume_entry(title = "org", 
+					 #description = "title",
+					 #location_date = "location_date",
 					 location = "where",
 					 date = "date",
-					 #details = c("description_1" )
 					 details = c("description_1", "description_2", "description_3" )
 	)	
+
 ```
 
 
@@ -203,11 +203,11 @@ educ_temp <- readr::read_csv(here::here("data", "edu_ita.csv"), show_col_types =
 #| output: asis
 educ <- educ_temp %>% 
 	f_m_y_dates("start_year", "start_month", "end_year", "end_month") %>% 
-	filter(degree != "Programma Erasmus EU (2 semestri)") %>%
+	#filter(degree != "Programma Erasmus EU (2 semestri)") %>%
 	resume_entry(title = "degree",
 					 location = "inst",
 					 date = "end_m_y",
-					 description = "detail"
+					 details = "detail"
 					 )
 ```
 
@@ -279,9 +279,9 @@ Sys.setlocale("LC_TIME", original_locale)
 ```
 
 <!--spazio vuoto--> 
-<!-- ```{=typst}  -->
-<!-- #box(height: 5%) // #box(height: 60pt)   -->
-<!-- ``` -->
+```{=typst}
+#box(height: 15%) // #box(height: 60pt)
+```
 
 <!-- quarto  typst-->
 ::: {.block fill=luma(221) inset="8pt" radius="4pt"}

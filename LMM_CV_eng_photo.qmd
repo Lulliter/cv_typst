@@ -116,9 +116,9 @@ work <- work_temp %>%
 	mutate(location_date = glue::glue("{where} | {date}"))
 ```
 
-```{=typst}
-#box(height: 2%) // #box(height: 60pt)
-```
+<!-- ```{=typst} -->
+<!-- #box(height: 2%) // #box(height: 60pt) -->
+<!-- ``` -->
 
 ### [2020-Present] Freelance Consultant in data analysis and policy evaluation
 
@@ -139,9 +139,9 @@ work %>%
 	)	
 ```
 
-```{=typst}
-#box(height: 2%) // #box(height: 60pt)
-```
+<!-- ```{=typst} -->
+<!-- #box(height: 2%) // #box(height: 60pt) -->
+<!-- ``` -->
 
 
 ### [2008-2019] Monitoring and Evaluation Specialist in international development
@@ -162,10 +162,9 @@ work %>%
 	
 ```
 
-```{=typst}
-#box(height: 2%) // #box(height: 60pt)
-```
-
+<!-- ```{=typst} -->
+<!-- #box(height: 2%) // #box(height: 60pt) -->
+<!-- ``` -->
 
 ### [2001–2006] Business Intelligence Analyst in strategic consulting		
 
@@ -199,7 +198,7 @@ educ <- educ_temp %>%
 	resume_entry(title = "degree",
 					 location = "inst",
 					 date = "end_m_y",
-					 description = "detail")
+					 details = "detail")
 ```
 
 <!-- ## Professional Skills -->
@@ -272,6 +271,10 @@ peer_pub |>
 
 + My website ([**www.luisamimmi.org/projects/**](https://luisamimmi.org/projects/)) showcases some of my recent projects, including workshop materials, software I developed for data analysis, writings on various socio-economic topics, and more.
  
+
+```{=typst}
+#box(height: 10%) // #box(height: 60pt)
+```
 
 <!-- quarto  typst-->
 ::: {.block fill=luma(221) inset="8pt" radius="4pt"}

@@ -20,6 +20,19 @@
 #let font-text-default = ("Source Sans Pro", "Arial", "Helvetica", "Dejavu Sans")
 #let align-header-default = center
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 // User defined style
 $if(style.color-accent)$
 #let color-accent = rgb("$style.color-accent$")
@@ -42,7 +55,6 @@ $endif$
 //------------------------------------------------------------------------------
 
 // icon string parser
-
 #let parse_icon_string(icon_string) = {
   if icon_string.starts-with("fa ") [
     #let parts = icon_string.split(" ")
@@ -78,6 +90,17 @@ $endif$
   ]
 }
 
+
+
+
+
+
+
+
+
+
+
+// layout FOOTER (I think!)
 #let __justify_align_3(left_body, mid_body, right_body) = {
   block[
     #box(width: 1fr)[
@@ -98,7 +121,7 @@ $endif$
   ]
 }
 
-/// Right section for the justified headers
+/// Right section for the justified headers (LOCATION)
 /// - body (content): The body of the right header
 #let secondary-right-header(body) = {
   set text(
@@ -110,7 +133,7 @@ $endif$
   body
 }
 
-/// Right section of a tertiaty headers.
+/// Right section of a tertiaty headers (FROM-TO)
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
   set text(
