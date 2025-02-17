@@ -148,7 +148,8 @@ work %>%
 #| output: asis
 read.csv("data/skill_ita.csv") |>
   resume_entry(title = "area",
-               description = "skills")
+               details = c("skills1", "skills2", "skills3", "skills4")
+  )
 ```
 
 ## Istruzione

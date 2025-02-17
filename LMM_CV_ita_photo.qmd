@@ -129,7 +129,7 @@ work <- work_temp %>%
 ```
 
  
-### [2020–Oggi] Consulente (con Partita IVA) in data science e analisi di politiche pubbliche
+### [2020–Oggi] Consulente (P.IVA) in data science e analisi di politiche pubbliche
 
 ```{r}
 #| output: asis
@@ -152,7 +152,7 @@ work %>%
 <!-- #box(height: 2.5%) // #box(height: 60pt) -->
 <!-- ``` -->
 
-### [2008–2019] Monitoring & Evaluation Specialist per programmi di sviluppo economico
+### [2008–2019] Monitoring & Evaluation Specialist nella cooperazione allo sviluppo
 
 ```{r}
 #| output: asis
@@ -218,7 +218,8 @@ educ <- educ_temp %>%
 #| output: asis
 read.csv("data/skill_ita.csv") |>
   resume_entry(title = "area",
-               description = "skills")
+               details = c("skills1", "skills2", "skills3", "skills4")
+  )
 ```
 
 

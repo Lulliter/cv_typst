@@ -1,6 +1,6 @@
-area,skills
-Lingue,"Italiano (madrelingua), Inglese (C2), Spagnolo (C2), Portoghese (B1)"
-Pacchetti Office,"MS Office, GSuite, LibreOffice"
-Linguaggi di programmazione,"R, Stata, SQL"
-Altri Strumenti,"RStudio, VSCode, Quarto, Markdown, HTML & CSS, git, Github, bash/zsh"
-Competenze Personali,"• Eccellenti capacità di pensiero critico e analisi dei dati \n• Determinazione e spirito d'iniziativa in progetti complessi \n• Abilità comunicative efficaci \n• Passione e attitudine per la studio e la formazione"
+area,skills1, skills2, skills3, skills4
+Lingue,"Italiano (madrelingua), Inglese (C2), Spagnolo (C2), Portoghese (B1)",NA,NA,NA
+Pacchetti Office,"MS Office, GSuite, LibreOffice",NA,NA,NA
+Linguaggi di programmazione,"R, Stata, SQL",NA,NA,NA
+Altri Strumenti,"RStudio, VSCode, Quarto, Markdown, HTML & CSS, git, Github, bash/zsh",NA,NA,NA
+Competenze Personali,Eccellenti capacità di pensiero critico e analisi dei dati,Determinazione e spirito d'iniziativa comprovate nella ideazione e partecipazione a progetti di ricerca innovativi,"Efficaci competenze comunicative, costantemente dimostrate in presentazioni scritte e orali in più lingue per interlocutori diversi","Passione e attitudine per la studio e la formazione, dimostrata in molte occasioni come mentor di colleghi junior o studenti"

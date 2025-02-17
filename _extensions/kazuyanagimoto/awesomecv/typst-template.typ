@@ -21,7 +21,7 @@
 
 // Default style
 #let color-accent-default = rgb("#dc3522")
-#let font-header-default = ("Roboto", "Arial", "Helvetica", "Dejavu Sans")
+#let font-header-default = ("Roboto", "Arial", "Helvetica", "Dejavu Sans", "Avenir Next", "Optima")
 #let font-text-default = ("Source Sans Pro", "Arial", "Helvetica", "Dejavu Sans")
 #let align-header-default = center
 
@@ -179,7 +179,7 @@ $endif$
   ]
 }
 
-// Added Option when I want TITLE -- WHERE -- FROM-TO in one line  --- 
+// Added Option when I want TITLE -- WHERE -- FROM-TO in one line  ---
 #let single-line-header(primary, middle, secondary) = {
   set block(
     above: 0.7em,
@@ -267,7 +267,7 @@ $endif$
   block[#address]
 }
 
-// QUI link 
+// QUI link
 #let create-header-contacts(
   contacts: (),
 ) = {
@@ -457,8 +457,8 @@ $endif$
     fill: color-darkgray,
     fallback: true,
   )
-  // [LULA's] LINK color 
-  // (hover behavior is automatic) 
+  // [LULA's] LINK color
+  // (hover behavior is automatic)
   show link: it => {
      text(fill: color-link)[#it]
    }
@@ -511,16 +511,16 @@ $endif$
     ]
   ]
 
-// LULA: QUESTO IN REALTA CORRISPONDE A "###" !!!!!!!!!
-show heading.where(level: 2): it => {
+// LULA: INTERMEDIATE WORK EXPERIENCE HEADER 
+show heading.where(level: 2): it => { // QUESTO IN REALTA CORRISPONDE A "###" !!!!!!!!!
   set text(
+    font: "Avenir Next",  // Using Arial for a wider font
     size: 14pt,
     weight: "regular",
     style: "italic",
-    fill: rgb("#004980"), //color-accent,
+    fill: color-accent,
   )
-  it.body
-
+  align(center)[#it.body]
 }
 
   show heading.where(level: 3): it => {

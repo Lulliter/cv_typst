@@ -214,7 +214,8 @@ educ <- educ_temp %>%
 #| output: asis
 read.csv("data/skill.csv") |>
   resume_entry(title = "area",
-               description = "skills")
+               details = c("skills1", "skills2", "skills3", "skills4")
+  )
 ```
 
 
@@ -273,7 +274,7 @@ peer_pub |>
  
 
 ```{=typst}
-#box(height: 10%) // #box(height: 60pt)
+#box(height: 15%) // #box(height: 60pt)
 ```
 
 <!-- quarto  typst-->
@@ -286,6 +287,6 @@ I hereby authorize the processing of my personal data in accordance with GDPR (R
 
 ```
 :::
- 
+
 
 
