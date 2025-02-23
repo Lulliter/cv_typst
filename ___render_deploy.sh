@@ -1,10 +1,10 @@
-# empty docs/ folder
-rm -rf docs/cv_ita.pdf docs/cv.pdf
+# empty docs/ folder no warning
+rm -rf docs/*
 
-# render the project
+# run all .qmd files in the root folder and save the output in the docs folder
 quarto render --clean
 
-#=========================================== (Push to Github repo) ================================================#
+#==================================  (Push to Github repo)  =========================================#
 # check status
 git status
 
@@ -15,7 +15,7 @@ git add images/*
 
 git commit -m "typst-template.typ success LINK 🙌🏻🙌🏻"
 # git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
-git commit -m "REAMDE.md No iframe 🤯"
+git commit -m "skills into details"
 # Push local source (master branch) to remote reference (origin)
 #cd .
 git push origin master
@@ -24,7 +24,7 @@ git push origin master
 #=========================================== tutto insieme  ================================================#
 git add -u && git commit  -m "README.md 2" && git push origin master
 
-#=========================================== COPIO FILE SU WEBSITE DIR  ================================================#
+#===================== COPIO FILE SU WEBSITE DIR   ====================================#
 #!/bin/zsh
 
 # NB Absolute paths begin with / !!!!!!
@@ -35,7 +35,7 @@ SOURCE_DIR="/Users/luisamimmi/Github/cv_typst/docs"
 DEST_DIR="/Users/luisamimmi/Github/luisamimmi/cv"
 
 # File name to copy
-FILE_NAME="cv.pdf"
+FILE_NAME="LMM_CV_eng.pdf"
 
 # Copy the file
 cp "$SOURCE_DIR/$FILE_NAME" "$DEST_DIR/"
