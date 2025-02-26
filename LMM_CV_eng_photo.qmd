@@ -274,7 +274,7 @@ peer_pub |>
  
 
 ```{=typst}
-#box(height: 112%) // #box(height: 60pt)
+#box(height: 10%) // #box(height: 60pt)
 ```
 
 <!-- quarto  typst-->

@@ -281,7 +281,7 @@ Sys.setlocale("LC_TIME", original_locale)
 
 <!--spazio vuoto--> 
 ```{=typst}
-#box(height: 15%) // #box(height: 60pt)
+#box(height: 10%) // #box(height: 60pt)
 ```
 
 <!-- quarto  typst-->

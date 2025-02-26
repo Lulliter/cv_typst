@@ -1,6 +1,7 @@
 ---
 format: 
   pdf:
+    latex-engine: xelatex
     include-in-header:
       text: |
         \usepackage{xcolor}
@@ -11,7 +12,7 @@ format:
         \fontsize{12}{15}\selectfont
 sender:
   name: "Luisa M. Mimmi"
-  title: "Data Scientist"
+  title: "Policy and Data Analyst"
   email: "lmm76@georgetown.edu"
   phone: "+39-348-9528360"
   address: "Via Scarpa, 11"
@@ -22,13 +23,13 @@ sender:
 
 
 recipient: "Hiring Manager"
-company: "Company Name"
-job_role: "Data Scientist (remote)"
+company: "Plenitude"
+job_role: "SENIOR DATA ANALYST (IT)"
 company_address:
-  street: "123 Business Avenue"
-  city: "San Francisco"
-  state: "CA"
-  zip: "94105"
+  street: "..."
+  city: "Milano"
+  state: "MI"
+  zip: "..."
 
 date: today
 date-format: "MMMM D, YYYY"
@@ -68,8 +69,8 @@ keyword3: "EU structural funds"
 <!-- {{< meta recipient >}} -->
 \begin{flushleft}
 \textbf{ {{< meta company >}} } \\
-{{< meta company_address.street >}} \\
-{{< meta company_address.city >}}, {{< meta company_address.state >}} {{< meta company_address.zip >}}
+%{{< meta company_address.street >}} \\ %
+{{< meta company_address.city >}}, {{< meta company_address.state >}} %{{< meta company_address.zip >}}%
 \end{flushleft}
 
 
@@ -91,7 +92,7 @@ Dear {{< meta recipient >}},
 I am excited to apply for the {{< meta job_role >}} position at {{< meta company >}}. With a background as a {{< meta profile1 >}}, I bring extensive experience in {{< meta keyword1 >}}, {{< meta keyword2 >}}, and strategic decision-making through data.  
 
 <!-- Me -->
-With a background as a {{< meta profile1 >}}, I spent over a decade in research-focused roles at Multilateral Development Banks in Washington, DC, after earning my degree from Georgetown University in 2008. As a {{< meta profile2 >}}, I developed strong analytical and communication skills that have been instrumental in my work. Since returning to Italy in 2020, I have worked as a {{< meta profile3 >}}, advising public and private entities, research institutes, and nonprofits. 
+After earning my master degree from Georgetown University in 2008, I spent over a decade in research-focused roles at Multilateral Development Banks in Washington, DC. As a {{< meta profile2 >}}, I developed strong analytical and communication skills that have been instrumental in my work. Since returning to Italy in 2020, I have worked as a {{< meta profile3 >}}, advising public and private entities, research institutes, and nonprofits. 
 My recent work includes supporting the Italian government in monitoring and financial reporting for the PNRR plan, which enhanced my expertise in {{< meta keyword3 >}}.  
 
 <!-- Why you -->

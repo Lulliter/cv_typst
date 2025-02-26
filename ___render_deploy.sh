@@ -13,7 +13,7 @@ git add -A # ALL
 git add -u # tracked
 git add images/*
 
-git commit -m "typst-template.typ success LINK 🙌🏻🙌🏻"
+git commit -m "letter_ENG.qmd ✉️✉️"
 # git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 git commit -m "skills into details"
 # Push local source (master branch) to remote reference (origin)
