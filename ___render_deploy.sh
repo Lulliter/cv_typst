@@ -21,10 +21,11 @@ git commit -m "skills into details"
 git push origin master
 
 
-#=========================================== tutto insieme  ================================================#
+#============================ tutto insieme  =================================#
 git add -u && git commit  -m "README.md 2" && git push origin master
 
-#===================== COPIO FILE SU WEBSITE DIR   ====================================#
+
+#===================== COPIO FILE SU WEBSITE DIR  ==========================#
 #!/bin/zsh
 
 # NB Absolute paths begin with / !!!!!!
@@ -35,7 +36,7 @@ SOURCE_DIR="/Users/luisamimmi/Github/cv_typst/docs"
 DEST_DIR="/Users/luisamimmi/Github/luisamimmi/cv"
 
 # File name to copy
-FILE_NAME="LMM_CV_eng.pdf"
+FILE_NAME="LMM_resume_eng.pdf"
 
 # Copy the file
 cp "$SOURCE_DIR/$FILE_NAME" "$DEST_DIR/"

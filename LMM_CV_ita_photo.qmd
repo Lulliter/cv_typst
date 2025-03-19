@@ -271,7 +271,7 @@ peer_pub |>
 					 details = "url")
 ```
 
-+ Sul mio sito ([**www.luisamimmi.org/projects/**](https://luisamimmi.org/projects/)) si trovano alcuni progetti tra cui: corsi presentati, progetti di _data science_, o analisi di diversi temi di carattere socio-economico.
++ Sul mio sito ([**www.luisamimmi.org/**](https://luisamimmi.org/)) si trovano contenuti tra cui: corsi presentati, progetti di _data science_, codice ![](assets/icon/r-project-brands-solid.svg){height=1em}, e analisi di diversi temi di carattere socio-economico.
 
 ```{r}
 #| output: false

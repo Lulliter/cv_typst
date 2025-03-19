@@ -4,7 +4,8 @@ author:
   firstname: Luisa M.
   lastname: Mimmi
   address: "Italian citizen | Green card holder"
-  position: "Economist | Quantitative Policy Analyst | Freelance consultant"
+  position: "Economist | Data Analyst | Freelance consultant"
+  # position: "Economist | Quantitative Policy Analyst | Freelance consultant"
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
@@ -42,6 +43,9 @@ format:
   awesomecv-typst:
     font-paths: ["assets/fonts/"]
     keep-typ: false
+    fonts:
+      - family: "Font Awesome 6 Brands"
+        path: "_extensions/quarto-ext/fontawesome/assets/webfonts/fa-brands-400.ttf"
 execute: 
   echo: false
   warning: false
@@ -101,7 +105,7 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 ```
 
 
-Economist with international experience in development economics and policy analysis. I lived in Washington, DC, for 14 years, where I worked as M&E Specialist for international organizations focusing on sustainable development programs. Since returning to Italy in 2020, I have been a consultant for public and private entities, research institutes, and nonprofits --data analysis, monitoring of EU funds (PNRR), redaction of grant proposals, etc. I have authored several publications and delivered training courses on statistical applications and machine learning.  
+Economist with international experience in development economics and quantitative policy analysis. I lived in Washington, DC, for 14 years, where I worked for international organizations focusing on sustainable development programs. Since returning to Italy in 2020, I have been a freelance consultant for public and private entities, research institutes, and nonprofits. I help with data collection, analysis, modelling and visualization, as well as with the redaction of technical reports and grant proposals. I also offer training on applied statistics, machine learning and reproducible research.  
 I am passionate about empirical research and leveraging data to inform evidence-based public policies. I also enjoy exploring programming languages and techniques for open and reproducible data analysis.
 
 
@@ -165,6 +169,7 @@ work %>%
 <!-- ```{=typst} -->
 <!-- #box(height: 2%) // #box(height: 60pt) -->
 <!-- ``` -->
+\newpage
 
 ### [2001–2006] Business Intelligence Analyst in strategic consulting		
 
@@ -270,7 +275,7 @@ peer_pub |>
 					 details = "url")
 ```
 
-+ My website ([**www.luisamimmi.org/projects/**](https://luisamimmi.org/projects/)) showcases some of my recent projects, including workshop materials, software I developed for data analysis, writings on various socio-economic topics, and more.
++ My website ([**www.luisamimmi.org**](https://luisamimmi.org/)) showcases some of my recent projects, including technical writing, workshops and training materials, ![](assets/icon/r-project-brands-solid.svg){height=1em} code for data analysis, and more.
  
 
 ```{=typst}
@@ -287,6 +292,4 @@ I hereby authorize the processing of my personal data in accordance with GDPR (R
 
 ```
 :::
-
-
 

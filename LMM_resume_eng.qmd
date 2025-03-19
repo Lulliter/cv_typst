@@ -13,13 +13,16 @@ author:
     #   text: "+39-348-9528360"
     #   # url: "tel:+393489528360"
     - icon: assets/icon/bi-house-fill.svg # need icon file!!??
-      text: luisamimmi.org
+      text: www.luisamimmi.org
       url: https://luisamimmi.org
     - icon: fa brands linkedin
-      text: Luisa M. Mimmi
+      text: LinkedIn
       url: https://www.linkedin.com/in/luisa-m-mimmi
+    - icon: assets/icon/fa-google-scholar.svg
+      text: Google Scholar
+      url: https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao
     - icon: fa brands github
-      text: lulliter
+      text: Lulliter
       url: https://github.com/lulliter
     # - icon: fa brands orcid
     #   text: 0000-0002-2244-8282
@@ -27,9 +30,6 @@ author:
     # - icon: fa brands x-twitter
     #   text: Lulliter
     #   url: https://x.com/Lulliter
-    # - icon: assets/icon/fa-google-scholar.svg
-    #   text: Luisa M. Mimmi
-    #   url: https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao
     # - icon: fa brands researchgate
     #   text: Luisa M. Mimmi
     #   url: https://www.researchgate.net/profile/Luisa-Mimmi
@@ -55,6 +55,7 @@ library(typstcv)
 library(dplyr)
 library(stringr)
 library(lubridate)
+library(glue)
 ```
 
 ```{r func_date}
@@ -106,6 +107,8 @@ work <- work_temp %>%
 ```{r}
 #| output: asis
 work %>% 
+	# remove CSIL and AVSI
+	filter(org != "CSIL" & org != "AVSI International NGO") %>%
 	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
 	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
 	resume_entry(title = "title",
@@ -127,13 +130,15 @@ educ_temp <- readr::read_csv(here::here("data", "edu.csv"), show_col_types = FAL
 #| output: asis
 educ <- educ_temp %>% 
 	f_m_y_dates("start_year", "start_month", "end_year", "end_month") %>% 
+	# remove Erasmus and high school
+	filter(end_year >= 2001) %>%
 	resume_entry(title = "degree",
 					 location = "inst",
 					 date = "end_m_y",
 					 description = "detail")
 ```
 
-\newpage
+<!-- \newpage -->
 
 <!-- ## Professional Skills -->
 
@@ -146,90 +151,74 @@ educ <- educ_temp %>%
 
 ```{r}
 #| output: asis
-read.csv("data/skill.csv") |>
-  resume_entry(title = "area",
-               details = c("skills1", "skills2", "skills3", "skills4")
-  )
+skill <- read.csv("data/skill.csv") 
+# resume_entry(title = "area",
+# 				 details = c("skills1", "skills2", "skills3", "skills4"))
+
+skill |>
+	filter(area != "Office Suite") |>	
+	rowwise() |> 
+	mutate(details = glue_collapse(na.omit(c_across(starts_with("skills"))), sep = " • ")) |> 
+	ungroup() |>
+	mutate(area = case_when(
+		area %in% c("Programming Languages", "Misc. Dev. Tools") ~ "Programming & Misc. Dev. Tools",
+		TRUE ~ area
+	)) |> 
+	mutate(area = factor(area, levels = unique(area))) |>  # Preserve original order
+	group_by(area) |> 
+	summarise(details = glue_collapse(details, sep = " • "), .groups = "drop") |> 
+	resume_entry(title = "area", details = "details")
 ```
 
-```{r}
-#| output: asis
+<!-- ## Peer-reviewed Publications -->
 
-# Lorena Abad, ma non viene !
-# https://github.com/loreabad6/R-CV/blob/master/CV.Rmd
-library(tibble)
-library(kableExtra)
+<!-- ```{r} -->
+<!-- # Retrieve .bib and transform it into a data frame -->
+<!-- peer_pub_temp <- RefManageR::ReadBib( -->
+<!-- 	file = here::here("data", "Lula-MyPublication-Narrow.bib"), -->
+<!-- 	.Encoding ="UTF-8")  %>% -->
+<!-- 	base::as.data.frame() %>% -->
+<!-- 	# filter articles  -->
+<!-- 	dplyr::filter(bibtype == "Article") # %>%  -->
+<!-- 	#mutate(url = if_else(is.na(url), url_preprint, url) ) -->
 
-tribble(
-  ~`Office Suite`, ~`Statistics/Databases`, ~`GIS`, ~`Other`,
-  "(Expert)", "(Expert)",  "(Basic)",  "(Basic)",
- "MS Office, iWork Suite, Google Suite, LibreOffice",    
-   "R, RStudio, Stata, SQL, Salesforce, MS Excel",
-      "ArcGIS, QGIS, GeoDa, OpenStreetMap",
-        "Git, Github, Unix Shell, CSS, HTML, LaTeX, Markdown"
-)  %>%
-  kable(booktabs = T, align = 'c', escape = F, format = "latex")  %>%
-  kable_styling(full_width = F, font_size = 10, latex_options = "HOLD_position") %>%
-  row_spec(0, bold = T, color = "#009acd") %>%
-  row_spec(1, bold = F, italic = T, color = "#7f7f7f") %>%
-  column_spec(column = 1:4, width = '4 cm')   %>% 
-# TRYING TO HAVE NO HORIZONTAL LINES  
-  #row_spec(0:4, extra_latex_after = "\\arrayrulecolor{white}" ) %>% 
-  #row_spec( extra_latex_after = "\\arrayrulecolor{white}")  %>%
-   sub("\\\\toprule", "", .) %>%
-  sub("\\\\bottomrule", "", .) %>% 
-  add_header_above(line = F) 
- 
-```
+<!-- # Clean the date column and format it as "month-year" -->
+<!-- peer_pub <- peer_pub_temp %>%  -->
+<!-- 	mutate(parsed_date = case_when( -->
+<!-- 		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings -->
+<!-- 		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format -->
+<!-- 		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format -->
+<!-- 		TRUE ~ NA_Date_))  %>%  -->
+<!-- 	dplyr::arrange(desc(parsed_date)) %>% -->
+<!-- 	# Format the parsed date as "month-year" -->
+<!-- 	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y")))  %>%  -->
+<!-- 	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns -->
+<!-- 	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{" -->
+<!--          clean_title = gsub("\\}\\}", "", clean_title))  # Remove "}}" -->
+
+<!-- ``` -->
 
 
-## Peer-reviewed Publications
-
-<!-- ### Peer-reviewed   -->
-
-```{r}
-# Retrieve .bib and transform it into a data frame
-peer_pub_temp <- RefManageR::ReadBib(
-	file = here::here("data", "Lula-MyPublication-Narrow.bib"),
-	.Encoding ="UTF-8")  %>%
-	base::as.data.frame() %>%
-	# filter articles 
-	dplyr::filter(bibtype == "Article") # %>% 
-	#mutate(url = if_else(is.na(url), url_preprint, url) )
-
-# Clean the date column and format it as "month-year"
-peer_pub <- peer_pub_temp %>% 
-	mutate(parsed_date = case_when(
-		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings
-		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format
-		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format
-		TRUE ~ NA_Date_))  %>% 
-	dplyr::arrange(desc(parsed_date)) %>%
-	# Format the parsed date as "month-year"
-	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y")))  %>% 
-	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
-	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
-         clean_title = gsub("\\}\\}", "", clean_title))  # Remove "}}"
-
-```
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- peer_pub |> -->
+<!-- 	resume_entry(title = "clean_title", -->
+<!-- 					 description = "author", -->
+<!-- 					 location = "journaltitle", -->
+<!-- 					 date =  "month_year" , -->
+<!-- 					 details = "url") -->
+<!-- ``` -->
 
 
-```{r}
-#| output: asis
-peer_pub |>
-	resume_entry(title = "clean_title",
-					 description = "author",
-					 location = "journaltitle",
-					 date =  "month_year" ,
-					 details = "url")
-```
+<!-- ## Other publications and projects -->
+
+<!-- + My [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) lists my publications and citations.  -->
+
+::: {.block fill=luma(221) inset="8pt" radius="4pt" width="100%"}
+See my website for data science projects, ![](assets/icon/r-project-brands-solid.svg){height=1em} code, writing, and teaching resources: [**www.luisamimmi.org**](https://luisamimmi.org/)
+:::
 
 
-## Other publications and projects
-
-+ My [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) lists my publications and citations. 
-
-+ My website ([**www.luisamimmi.org**](https://luisamimmi.org/)) showcases some of my recent projects, including technical writing, workshops and training materials, ![](assets/icon/r-project-brands-solid.svg){height=1em} code for data analysis, and more.
 
 <!-- ### Blog posts -->
 <!-- ```{r} -->
