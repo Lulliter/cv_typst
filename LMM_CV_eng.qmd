@@ -1,4 +1,5 @@
 ---
+document-type: "CV"
 title: "Luisa M. Mimmi"
 author:
   firstname: Luisa M.

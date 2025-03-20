@@ -1,6 +1,6 @@
-# CV atomated formatting with Quarto and typstcv
+# CV automated formatting with Quarto and typstcv
 
-My CV (in ENG and ITA, with or without photos) made with quarto & the **`typstcv`** R pckg (See [source code](https://github.com/kazuyanagimoto/typstcv) here). 
+My CV and resume (in ENG and ITA, with or without photos) made with quarto & the **`typstcv`** R pckg (See [source code](https://github.com/kazuyanagimoto/typstcv) here). 
 
 + The CV (different versions) is written in `*.qmd` files.
 + I made some formatting changes tweaking the `typstcv` template file `_extensions/kazuyanagimoto/awesomecv/typst-template.typ`. 

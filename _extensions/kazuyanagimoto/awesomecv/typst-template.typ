@@ -463,32 +463,32 @@ $endif$
      text(fill: color-link)[#it]
    }
 
-
-  set page(
-    paper: "a4",
-    margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
-    footer: [
-      #set text(
-        fill: gray,
-        size: 8pt,
-      )
-      #__justify_align_3[
-        #smallcaps[#date]
-      ][
-        #smallcaps[
-          #author.firstname
-          #author.lastname
-          #sym.dot.c
-          CV
-        ]
-      ][
-        #counter(page).display()
-      ]
-    ],
-  )
+//  // ------- FOOTER (start) -------
+ set page(
+   paper: "a4",
+   margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
+   footer: [
+     #set text(
+       fill: gray,
+       size: 8pt,
+     )
+     #__justify_align_3[
+       #smallcaps[#date]
+     ][
+       #smallcaps[
+         #author.firstname
+         #author.lastname
+         #sym.dot.c
+         CV
+       ]
+     ][
+       #counter(page).display()
+     ]
+   ],
+ )
+// ------- FOOTER (end) ------- 
 
   // set paragraph spacing
-
   set heading(
     numbering: none,
     outlined: false,
@@ -511,7 +511,7 @@ $endif$
     ]
   ]
 
-// LULA: INTERMEDIATE WORK EXPERIENCE HEADER 
+// LULA: INTERMEDIATE WORK EXPERIENCE HEADER
 show heading.where(level: 2): it => { // QUESTO IN REALTA CORRISPONDE A "###" !!!!!!!!!
   set text(
     font: "Avenir Next",  // Using Arial for a wider font

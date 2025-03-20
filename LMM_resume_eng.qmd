@@ -1,4 +1,5 @@
 ---
+document-type: "resume"
 title: "Luisa M. Mimmi"
 author:
   firstname: Luisa M.
@@ -157,15 +158,19 @@ skill <- read.csv("data/skill.csv")
 
 skill |>
 	filter(area != "Office Suite") |>	
+	# compute on a data frame a row-at-a-time (one row, one AREA)
 	rowwise() |> 
 	mutate(details = glue_collapse(na.omit(c_across(starts_with("skills"))), sep = " • ")) |> 
 	ungroup() |>
+	# now merge 2 areas (rows) in one 
 	mutate(area = case_when(
-		area %in% c("Programming Languages", "Misc. Dev. Tools") ~ "Programming & Misc. Dev. Tools",
+		area %in% c("Programming Languages", "Misc. Dev. Tools") ~ "Programming & Development Tools",
 		TRUE ~ area
 	)) |> 
-	mutate(area = factor(area, levels = unique(area))) |>  # Preserve original order
+	# Preserve original order for areas 
+	mutate(area = factor(area, levels = unique(area))) |>  
 	group_by(area) |> 
+	# instead of separate lines, collapse details in one line
 	summarise(details = glue_collapse(details, sep = " • "), .groups = "drop") |> 
 	resume_entry(title = "area", details = "details")
 ```
@@ -218,7 +223,7 @@ skill |>
 See my website for data science projects, ![](assets/icon/r-project-brands-solid.svg){height=1em} code, writing, and teaching resources: [**www.luisamimmi.org**](https://luisamimmi.org/)
 :::
 
-
+<end-of-document>
 
 <!-- ### Blog posts -->
 <!-- ```{r} -->
