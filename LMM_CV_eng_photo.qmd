@@ -1,5 +1,4 @@
 ---
-document-type: "CV"
 title: "Luisa M. Mimmi"
 author:
   firstname: Luisa M.
@@ -17,7 +16,7 @@ author:
     - icon: fa brands linkedin
       text: Luisa M. Mimmi
       url: https://www.linkedin.com/in/luisa-m-mimmi
-    - icon: fa star #assets/icon/bi-house-fill.svg # need icon file!!??
+    - icon: fa star #assets/icon/link-solid.svg # need icon file!!??
       text: luisamimmi.org
       url: https://luisamimmi.org
     - icon: fa brands github
@@ -101,13 +100,29 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 
 ```
 
+<!-- ```{=typst} -->
+<!-- #box(height: 3%) // #box(height: 60pt) -->
+<!-- ``` -->
+
+
 ```{=typst}
-#box(height: 3%) // #box(height: 60pt)
+#align(center)[
+
+  #set text(
+    size: 11pt, 
+    weight: "regular", 
+    fill: rgb("#414141"), 
+    style: "italic",
+  )
+
+Economist with international experience in development economics and quantitative policy analysis. I lived in Washington, DC, for 14 years, where I worked for international organizations focusing on sustainable development programs. Since returning to Italy in 2020, I have been a freelance consultant for public and private entities, research institutes, and nonprofits. I help with data collection, analysis, modelling and visualization, as well as with the redaction of technical reports and grant proposals. I also offer training on applied statistics, machine learning and reproducible research.
+#linebreak()
+I am passionate about empirical research and leveraging data to inform evidence-based public policies. I also enjoy exploring programming languages and techniques for open and reproducible data analysis.
+
+]
 ```
 
 
-Economist with international experience in development economics and quantitative policy analysis. I lived in Washington, DC, for 14 years, where I worked for international organizations focusing on sustainable development programs. Since returning to Italy in 2020, I have been a freelance consultant for public and private entities, research institutes, and nonprofits. I help with data collection, analysis, modelling and visualization, as well as with the redaction of technical reports and grant proposals. I also offer training on applied statistics, machine learning and reproducible research.  
-I am passionate about empirical research and leveraging data to inform evidence-based public policies. I also enjoy exploring programming languages and techniques for open and reproducible data analysis.
 
 
 ## Work Experience

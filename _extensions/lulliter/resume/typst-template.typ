@@ -72,19 +72,19 @@ $endif$
 
 
 // layout FOOTER (I think!)
-#let __justify_align_3(left_body, mid_body, right_body) = {
+#let __justify_align_3(left_body, right_body) = {
   block[
-    #box(width: 1fr)[
+    #box(width: 2fr)[
       #align(left)[
         #left_body
       ]
     ]
-    #box(width: 1fr)[
-      #align(center)[
-        #mid_body
-      ]
-    ]
-    #box(width: 1fr)[
+    // #box(width: 7fr)[
+    //   #align(center)[
+    //     #mid_body
+    //   ]
+    // ]
+    #box(width: 8fr)[
       #align(right)[
         #right_body
       ]
@@ -92,11 +92,12 @@ $endif$
   ]
 }
 
+
 // -------- CV ENTRIES -----------
 // layout utility (GENERALE)
 #let __justify_align(left_body, right_body) = {
   block[
-    #box(width: 4fr)[#left_body]
+    #box(width: 5fr)[#left_body]
     #box(width: 1fr)[
       #align(right)[
         #right_body
@@ -221,7 +222,7 @@ $endif$
   pad(bottom: 7pt)[
     #block[
       #set text(
-        size: 26pt,
+        size: 24pt,
         style: "normal",
         font: (font-header),
       )
@@ -367,7 +368,7 @@ $endif$
 
 #let resume-item(body) = {
   set text(
-    size: 11pt,
+    size: 10pt,
     style: "normal",
     weight: "light",
     fill: color-darknight,
@@ -392,6 +393,7 @@ $endif$
 // }
 
 // QUI - REVISED EXPERIENCE 1- LINE HEADER
+// +
 #let resume-entry(
   title: none,
   location: "",
@@ -407,6 +409,8 @@ $endif$
     ]
   )
 }
+
+
 
 //------------------------------------------------------------------------------
 // Data to Resume Entries
@@ -432,6 +436,46 @@ $endif$
   ]
 }
 
+#let data-to-resume-entries(
+  data: (),
+  layout: "default"
+) = {
+  let arr = if type(data) == "dictionary" { data.values() } else { data }
+
+  if layout == "two-columns" {
+    grid(
+      columns: 2,
+      gutter: 16pt,
+      for item in arr [
+        #resume-entry(
+          title: if "title" in item { item.title } else { none },
+          location: if "location" in item { item.location } else { "" },
+          date: if "date" in item { item.date } else { none },
+          description: if "description" in item { item.description } else { "" },
+          details: if "details" in item { item.details } else { none }
+        )
+      ]
+    )
+  } else {
+    // Default single column layout
+    for item in arr [
+      #resume-entry(
+        title: if "title" in item { item.title } else { none },
+        location: if "location" in item { item.location } else { "" },
+        date: if "date" in item { item.date } else { none },
+        description: if "description" in item { item.description } else { "" }
+      )
+      #if "details" in item {
+        resume-item[
+          #for detail in item.details [
+            - #detail
+          ]
+        ]
+      }
+    ]
+  }
+}
+
 
 //------------------------------------------------------------------------------
 // Resume Template
@@ -443,6 +487,7 @@ $endif$
 //  date: datetime.today().display("[month repr:long] [day], [year]"),
   date: datetime.today().display("[day]/[month]/[year]"), // Lula's
   profile-photo: "",
+  disclaimer: "", // Add disclaimer parameter
   body,
 ) = {
 
@@ -463,30 +508,30 @@ $endif$
      text(fill: color-link)[#it]
    }
 
-//  // ------- FOOTER (start) -------
- set page(
-   paper: "a4",
-   margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
-   footer: [
-     #set text(
-       fill: gray,
-       size: 8pt,
-     )
-     #__justify_align_3[
-       #smallcaps[#date]
-     ][
-       #smallcaps[
-         #author.firstname
-         #author.lastname
-         #sym.dot.c
-         CV
-       ]
-     ][
-       #counter(page).display()
-     ]
-   ],
- )
-// ------- FOOTER (end) ------- 
+  // FOOTER
+  set page(
+    paper: "a4",
+    margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
+    footer: [
+      #set text(
+        fill: gray,
+        size: 8pt,
+      )
+      #__justify_align_3[
+        // left_body
+        Updated on:
+        #smallcaps[#date]
+      ][
+       //#smallcaps[
+          // #author.firstname
+          // #author.lastname
+          // #sym.dot.c
+          // Autorizzo il trattamento dei miei dati ai sensi del DL 30 giugno 2003, n. 196 e del GDPR (Regolamento UE 2016/679)
+          I hereby authorize the processing of my personal data as per GDPR (Regulation EU 2016/679) for recruitment purposes.
+        //]
+      ]
+    ],
+  )
 
   // set paragraph spacing
   set heading(
@@ -494,13 +539,14 @@ $endif$
     outlined: false,
   )
 
+  // REDUCE MAIN HEADER SPACE
   show heading.where(level: 1): it => [
     #set block(
-      above: 1.5em,
-      below: 1em,
+      above: 1em, // 1.5em
+      below: 0.75em,
     )
     #set text(
-      size: 16pt,
+      size: 14pt,
       weight: "regular",
     )
 
@@ -541,3 +587,5 @@ show heading.where(level: 2): it => { // QUESTO IN REALTA CORRISPONDE A "###" !!
                 profile-photo: profile-photo,)
   body
 }
+
+

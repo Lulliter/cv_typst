@@ -82,19 +82,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="cv-automated-formatting-with-quarto-and-typstcv" class="level1">
 <h1>CV automated formatting with Quarto and typstcv</h1>
-<p>My CV and resume (in ENG and ITA, with or without photos) made with quarto &amp; the <strong><code>typstcv</code></strong> R pckg (See <a href="https://github.com/kazuyanagimoto/typstcv">source code</a> here).</p>
+<p>My CV and resume (various versions in ENG and ITA) made with quarto &amp; the <strong><code>typstcv</code></strong> R pckg (See <a href="https://github.com/kazuyanagimoto/typstcv">source code</a> here).</p>
 <ul>
-<li>The CV (different versions) is written in <code>*.qmd</code> files.</li>
-<li>I made some formatting changes tweaking the <code>typstcv</code> template file <code>_extensions/kazuyanagimoto/awesomecv/typst-template.typ</code>.</li>
+<li>The CV/resume (different versions) is written in <code>*.qmd</code> files.</li>
 <li>My information are stored in <code>data/</code> folder as <code>*.csv</code> files.</li>
+<li>My publications/talks are stored in <code>data/</code> folder as <code>*.bib</code> files.</li>
+<li>I started form the <code>typstcv</code> template file and then make some formatting changes tweaking the <code>_extensions/lulliter/awesomecv/typst-template.typ</code>.</li>
 <li>The final CVs are stored in the <code>docs/</code> folder (“gitignored”) as <code>*.pdf</code> files.</li>
-<li>The <code>renv.lock</code> file is used to keep track of the R environment (🤞🏻).</li>
+<li>The <code>renv.lock</code> file is used to keep track of the R environment (🤞🏻).
+<ul>
+<li>Do <code>renv::status()</code> to check the status of the environment (project may be ahead or behind the lockfile).</li>
+<li>Do <code>renv::snapshot()</code> to update the lockfile (and put it in sync with the project).</li>
+</ul></li>
 </ul>
 </section>
 <section id="to-do" class="level1">
 <h1>TO DO</h1>
 <ul>
-<li>…</li>
+<li>redo the <code>*.csv</code> files with the <code>data/</code> folder for a PHARMA resume</li>
 </ul>
 <section id="what-is-typst" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-typst">What is <code>typst</code>?</h2>

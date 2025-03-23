@@ -1,16 +1,19 @@
 # CV automated formatting with Quarto and typstcv
 
-My CV and resume (in ENG and ITA, with or without photos) made with quarto & the **`typstcv`** R pckg (See [source code](https://github.com/kazuyanagimoto/typstcv) here). 
+My CV and resume (various versions in ENG and ITA) made with quarto & the **`typstcv`** R pckg (See [source code](https://github.com/kazuyanagimoto/typstcv) here). 
 
-+ The CV (different versions) is written in `*.qmd` files.
-+ I made some formatting changes tweaking the `typstcv` template file `_extensions/kazuyanagimoto/awesomecv/typst-template.typ`. 
++ The CV/resume (different versions) is written in `*.qmd` files.
 + My information are stored in `data/` folder as `*.csv` files.
++ My publications/talks are stored in `data/` folder as `*.bib` files.
++ I started form the `typstcv` template file and then make some formatting changes tweaking the `_extensions/lulliter/awesomecv/typst-template.typ`. 
 + The final CVs are stored in the `docs/` folder ("gitignored") as `*.pdf` files.
 + The `renv.lock` file is used to keep track of the R environment (🤞🏻).
+	- Do `renv::status()` to check the status of the environment (project may be ahead or behind the lockfile).
+	- Do `renv::snapshot()` to update the lockfile (and put it in sync with the project).
 
 # TO DO 
 
-+ ... 
++ redo the `*.csv` files with the `data/` folder for a PHARMA resume
 
 ## What is `typst`?
 

@@ -1,6 +1,5 @@
 ---
-document-type: "CV"
-title: "Luisa M. Mimmi"
+Ωtitle: "Luisa M. Mimmi"
 author:
   firstname: Luisa M.
   lastname: Mimmi
@@ -16,7 +15,7 @@ author:
     - icon: fa brands linkedin
       text: Luisa M. Mimmi
       url: https://www.linkedin.com/in/luisa-m-mimmi
-    - icon: fa star #assets/icon/bi-house-fill.svg # need icon file!!??
+    - icon: fa star #assets/icon/link-solid.svg # need icon file!!??
       text: luisamimmi.org
       url: https://luisamimmi.org
     - icon: fa brands github
@@ -110,8 +109,24 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 <!-- #box(height: 2.5%) // #box(height: 60pt) -->
 <!-- ``` -->
 
-Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando come *M&E Specialist* per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi quantitative, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). Ho al mio attivo varie pubblicazioni e corsi di formazione su applicazioni di statistica e *machine learning*.  
+```{=typst}
+#align(center)[
+
+  #set text(
+    size: 11pt, 
+    weight: "regular", 
+    fill: rgb("#414141"), 
+    style: "italic",
+  )
+
+Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando come *M&E Specialist* per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi quantitative, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). Ho al mio attivo varie pubblicazioni e corsi di formazione su applicazioni di statistica e *machine learning*.
+#linebreak()
 Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche e mi piace studiare linguaggi di programmazione e tecniche per l'analisi riproducibile dei dati. 
+
+]
+```
+
+
 
 ## Esperienza professionale
 

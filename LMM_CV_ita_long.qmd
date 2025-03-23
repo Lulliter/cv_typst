@@ -1,5 +1,4 @@
 ---
-document-type: "CV"
 title: "Luisa M. Mimmi"
 author:
   firstname: Luisa M.
@@ -13,7 +12,7 @@ author:
     - icon: assets/icon/phone-solid.svg # need icon file!!??
       text: "+39-348-9528360"
       # url: "tel:+393489528360"
-    - icon: assets/icon/bi-house-fill.svg # need icon file!!??
+    - icon: assets/icon/link-solid.svg # need icon file!!??
       text: luisamimmi.org
       url: https://luisamimmi.org
     - icon: fa brands linkedin
