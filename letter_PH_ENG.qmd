@@ -1,0 +1,110 @@
+---
+format: 
+  pdf:
+    latex-engine: xelatex
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \usepackage[margin=1in]{geometry}
+        \usepackage{fontspec}
+        \setmainfont{Lato}[BoldFont={Lato Bold}]
+        \pagestyle{empty}
+        \fontsize{12}{15}\selectfont
+sender:
+  name: "Luisa M. Mimmi"
+  title: "Sr. Data Analyst"
+  email: "lmm76@georgetown.edu"
+  phone: "+39-348-9528360"
+  address: "Via Scarpa, 11"
+  city: "Pavia"
+  state: "PV"
+  zip: "27100"
+  website: "www.luisamimmi.org"
+
+
+recipient: "Hiring Team"
+company: "Barrington James"
+job_role: "Freelance Italian Pharmacoepidemiologist"
+company_address:
+  street: "..."
+  city: "London Gatwick"
+  state: "UK"
+  zip: "..."
+
+date: today
+date-format: "MMMM D, YYYY"
+
+profile1: "development economist" 
+profile2: "quantitative policy analyst"
+profile3: "analytics consultant"
+
+keyword1: "data analysis"
+keyword2: "statistics and machine learning"
+keyword3: "EU structural funds"
+---
+<!-- https://chatgpt.com/c/67bb0a1c-13f0-800f-aec8-fe6905991101 -->
+
+
+<!-- ```{bash} -->
+<!-- #| eval: false -->
+<!-- #| echo: false -->
+
+<!-- brew install --cask font-lato -->
+<!-- fc-cache -f -v -->
+<!-- fc-list | grep "Lato" -->
+<!-- ``` -->
+  
+  
+\begin{flushright}
+\textbf{ {{< meta sender.name >}} } \\  % occhio a separare  { {{}}
+{{< meta sender.email >}} \\
+{{< meta sender.phone >}} \\
+{{< meta sender.website >}} \\
+{{< meta sender.address >}} \\
+{{< meta sender.city >}}, {{< meta sender.state >}} {{< meta sender.zip >}}
+\end{flushright}
+
+\vspace{1.5em}
+
+<!-- {{< meta recipient >}} -->
+\begin{flushleft}
+\textbf{ {{< meta company >}} } \\
+%{{< meta company_address.street >}} \\ %
+{{< meta company_address.city >}}, {{< meta company_address.state >}} %{{< meta company_address.zip >}}%
+\end{flushleft}
+
+
+\vspace{1em}
+
+\begin{flushright}
+{{< meta sender.city >}}, {{< meta date >}}  
+\end{flushright}
+
+\vspace{1em}
+
+**Subject**: Application to position of \textbf{ {{< meta job_role >}} } at \textbf{ {{< meta company >}} }
+
+\vspace{1em}
+
+Dear {{< meta recipient >}},  
+
+<!-- Introduction -->
+I am writing to express my interest in the {{< meta job_role >}} position. With extensive experience in health-focused research and policy evaluation, I bring a strong track record in conducting studies that inform public decision-making and improve service delivery.
+
+<!-- Me -->
+I have led multi-country surveys and conducted both experimental and quasi-experimental evaluations in the water, energy, and health sectors, often involving vulnerable populations. My work has spanned public institutions including the World Bank and the Inter-American Development Bank, where I contributed to high-impact studies on health outcomes linked to energy poverty and inadequate WASH access. These projects required a rigorous command of applied statistics, the ability to translate evidence into actionable insights, and clear communication with cross-functional teams and international stakeholders.
+
+I am a native Italian speaker, fluent in English and Spanish, and well-versed in collaborative, multilingual environments. My technical toolkit includes expert-level R and SQL, with additional experience in Stata and SAS. I also co-developed the workshop [Introduction to Biostatistics with R](https://r4biostats.com/), aimed at supporting early-career researchers in the life sciences.
+
+<!-- Why you -->
+This opportunity strongly aligns with the direction of my current freelance work: supporting rigorous, data-driven research with clear relevance for health and policy outcomes. I would be glad to contribute my skills to your team and assist in the timely delivery of high-quality research outputs.
+
+<!-- Closing -->
+Thank you for your time and consideration. I am available for an introductory conversation at your convenience and look forward to the possibility of collaborating.
+
+Warm regards,  
+
+\vspace{2em}
+
+{{< meta sender.name >}} 
+ 

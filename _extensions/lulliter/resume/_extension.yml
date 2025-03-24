@@ -1,5 +1,5 @@
-title: Quarto-awesomecv-typst
-author: Kazuharu Yanagimoto
+title: Quarto-resume-typst
+author: Lulliter
 version: 0.1.0
 quarto-required: ">=1.4.0"
 contributes:

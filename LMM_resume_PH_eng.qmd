@@ -3,8 +3,8 @@ title: "Luisa M. Mimmi"
 author:
   firstname: Luisa M.
   lastname: Mimmi
-  address: "Italian citizen | Green card holder"
-  position: "Economist | Quantitative Policy Analyst | Freelance consultant"
+  address: "Available for remote freelance contracts. EU citizen, based in Italy."
+  position: "Sr. Data Analyst | Data Scientist"
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
@@ -36,6 +36,7 @@ author:
 style:
   color-accent: 7c1c2d #004B72 #516db0
 format:
+# the `typstcv` extension is installed and provides the `resume-typst` format.
   resume-typst:
     font-paths: ["assets/fonts/"]
     keep-typ: false
@@ -53,11 +54,14 @@ execute:
     fill: rgb("#414141"), 
     style: "italic",
   )
-    Economist with 20 years of international experience in development economics and quantitative policy analysis. Currently based in Italy, working as a freelance consultant for public and private entities, research institutes, and nonprofits. I help with data collection, analysis, modelling and visualization.\ 
-    I also offer training on applied statistics, machine learning and reproducible research.
+
+Empirical researcher with expertise in observational and longitudinal studies, real-world data analysis, and applied statistics. I have designed and led surveys and policy evaluations across developing countries, focusing on public health outcomes related to energy poverty and inadequate access to water and sanitation.\
+A native Italian speaker, I am fluent in English and Spanish with strong communication and scientific writing skills. I have published in peer-reviewed journals and presented at international conferences. An expert programmer in R and SQL, conversant in Stata and SAS, I co-created the intensive workshop #link("https://r4biostats.com/")["Introduction to Biostatistics with R"].
+
 ]
 ```
-
+<!-- Applied researcher with a background in economics and demonstrated expertise in observational and longitudinal data analysis, particularly in global health and development settings. I have designed and led large-scale surveys and policy evaluations in low- and middle-income countries, addressing health-related outcomes linked to energy poverty and inadequate water and sanitation access.\ -->
+<!-- A native Italian speaker, I am fluent in English and Spanish, and experienced in scientific writing and cross-disciplinary communication. I have published in peer-reviewed journals and presented at international conferences. Skilled in R and SQL, and proficient in Stata and SAS, I co-developed the intensive workshop #link("https://r4biostats.com/")[Introduction to Biostatistics with R], bridging applied statistics and epidemiologic methods for early-career researchers. -->
 
 <!-- I am passionate about empirical research and leveraging data to inform evidence-based public policies. I also enjoy exploring programming languages and techniques for open and reproducible data analysis. -->
 
@@ -126,15 +130,15 @@ work <- work_temp %>%
 #| output: asis
 work %>% 
 	# remove CSIL and AVSI
-	filter(org != "CSIL" & org != "AVSI International NGO") %>%
+	filter(org != "CSIL" & org != "Italian Presidency of the Council of Ministers" & org != "Italian Ministry of Economy & Finance") %>%
 	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
 	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
 	resume_entry(title = "title",
 					 description = "org",
 					 location = "where",
 					 date = "date",
-					 details = c("description_1" )
-					 #details = c("description_1", "description_2" )
+					 #details = c("description_1" )
+					 details = c("desc_PHARMA", "detail" )
 					 ) 
 	
 ```
@@ -174,7 +178,9 @@ skill <- read.csv("data/skill.csv")
 # 				 details = c("skills1", "skills2", "skills3", "skills4"))
 
 skill |>
-	filter(area != "Office Suite") |>	
+	filter(area != "Office Suite" & area != "Personal Skills") |>	
+	# replace  "Personal Skills2" with "Personal Skills"
+	dplyr::mutate(area = if_else(area == "Personal Skills 2", "Personal Skills", area)) |>
 	# compute on a data frame a row-at-a-time (one row, one AREA)
 	rowwise() |> 
 	mutate(details = glue_collapse(na.omit(c_across(starts_with("skills"))), sep = " • ")) |> 
@@ -190,6 +196,7 @@ skill |>
 	# instead of separate lines, collapse details in one line
 	summarise(details = glue_collapse(details, sep = " • "), .groups = "drop") |> 
 	resume_entry(title = "area", details = "details")
+
 ```
 
 <!-- ## Peer-reviewed Publications -->
@@ -236,9 +243,9 @@ skill |>
 
 <!-- + My [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) lists my publications and citations.  -->
 
-::: {.block fill=luma(221) inset="8pt" radius="4pt" width="100%"}
-See my website for data science projects, ![](assets/icon/r-project-brands-solid.svg){height=.9em} code, writing, and teaching resources: [**https://luisamimmi.org**](https://luisamimmi.org)
-:::
+<!-- ::: {.block fill=luma(221) inset="8pt" radius="4pt" width="100%"} -->
+<!-- See my website for data science projects, ![](assets/icon/r-project-brands-solid.svg){height=.9em} code, writing, and teaching resources: [**https://luisamimmi.org**](https://luisamimmi.org) -->
+<!-- ::: -->
 
 
 
