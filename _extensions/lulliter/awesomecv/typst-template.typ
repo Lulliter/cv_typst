@@ -12,12 +12,15 @@
 #let color-darkgray = rgb("#333333")
 #let color-middledarkgray = rgb("#414141")
 #let color-gray = rgb("#5d5d5d")
+#let color-footergray = rgb("#7d7d7d")
 #let color-lightgray = rgb("#999999")
 #let color-link = rgb("#0063B2")
 
 // Lula's
-#let color-darkblue = rgb("#004980")
+#let color-darkblue = rgb("#004980") // dark blue
 #let color-accent = rgb("#0084c8") // deciso  in YAML
+#let color-accent-red = rgb("#7c1c2d") // antique ruby
+
 
 // Default style
 #let color-accent-default = rgb("#dc3522")
@@ -464,12 +467,13 @@ $endif$
    }
 
 //  // ------- FOOTER (start) -------
- set page(
+
+  set page(
    paper: "a4",
    margin: (left: 15mm, right: 15mm, top: 10mm, bottom: 10mm),
    footer: [
      #set text(
-       fill: gray,
+       fill: color-footergray,
        size: 8pt,
      )
      #__justify_align_3[
@@ -482,11 +486,17 @@ $endif$
          CV
        ]
      ][
-       #counter(page).display()
-     ]
+      //  #counter(page).display()
+    #counter(page).display(
+    "1/1",
+    both: true,
+  )    
+      ]
    ],
  )
-// ------- FOOTER (end) ------- 
+
+
+// ------- FOOTER (end) -------
 
   // set paragraph spacing
   set heading(
@@ -516,7 +526,7 @@ show heading.where(level: 2): it => { // QUESTO IN REALTA CORRISPONDE A "###" !!
   set text(
     font: "Avenir Next",  // Using Arial for a wider font
     size: 13pt,
-    weight: "bold",
+    weight: "regular",
     style: "italic",
     fill: color-accent,
   )

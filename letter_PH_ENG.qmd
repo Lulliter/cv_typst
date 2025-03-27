@@ -12,7 +12,7 @@ format:
         \fontsize{12}{15}\selectfont
 sender:
   name: "Luisa M. Mimmi"
-  title: "Sr. Data Analyst"
+  title: "Sr. Quantitative Researcher"
   email: "lmm76@georgetown.edu"
   phone: "+39-348-9528360"
   address: "Via Scarpa, 11"
@@ -23,12 +23,12 @@ sender:
 
 
 recipient: "Hiring Team"
-company: "Barrington James"
-job_role: "Freelance Italian Pharmacoepidemiologist"
+company: "HOMNYA S.R.L"
+job_role: " Ricercatore/Ricercattrice qualitativo/a senior (1821)"
 company_address:
   street: "..."
-  city: "London Gatwick"
-  state: "UK"
+  city: "Milano"
+  state: "Italy"
   zip: "..."
 
 date: today
@@ -89,15 +89,18 @@ keyword3: "EU structural funds"
 Dear {{< meta recipient >}},  
 
 <!-- Introduction -->
-I am writing to express my interest in the {{< meta job_role >}} position. With extensive experience in health-focused research and policy evaluation, I bring a strong track record in conducting studies that inform public decision-making and improve service delivery.
+I am writing to express my interest in the {{< meta job_role >}} position. With extensive experience in public health-related research and policy evaluation, I bring a strong track record in conducting studies that inform public decision-making and improve service delivery.
 
 <!-- Me -->
-I have led multi-country surveys and conducted both experimental and quasi-experimental evaluations in the water, energy, and health sectors, often involving vulnerable populations. My work has spanned public institutions including the World Bank and the Inter-American Development Bank, where I contributed to high-impact studies on health outcomes linked to energy poverty and inadequate WASH access. These projects required a rigorous command of applied statistics, the ability to translate evidence into actionable insights, and clear communication with cross-functional teams and international stakeholders.
+I have led multi-country surveys and conducted both experimental and quasi-experimental evaluations in the water, energy, and health sectors, often involving vulnerable populations. My work has spanned public institutions including the World Bank and the Inter-American Development Bank, where I contributed to high-impact studies on health outcomes linked to energy poverty and inadequate WASH access. These projects required a rigorous command of applied statistics, the ability to translate evidence into actionable insights, and clear communication with diverse stakeholders.
 
-I am a native Italian speaker, fluent in English and Spanish, and well-versed in collaborative, multilingual environments. My technical toolkit includes expert-level R and SQL, with additional experience in Stata and SAS. I also co-developed the workshop [Introduction to Biostatistics with R](https://r4biostats.com/), aimed at supporting early-career researchers in the life sciences.
+I am a native Italian speaker, fluent in English and Spanish, and well-versed in collaborative, multilingual environments. Beyond technical competencies, I thrive in collaborative environments and have successfully led innovative projects from inception to completion. Communicating results effectively is another key strength, demonstrated by my extensive experience in research writing and presentations at conferences and seminars.  
+
+
+<!-- My technical toolkit includes expert-level R and SQL, with additional experience in Stata and SAS. I also co-developed the workshop [Introduction to Biostatistics with R](https://r4biostats.com/), aimed at supporting early-career researchers in the life sciences. -->
 
 <!-- Why you -->
-This opportunity strongly aligns with the direction of my current freelance work: supporting rigorous, data-driven research with clear relevance for health and policy outcomes. I would be glad to contribute my skills to your team and assist in the timely delivery of high-quality research outputs.
+This opportunity strongly aligns with the direction of my current work: supporting rigorous, data-driven research with clear relevance for health and policy outcomes. I would be glad to contribute my skills to your team and assist in the timely delivery of high-quality research outputs.
 
 <!-- Closing -->
 Thank you for your time and consideration. I am available for an introductory conversation at your convenience and look forward to the possibility of collaborating.

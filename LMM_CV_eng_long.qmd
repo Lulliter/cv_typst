@@ -67,6 +67,29 @@ library(glue)
 Sys.getlocale("LC_TIME")
 ```
 
+```{=typst}
+#box(height: 3%) // #box(height: 60pt)
+```
+
+```{=typst}
+#align(center)[
+
+  #set text(
+    size: 11pt, 
+    weight: "regular", 
+    fill: rgb("#414141"), 
+    style: "italic",
+  )
+
+Economist with international experience in development economics and quantitative policy analysis. I lived in Washington, DC, for 14 years, where I worked for multilateral development banks focusing on sustainable development programs. Since returning to Italy in 2020, I have been a freelance consultant for public and private entities, research institutes, and nonprofits. I help with data collection, analysis, modelling and visualization, as well as with the redaction of technical reports and grant proposals. I also offer training on applied statistics, machine learning and reproducible research.
+#linebreak()
+I am passionate about empirical research and leveraging data to inform evidence-based public policies. I also enjoy exploring programming languages and techniques for open and reproducible data analysis.
+
+]
+```
+
+
+
 ```{r func_date}
 #| output: false
 
@@ -119,7 +142,8 @@ work %>%
 					 description = "org",
 					 location = "where",
 					 date = "date",
-					 details = c("description_1", "description_2", "description_3" )
+					 details = c("description_1", "description_2", "description_3", "desc_PHARMA")
+					 
 					 #details = c("description_1", "description_2" )
 					 ) 
 	

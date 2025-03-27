@@ -99,8 +99,6 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 ```
 
 
-
-
 ## Esperienza professionale
 ```{r}
 work_temp <- readr::read_csv(here::here("data", "work_ita.csv"), show_col_types = FALSE) 
