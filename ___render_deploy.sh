@@ -13,7 +13,7 @@ git add -A # ALL
 git add -u # tracked
 git add images/*
 
-git commit -m "*_PH_eng.qmd"
+git commit -m "EUTALIA stuff (private)"
 # git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 git commit -m "CV_ita_long.qmd ANONiMO"
 # Push local source (master branch) to remote reference (origin)
@@ -22,7 +22,7 @@ git push origin master
 
 
 #============================ tutto insieme  =================================#
-git add -u && git commit  -m "README.md 2" && git push origin master
+git add -u && git commit  -m "Stop tracking letter_*.qmd" && git push origin master
 
 
 #===================== COPIO FILE SU WEBSITE DIR  ==========================#
@@ -51,7 +51,7 @@ cp "$SOURCE_DIR/$FILE_NAME" "$DEST_DIR/"
 ls -l "$DEST_DIR" | grep ".pdf" | awk -v dir="$DEST_DIR" '{print dir, "->",  $9 " (last saved on", $6, $7, $8, ")"}'
 
 #===================================== Tracked by mistake in git =====================================#
-git rm --cached _freeze/cv/execute-results/typ.json
+git rm --cached letter*.qmd
 
 
 

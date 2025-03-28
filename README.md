@@ -22,7 +22,7 @@ My CV and resume (various versions in ENG and ITA) made with quarto & the **`typ
 <!-- ![Source: [Nicola Rennie's blog post](https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/)](images/typst.png){width=50%} -->
 <!-- <img src="images/typst.png" alt="Source: Nicola Rennie's blog post" width="50%"/> -->
 <figure>
-  <img src="images/typst.png" alt="Typst diagram" width="50%"/>
+  <img src="assets/img/typst.png" alt="Typst diagram" width="50%"/>
   <figcaption>Source: <a href="https://nrennie.rbind.io/blog/pdf-quarto/making-pdf-with-quarto-typst-latex/">Nicola Rennie's blog post</a></figcaption>
 </figure>
 It can be installed on macOS with
@@ -91,7 +91,7 @@ Under the hood, the extension `awesomecv-typst` has 2 key files:
 This is how my final CV renders:
 
 <!-- <iframe src="docs/LMM_CV_eng.pdf#view=FitH" width="100%" height="500px" style="border:none;"></iframe> -->
-![CV Preview](images/cv-preview-image.png)
+![CV Preview](assets/img/cv-preview-image.png)
 
 # Acknowledgments
 
