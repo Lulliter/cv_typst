@@ -189,6 +189,8 @@ work %>%
 <!-- #box(height: 2%) // #box(height: 60pt) -->
 <!-- ``` -->
 
+\newpage
+
 ### [2001–2006] Business Intelligence Analyst per consulenza aziendale		
 
 ```{r}

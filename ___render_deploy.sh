@@ -15,7 +15,7 @@ git add images/*
 
 git commit -m "*_PH_eng.qmd"
 # git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
-git commit -m "skills into details"
+git commit -m "CV_ita_long.qmd ANONiMO"
 # Push local source (master branch) to remote reference (origin)
 #cd .
 git push origin master

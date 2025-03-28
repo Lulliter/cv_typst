@@ -4,7 +4,7 @@ author:
   firstname: "[Nome]"
   lastname: "[Cognome]"
   address: "Cittadinanza italiana | Residenza a [Città] ([PROV])"
-  position: "Economista e Analista di politiche pubbliche | Consulente freelance" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
+  position: "Economista e Analista di politiche pubbliche | Consulente con P.IVA" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
   # contacts:
   #   - icon: fa envelope
   #     text: lmm76@georgetown.edu

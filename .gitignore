@@ -40,3 +40,11 @@ _freeze/*
 
 # old
 zzz_old/*
+
+
+# private
+assets/img/firma*
+Domanda_EUTALIA.qmd
+CV_ita_long.qmd
+letter*.qmd
+*PH*.qmd
