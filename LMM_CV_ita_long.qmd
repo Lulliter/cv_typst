@@ -4,7 +4,7 @@ author:
   firstname: Luisa M.
   lastname: Mimmi
   address: Cittadina italiana residente a Pavia (PV)
-  position: "Economista | Analista di politiche pubbliche | Consulente freelance" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
+  position: "Economista | Consulente in data science e formazione" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
@@ -76,12 +76,15 @@ Sys.setlocale("LC_TIME", "it_IT")  # Set locale to Italian
     size: 11pt, 
     weight: "regular", 
     fill: rgb("#414141"), 
-    style: "italic",
+    style: "normal",
   )
 
-Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando per Banca Mondiale e Banca Inter-Americana dello Sviluppo sul monitoraggio e valutazione di programmi di sviluppo nell'ambito dei servizi di base in contesti svantaggiati (abitazione, salute, energia, acqua e servizi sanitari). Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi quantitative, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). Ho al mio attivo varie pubblicazioni e corsi di formazione su applicazioni di statistica e *machine learning*.
+Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo sostenibile. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi di dati, _business intelligence_, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). #linebreak()
+Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche e utilizzo linguaggi di programmazione e software per l'analisi riproducibile dei dati.
 #linebreak()
-Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche e mi piace studiare linguaggi di programmazione e tecniche per l'analisi riproducibile dei dati. 
+Ho al mio attivo varie pubblicazioni e corsi di formazione, in ambito accademico e professionale, su applicazioni di statistica e machine learning.
+
+ 
 
 ]
 ```
@@ -138,6 +141,7 @@ work <- work_temp %>%
 work %>% 
 	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
 	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
+	filter( org !="CSIL") %>%
 	resume_entry(title = "title",
 					 description = "org",
 					 location = "where",
@@ -217,6 +221,8 @@ peer_pub <- peer_pub_temp %>%
 
 
 ```{r}
+#| eval: false
+#| echo: false
 #| output: asis
 peer_pub |>
 	resume_entry(title = "clean_title",
@@ -226,12 +232,25 @@ peer_pub |>
 					 details = "url")
 ```
 
+```{r}
+#| output: asis
+#| 
+peer_pub %>%
+  mutate(
+    citation_entry = glue::glue(
+      "- <span style='color:#7c1c2d'>{author}</span>. *{clean_title}*. **{journaltitle}** ({month_year}) [{url}]({url})"
+    )
+  ) %>%
+  pull(citation_entry) %>%
+  cat(sep = "\n\n")
+```
 
-## Altre pubblicazioni 
+
+### Altre pubblicazioni 
 
 <br><br>
 
-Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) 
+Lista completa accessibile dal [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) 
 
 <!-- ### Media Divulgativi -->
 <!-- ```{r} -->
@@ -255,7 +274,7 @@ Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com
 
 <!-- \newpage -->
 
-## Presentazioni e Seminari recenti
+## Corsi e Seminari
 
 ```{r}
 # filter recent and....
@@ -264,37 +283,41 @@ talks_temp <- RefManageR::ReadBib(
 	.Encoding ="UTF-8")  %>%
 	as.data.frame() %>% 
 	# Keep only portion of string before "/" in the "date" column [2018-09-05/2018-09-06]
-	mutate(date = stringr::str_extract(date, pattern = "^[^/]+")) %>% 
+	dplyr::mutate(date = stringr::str_extract(date, pattern = "^[^/]+")) %>% 
 	# Clean the date column and format it as "month-year"
-	mutate(parsed_date = case_when(
+	dplyr::mutate(parsed_date = case_when(
 		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings
 		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format
 		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format
 		TRUE ~ NA_Date_))  %>% 
-	relocate(parsed_date, .after = date) %>%
+	dplyr::relocate(parsed_date, .after = date) %>%
 	dplyr::arrange(desc(parsed_date)) %>%
 	# Format the parsed date as "month-year"
-	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y"))) %>% 
-	relocate(month_year, .after = date) %>% 
-	mutate(year = stringr::str_extract(date,pattern = "^.{1,4}"))  
+	dplyr::mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y"))) %>% 
+	dplyr::relocate(month_year, .after = date) %>% 
+	dplyr::mutate(year = stringr::str_extract(date,pattern = "^.{1,4}"))  
 
 
 # filter 2020 and after & use `month_year` for date
 talks <- talks_temp %>%
-	dplyr::filter(year > 2015 & type != "Invited Talk")  %>%
-#mutate(url = if_else(is.na(url), url_preprint, url) ) %>%
-	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
-	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
-			 clean_title = gsub("\\}\\}", "", clean_title),  # Remove "}}"
-			 clean_eventtitle = gsub("\\{\\{", "", eventtitle),  # Remove "{{"
-			 clean_eventtitle = gsub("\\}\\}", "", clean_eventtitle),   # Remove "}}" 
-			  clean_eventtitle = gsub('"', "", clean_eventtitle)        # Remove stray quotes
-			 
-			 
-	)
+  # dplyr::filter(year > 2015 & type != "Invited Talk")  %>%
+  # mutate(url = if_else(is.na(url), url_preprint, url)) %>%
+  mutate(
+    clean_title = title %>%
+      gsub("\\{\\{", "", .) %>%
+      gsub("\\}\\}", "", .) %>%
+      gsub("\\\\dots\\{\\}", "…", .),  # Replace \dots{} with …
+    
+    clean_eventtitle = eventtitle %>%
+      gsub("\\{\\{", "", .) %>%
+      gsub("\\}\\}", "", .) %>%
+      gsub('"', "", .)
+  )
 ```
 
 ```{r}
+#| eval: false
+#| echo: false
 #| output: asis
 
 talks %>%
@@ -304,39 +327,91 @@ talks %>%
 					 location = "venue")
 ```
 
-```{r}
-#| output: false
-Sys.setlocale("LC_TIME", original_locale)
-```
 
-## Selezione di Progetti di Data Science
-
-```{r}
-proj_temp <- readr::read_csv(here::here("data", "projects_ita.csv"), show_col_types = FALSE)
-```
 
 ```{r}
 #| output: asis
-#  "area"           "year"           "accomplishment" "where"          "link"  
-proj <- proj_temp %>% 
-	as_tibble() %>%
+manual_lesson <- tibble::tibble(
+  type = "Lesson",
+  clean_title = "Workshop di introduzione alla biostatistica con R",
+  venue = "Radboud Center for Mitochondrial Medicine, Nijmegen, Netherlands",
+  clean_eventtitle = "MITGEST Doctoral Network Summer School",
+  url = "https://r4biostats.com/",
+  month_year = "Jul-2024"
+)
+
+talks %>%
+  filter(type == "Lesson") %>%
+  list(manual_lesson, .) %>%           # combine into a list of data frames
+  dplyr::bind_rows() %>%               # bind with manual first
+  # manually add urls 
+  mutate(url = case_when(
+  	rownames(.) == "mimmi_principi_2023" ~ "https://luisamimmi.org/teaching/Reproducibility_Compressed.pdf",
+  	rownames(.) == "mimmi_infrastructure_2021-1" ~ "https://blogs.worldbank.org/en/ppps/building-back-better-quality-infrastructure-investment-mooc",
+  	rownames(.) == "mimmi_sampling_2012" ~ "https://luisamimmi.org/teaching/Mumbai.pdf",
+  	TRUE ~ url)
+  	) %>%	
+	# no NA in url 
 	mutate(
-		link_typst = str_replace_all(
-			link,
-			"\\\\href\\{([^}]+)\\}\\{([^}]+)\\}",
-			"[\\2](\\1)"
-		)) %>%
-	 slice(c(1, 2, 5)) %>% 
-	resume_entry(title = "area",
-					 date = "year",
-					 description = "accomplishment",
-					 location = "where",
-					 details = c("link_typst"))
+    url_fmt = ifelse(!is.na(url), glue::glue(" [{url}]({url})"), ""),
+    talk_entry = glue::glue(
+      "- *{clean_title}* **({venue}, {month_year})** | <span style='color:#7c1c2d'>{clean_eventtitle}</span>{url_fmt}"
+    )
+  ) %>%
+  pull(talk_entry) %>%
+  cat(sep = "\n\n")
+
 ```
 
-<!-- ```{=typst}  -->
-<!-- #box(height: 1%) // #box(height: 60pt)   -->
+## Presentazioni e Conferenze
+```{r}
+#| output: asis
+
+talks %>%
+	filter(type != "Lesson") %>%
+	mutate(
+		# solo non NA url
+		url_fmt = ifelse(!is.na(url), glue::glue(" [{url}]({url})"), ""),
+		talk_entry = glue::glue(
+			"- *{clean_title}* **({venue}, {month_year})** | <span style='color:#7c1c2d'>{clean_eventtitle}</span>{url_fmt}"
+		)
+	) %>%
+	pull(talk_entry) %>%
+	cat(sep = "\n\n")
+```
+
+
+### Altri progetti
+
+<!-- ```{r} -->
+<!-- proj_temp <- readr::read_csv(here::here("data", "projects_ita.csv"), show_col_types = FALSE) -->
 <!-- ``` -->
+
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- #  "area"           "year"           "accomplishment" "where"          "link"   -->
+<!-- proj <- proj_temp %>%  -->
+<!-- 	as_tibble() %>% -->
+<!-- 	mutate( -->
+<!-- 		link_typst = str_replace_all( -->
+<!-- 			link, -->
+<!-- 			"\\\\href\\{([^}]+)\\}\\{([^}]+)\\}", -->
+<!-- 			"[\\2](\\1)" -->
+<!-- 		)) %>% -->
+<!-- 	 slice(c(1, 2, 5)) %>%  -->
+<!-- 	resume_entry(title = "area", -->
+<!-- 					 date = "year", -->
+<!-- 					 description = "accomplishment", -->
+<!-- 					 location = "where", -->
+<!-- 					 details = c("link_typst")) -->
+<!-- ``` -->
+
+
+A questo sito ([**www.luisamimmi.org/**](https://luisamimmi.org/)) sono accessibili altri contenuti: corsi, progetti di _data science_, e pubblicazioni.
+
+```{=typst}
+#box(height: 2%) // #box(height: 60pt)
+```
 
 <!-- quarto  typst-->
 ::: {.block fill=luma(221) inset="8pt" radius="4pt"}
@@ -358,3 +433,8 @@ Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativ
 <!-- #color(blue, [Questo testo dovrebbe essere blu in Typst.]) -->
 
 <!-- <span style="color: red;">Questo testo dovrebbe essere rosso in HTML.</span> -->
+```{r}
+#| output: false
+Sys.setlocale("LC_TIME", original_locale)
+```
+

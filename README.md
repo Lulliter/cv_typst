@@ -14,6 +14,7 @@ My CV and resume (various versions in ENG and ITA) made with quarto & the **`typ
 # TO DO 
 
 + redo the `*.csv` files with the `data/` folder for a PHARMA resume
++ 🟠 CAmbiare CV lungo come CV anonimo su: pubb, seminari e DS proj
 
 ## What is `typst`?
 

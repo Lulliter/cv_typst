@@ -4,7 +4,7 @@ author:
   firstname: Luisa M.
   lastname: Mimmi
   address: "Italian citizen | Green card holder"
-  position: "Economist | Quantitative Policy Analyst | Freelance consultant"
+  position: "Economist | Sr. Data Analyst | Freelance consultant"
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
@@ -53,8 +53,10 @@ execute:
     fill: rgb("#414141"), 
     style: "italic",
   )
-    Economist with 20 years of international experience in development economics and quantitative policy analysis. Currently based in Italy, working as a freelance consultant for public and private entities, research institutes, and nonprofits. I help with data collection, analysis, modelling and visualization.\ 
-    I also offer training on applied statistics, machine learning and reproducible research.
+
+ Empirical researcher with expertise in observational and longitudinal studies, real-world data analysis, and applied statistics. I have designed and led surveys and policy evaluations across developing countries, focusing on economic and public health outcomes related to energy poverty and inadequate access to water and sanitation.\
+I am a native Italian speaker, fluent in English and Spanish, with strong communication and scientific writing skills. An expert programmer in R and SQL, I am passionate about empirical research and leveraging data to inform evidence-based public policies. I also enjoy exploring programming languages and techniques for open and reproducible data analysis (See my #link("https://luisamimmi.org")["https://luisamimmi.org"]).  
+    
 ]
 ```
 
@@ -174,7 +176,7 @@ skill <- read.csv("data/skill.csv")
 # 				 details = c("skills1", "skills2", "skills3", "skills4"))
 
 skill |>
-	filter(area != "Office Suite") |>	
+	filter(area != "Productivity tools" & area != "Personal Skills 2") |>	
 	# compute on a data frame a row-at-a-time (one row, one AREA)
 	rowwise() |> 
 	mutate(details = glue_collapse(na.omit(c_across(starts_with("skills"))), sep = " • ")) |> 
@@ -236,80 +238,11 @@ skill |>
 
 <!-- + My [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) lists my publications and citations.  -->
 
-::: {.block fill=luma(221) inset="8pt" radius="4pt" width="100%"}
-See my website for data science projects, ![](assets/icon/r-project-brands-solid.svg){height=.9em} code, writing, and teaching resources: [**https://luisamimmi.org**](https://luisamimmi.org)
-:::
+<!-- ::: {.block fill=luma(221) inset="8pt" radius="4pt" width="100%"} -->
+<!-- See my website for data science projects, ![](assets/icon/r-project-brands-solid.svg){height=.9em} code, writing, and teaching resources: [**https://luisamimmi.org**](https://luisamimmi.org) -->
+<!-- ::: -->
 
 
 
 <end-of-document>
 
-<!-- ### Blog posts -->
-<!-- ```{r} -->
-<!-- # filter blogs -->
-<!-- lula_blog <- RefManageR::ReadBib( -->
-<!--   file = here::here("data", "Lula-MyPublication-Narrow.bib"), -->
-<!--   .Encoding ="UTF-8")  %>% -->
-<!--   as.data.frame() %>% -->
-<!--   dplyr::filter(bibtype  == "Online")  %>%  -->
-<!-- 	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns -->
-<!-- 	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{" -->
-<!--          clean_title = gsub("\\}\\}", "", clean_title))  # Remove "}}" -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- lula_blog |> -->
-<!-- 	resume_entry(title = "clean_title", -->
-<!-- 					 location = "type", -->
-<!-- 					 description = "author", -->
-<!-- 					 date = "date", -->
-<!-- 					 details = "url") -->
-<!-- ``` -->
-
-
-<!-- ## Conferences and Talks -->
-
-<!-- ```{r} -->
-<!-- # filter recent and.... -->
-<!-- talks_temp <- RefManageR::ReadBib( -->
-<!-- 	file = here::here("data", "Lula-MyTalks.bib"), -->
-<!-- 	.Encoding ="UTF-8")  %>% -->
-<!-- 	as.data.frame() %>%  -->
-<!-- 	# Keep only portion of string before "/" in the "date" column [2018-09-05/2018-09-06] -->
-<!-- 	mutate(date = stringr::str_extract(date, pattern = "^[^/]+")) %>%  -->
-<!-- 	# Clean the date column and format it as "month-year" -->
-<!-- 	mutate(parsed_date = case_when( -->
-<!-- 		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings -->
-<!-- 		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format -->
-<!-- 		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format -->
-<!-- 		TRUE ~ NA_Date_))  %>%  -->
-<!-- 	relocate(parsed_date, .after = date) %>% -->
-<!-- 	dplyr::arrange(desc(parsed_date)) %>% -->
-<!-- 	# Format the parsed date as "month-year" -->
-<!-- 	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y"))) %>%  -->
-<!-- 	relocate(month_year, .after = date) %>%  -->
-<!-- 	mutate(year = stringr::str_extract(date,pattern = "^.{1,4}"))   -->
-
-
-<!-- # filter 2020 and after & use `month_year` for date -->
-<!-- talks <- talks_temp %>% -->
-<!-- 	dplyr::filter(year >2020 & type != "Invited Talk")  %>% -->
-<!-- #mutate(url = if_else(is.na(url), url_preprint, url) ) %>% -->
-<!-- 	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns -->
-<!-- 	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{" -->
-<!-- 			 clean_title = gsub("\\}\\}", "", clean_title),  # Remove "}}" -->
-<!-- 			 clean_eventtitle = gsub("\\{\\{", "", eventtitle),  # Remove "{{" -->
-<!-- 			 clean_eventtitle = gsub("\\}\\}", "", clean_eventtitle)   # Remove "}}" -->
-<!-- 	) -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- #| output: asis -->
-
-<!-- talks %>% -->
-<!-- 	resume_entry(title = "clean_title", -->
-<!-- 					 date = "month_year", -->
-<!-- 					 description = "clean_eventtitle", -->
-<!-- 					 location = "venue") -->
-<!-- ``` -->

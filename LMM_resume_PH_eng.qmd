@@ -178,7 +178,7 @@ skill <- read.csv("data/skill.csv")
 # 				 details = c("skills1", "skills2", "skills3", "skills4"))
 
 skill |>
-	filter(area != "Office Suite" & area != "Personal Skills") |>	
+	filter(area != "Productivity tools" & area != "Personal Skills") |>	
 	# replace  "Personal Skills2" with "Personal Skills"
 	dplyr::mutate(area = if_else(area == "Personal Skills 2", "Personal Skills", area)) |>
 	# compute on a data frame a row-at-a-time (one row, one AREA)
