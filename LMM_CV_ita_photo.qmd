@@ -119,7 +119,7 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
     style: "italic",
   )
 
-Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando come *M&E Specialist* per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi quantitative, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). Ho al mio attivo varie pubblicazioni e corsi di formazione su applicazioni di statistica e *machine learning*.
+Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando come M&E Specialist per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi quantitative, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). Ho al mio attivo varie pubblicazioni e corsi di formazione su applicazioni di statistica e machine learning.
 #linebreak()
 Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche e mi piace studiare linguaggi di programmazione e tecniche per l'analisi riproducibile dei dati. 
 

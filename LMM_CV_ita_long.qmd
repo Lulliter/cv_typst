@@ -33,7 +33,7 @@ author:
     # - icon: fa brands researchgate
     #   text: Luisa M. Mimmi
     #   url: https://www.researchgate.net/profile/Luisa-Mimmi
-profile-photo: assets/img/profile.jpg
+profile-photo: "" # assets/img/profile.jpg
 profile-photo-width: 3cm
 profile-photo-height: 3cm
 
@@ -409,9 +409,15 @@ talks %>%
 
 A questo sito ([**www.luisamimmi.org/**](https://luisamimmi.org/)) sono accessibili altri contenuti: corsi, progetti di _data science_, e pubblicazioni.
 
+
+
 ```{=typst}
-#box(height: 2%) // #box(height: 60pt)
+#box(height: 1%) // #box(height: 60pt)
 ```
+
+
+
+ 
 
 <!-- quarto  typst-->
 ::: {.block fill=luma(221) inset="8pt" radius="4pt"}
@@ -423,7 +429,18 @@ Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativ
 ```
 :::
 
+```{r}
+#| output: true
+#| echo: FALSE
+#| out.width: 1.5in
+#| fig-align: "center"
 
+knitr::include_graphics("assets/img/firma.png")
+```
+
+<!-- ![](assets/img/firma.png){fig-align="center" width=20%}\ -->
+
+ 
 <!-- \vspace*{\fill} -->
 <!-- \footnotesize \textcolor{magenta}{Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 30 giugno 2003, n. 196 e del GDPR (Regolamento UE 2016/679).}  -->
 
