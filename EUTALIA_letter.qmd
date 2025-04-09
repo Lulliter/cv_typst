@@ -1,0 +1,139 @@
+---
+format:
+  pdf:
+    latex-engine: xelatex
+    include-in-header:
+      text: |
+        \usepackage{xcolor}
+        \usepackage[margin=.8in]{geometry}
+        \usepackage{fontspec}
+        \setmainfont{Lato}[BoldFont={Lato Bold}]
+        \pagestyle{empty}
+        \fontsize{12}{15}\selectfont
+        \usepackage[italian]{babel}
+sender:
+  name: "Luisa M. Mimmi"
+  title: "Policy and Data Analyst"
+  email: "lmm76@georgetown.edu"
+  phone: "+39-348-9528360"
+  address: "Via Scarpa, 11"
+  city: "Pavia"
+  state: "PV"
+  zip: "27100"
+  website: "www.luisamimmi.org"
+
+recipient: "Commissione esaminatrice"
+company:
+  name: "Presidenza del Consigli dei Ministri"
+  div: "Dipartimento per le Politiche di Coesione e per il Sud"
+  
+job_role: "Esperto Statistico (middle)"
+bando_id: "DPCE08 – 04.04.2025"
+company_address:
+  street: "..."
+  city: "Roma"
+  state: "RM"
+  zip: "..."
+
+date: today
+date-format: "MMMM D, YYYY"
+
+profile1: "economista dello sviluppo"
+profile2: "consulente indipendente"
+
+expertise1: "analisi quantitiativa delle politiche pubbliche"
+expertise2: "monitoraggio e la valutazione"
+
+keyword1: "raccolta, analisi, e divulgazione dei dati"
+keyword2: "politiche di coesione"
+
+project1: "Introduzione alla statistica e ML con R"
+project2: "Studio di text mining applicato ai documenti operativi della Banca Mondiale"
+
+# lang: "it"   # CLASHES WITH Tex babel package
+---
+<!-- https://chatgpt.com/c/67bb0a1c-13f0-800f-aec8-fe6905991101 -->
+
+
+<!-- ```{bash} -->
+<!-- #| eval: false -->
+<!-- #| echo: false -->
+
+<!-- brew install --cask font-lato -->
+<!-- fc-cache -f -v -->
+<!-- fc-list | grep "Lato" -->
+<!-- ``` -->
+  
+  
+<!-- \begin{flushright} -->
+<!-- \textbf{ {{< meta sender.name >}} } \\  % occhio a separare  { {{}} -->
+<!-- {{< meta sender.email >}} \\ -->
+<!-- {{< meta sender.phone >}} \\ -->
+<!-- {{< meta sender.website >}} \\ -->
+<!-- % {{< meta sender.address >}} \\   -->
+<!-- % {{< meta sender.city >}}, {{< meta sender.state >}} {{< meta sender.zip >}}   -->
+<!-- \end{flushright} -->
+
+\vspace{2em}
+
+<!-- {{< meta recipient >}} -->
+\begin{flushleft}
+\textbf{ {{< meta company.name >}} } \\
+\textbf{ {{< meta company.div >}} } \\
+%{{< meta company_address.street >}} \\ %
+\hspace{.25em}{{< meta company_address.city >}}, {{< meta company_address.state >}} %{{< meta company_address.zip >}}%
+\end{flushleft}
+
+\vspace{2em}
+
+\begin{flushright}
+% {{< meta sender.city >}}, \today 
+\today
+\end{flushright}
+
+\vspace{1em}
+
+**Oggetto**: Candidatura come \textbf{ {{< meta job_role >}} } - Bando \textbf{ {{< meta bando_id >}} }
+
+\vspace{1em}
+
+Gentile {{< meta recipient >}},
+
+<!-- Introduzione -->
+Sono lieta di candidarmi per la posizione di **{{< meta job_role >}}**, presso il {{< meta company.div >}}. Con una formazione da {{< meta profile1 >}}, ho maturato un’esperienza significativa nell'{{< meta expertise1 >}}, con particolare attenzione alla {{< meta keyword1 >}}.  
+
+ <!-- Chi sono SVILUPPO --> 
+<!-- A partire dalla mia formazione post-laurea, ho avviato una collaborazione con una ONG attiva in Brasile nei settori dell’educazione e dell’inclusione sociale. In quel contesto ho svolto anche un tirocinio sul campo, che ha portato a una pubblicazione su un progetto innovativo di elettrificazione delle _favelas_. Dopo il master conseguito alla Georgetown University nel 2008, ho lavorato oltre dodici anni a Washington, DC, ricoprendo ruoli di analisi e monitoraggio presso Banche Multilaterali di Sviluppo. In quel periodo ho partecipato a missioni in Africa e Sud-est asiatico per supervisionare progetti e fornire assistenza tecnica a governi e organizzazioni locali, collaborando con stakeholder multilaterali e team eterogenei. Ho così consolidato, oltre alle conoscenze tecniche, competenze nella comunicazione e nella negoziazione in contesti complessi e multiculturali.    -->
+
+<!-- Chi sono DATA SCIENCE  -->
+Durante il mio percorso, accademico e lavorativo, ho sviluppato solide competenze teoriche e pratiche in statistica e _machine learning_, applicate a indagini campionarie e valutazioni d’impatto in ambito socioeconomico e di politiche di sviluppo. Dopo il master alla Georgetown University nel 2008, ho lavorato oltre dodici anni a Washington, DC, ricoprendo ruoli di ricerca quantitativa applicata e coordinando i sistemi di monitoraggio per due fondi fiduciari amministrati dalla Banca Mondiale. Ho inoltre gestito l’intero ciclo di vita di alcuni progetti innovativi di ricerca: dalla stesura delle proposte (incluse collaborazioni internazionali), alla supervisione della raccolta dati sul campo, fino alla pubblicazione dei risultati.
+
+Per mio interesse personale continuo a perfezionare l’uso di software e linguaggi per l’analisi statistica (in particolare SQL, Stata, R). Compatibilmente con gli standard di protezione dei dati, ho progressivamente abbracciato e promosso, presso gli enti dove lavoravo, l’adozione di strumenti _open source_ e di approcci riproducibili di analisi dei dati, nell'ottica di promuovere la trasparenza, l'accesso e la fruizione di dati pubblici fondamentali (come quelli delle politiche di coesione) aperti a tutti gli _stakeholders._ 
+
+Dal 2020 svolgo attività da {{< meta profile2 >}}, collaborando con enti pubblici e privati, istituti di ricerca e organizzazioni non profit. Tra le altre attività, recentemente ho collaborato con il {{< meta company.div >}} (UdM PNRR) nel monitoraggio e nella rendicontazione finanziaria del PNRR, approfondendo le mie competenze sulle {{< meta keyword2 >}}. 
+<!-- Da ultimo vorrei segnalare due progetti in corso che ritengo altamente rilevanti nell’ambito del Progetto “AGE-IT”: 1) un corso intensivo [_"Introduzione alla statistica e machine learning con R"_](https://r4biostats.com/) rivolto a dottorandi in ambito clinico/medico nella UE;  2) uno [studio di _text mining_](https://policylexicon.com/posts/PDO_eda.html) applicato ai documenti operativi della Banca Mondiale. -->
+
+<!-- Perché voi -->
+Riconosco nella missione del {{< meta company.div >}} il mio stesso impegno per delle politiche pubbliche fondate su evidenze e orientate all'impatto e alla trasparenza. Per il mio background professionale, conosco profondamente anche le sfide legate al disegno e all’implementazione di sistemi statistici per monitorare in modo efficace e armonizzato realtà articolate e complesse. Sono certa che la mia esperienza nell’ideazione e gestione di complessi sistemi di monitoraggio, unita alla mia conoscenza di strumenti e tecniche innovative per la gestione e divulgazione dei dati, possa rappresentare un valore aggiunto per il team. La comprovata capacità di comunicare efficacemente con tutti gli _stakeholders_ — tramite report tecnici e metodologici, presentazioni o interazioni con i collaboratori — è un ulteriore punto di forza che potrei offrire.
+
+<!-- Chiusura -->
+Sarei lieta di poter approfondire come le mie competenze possano contribuire agli obiettivi del vostro team. Alle competenze tecniche affianco un approccio collaborativo e orientato al risultato, oltre a una spiccata capacità di comunicare efficacemente i risultati della ricerca. Sono convinta che la mia esperienza e le mie competenze siano in linea con le esigenze della posizione di **{{< meta job_role >}}**.
+
+Resto a disposizione per un colloquio conoscitivo, secondo la vostra disponibilità.
+
+<!-- Cordiali saluti, -->
+
+<!-- \noindent -->
+<!-- \begin{minipage}[t]{0.45\textwidth} -->
+<!-- \raggedright -->
+<!-- \end{minipage} -->
+<!-- \hfill -->
+<!-- \begin{minipage}[t]{0.45\textwidth} -->
+<!-- \centering -->
+<!-- \vspace{0.3em} -->
+<!-- \includegraphics[width=5cm]{assets/img/firma2.png} \\ % ← replace with your signature file -->
+<!-- \vspace{0.5em} % ← tighten spacing between image and underline -->
+<!-- (Luisa M. Mimmi) -->
+<!-- \end{minipage} -->
+
+ 
