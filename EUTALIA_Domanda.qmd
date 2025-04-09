@@ -1,0 +1,187 @@
+---
+format:
+  pdf:
+    latex-engine: xelatex
+    include-in-header:
+      text: |
+        \usepackage[margin=1in]{geometry}
+        \usepackage{fontspec}
+        \usepackage{fancybox}
+        \usepackage{ulem}
+        \setmainfont{Lato}[BoldFont={Lato Bold}]
+        \pagestyle{plain}
+        \fontsize{1}{12}\selectfont
+        \newcommand{\blankfield}[1]{\underline{\hspace{3em}}\textbf{#1}\underline{\hspace{3em}}}
+lang: it
+
+applicant:
+  name: "Luisa Maria Mimmi"
+  place_of_birth: "Pavia"
+  date_of_birth: "26/11/1975"
+  address_str: "Via Scarpa,"
+  address_num: " 11"
+  city: "Pavia"
+  province: "PV"
+  cap: "27100"
+  phone: "+39-348-9528360"
+  fax: ""
+  email: "lmm76@georgetown.edu"
+  cf: "MMMLMR75S66G388H"
+  piva: "02783460187"
+  degree: "Economia e Commercio"
+  university: "Università degli Studi di Pavia"
+  graduation_year: "2001"
+  grade: "102"
+  out_of: "110"
+bando:  
+  profile: "Esperto Middle statistico"
+  profile_letter: "B"
+  code: "DPCE08 – 04.04.2025"
+date: today
+date-format: long #iso # short #long
+---
+
+\begin{center}
+\setlength{\fboxsep}{10pt} % padding inside the box
+\fbox{%
+\begin{minipage}{0.9\textwidth}
+\begin{center}
+\fontsize{11}{13}\selectfont
+\textbf{Domanda di partecipazione} \\[0.5em]
+\textbf{Avviso per collaborazione professionale} \\[0.3em]
+\textbf{Team di esperti} \\[0.3em]
+\textbf{DPCE08 – 04.04.2025} \\[0.3em]
+\textbf{Scadenza 11.04.2025 ore 18.00}
+\end{center}
+\end{minipage}
+}
+\end{center}
+
+\vspace{1em}
+
+\begin{center}
+\textbf{\uline{Si precisa che, a pena di esclusione, la domanda di partecipazione deve essere integralmente compilata e che nessun dato in esso contenuto deve essere modificato o rimosso.}}
+\end{center}
+
+\vspace{1em}
+
+\begin{flushright}
+\textbf{Spett.le Eutalia S.r.l.}
+\end{flushright}
+
+\vspace{1em}
+
+Il/La sottoscritto/a \blankfield{ {{< meta applicant.name >}} }
+nato/a a \blankfield{ {{< meta applicant.place_of_birth >}} }
+il \blankfield{ {{< meta applicant.date_of_birth >}} }
+residente a \blankfield{ {{< meta applicant.city >}} ({{< meta applicant.province >}}) }
+in via/piazza \blankfield{ {{< meta applicant.address_str >}} } n.\blankfield{ {{< meta applicant.address_num >}}}
+CAP \blankfield{ {{< meta applicant.cap >}} }
+tel. \blankfield{ {{< meta applicant.phone >}} }
+fax \blankfield{ {{< meta applicant.fax >}} }
+email \blankfield{ {{< meta applicant.email >}} }
+C.F. \blankfield{ {{< meta applicant.cf >}} }
+partita IVA \blankfield{ {{< meta applicant.piva >}} }
+
+\vspace{1em}
+
+\begin{center}
+Manifesta il proprio interesse 
+\end{center}
+
+ 
+a partecipare alla procedura di selezione volta all’affidamento di un incarico professionale per la figura di  \blankfield { {{< meta bando.profile >}} } \
+Profilo professionale \blankfield {({{< meta bando.profile_letter >}})}, bando \textbf{ ({{< meta bando.code >}}) }
+
+\vspace{1em}
+
+A tal fine, consapevole della responsabilità penale nella quale incorre chi rende dichiarazioni mendaci a norma dell'art. 46 e 76 del D.P.R. 445/2000,
+
+\begin{center}
+DICHIARA
+\end{center}
+
+
+\begin{enumerate}
+\item che i dati anagrafici e le dichiarazioni relative ai requisiti ed al possesso dei titoli e delle esperienze di cui al curriculum corrispondono al vero;
+\item di essere in possesso della cittadinanza italiana o di uno degli Stati membri dell’Unione Europea\footnote{Ai sensi dell’art. 38 del D.lgs n. 165/2001 e ss.mm.ii., possono inoltre partecipare i familiari dei cittadini degli Stati membri dell’Unione Europea non aventi la cittadinanza di uno Stato membro che siano titolari del diritto di soggiorno o del diritto di soggiorno permanente oppure i cittadini di Paesi terzi che siano titolari del diritto di soggiorno CE per soggiornanti di lungo periodo o che siano titolari dello status di rifugiato ovvero dello status di protezione sussidiaria, ai sensi di quanto previsto dalla normativa vigente;};
+\item di godere dei diritti civili e politici;
+\item di non aver riportato condanne penali, anche con sentenza non passata in giudicato, per uno dei reati previsti dal Capo I del Titolo II del Libro II del Codice Penale;
+\item di non essere stato destituito, dispensato o dichiarato decaduto dall’impiego presso una Pubblica Amministrazione;
+\item di non incorrere in cause di incompatibilità o condizioni di conflitto di interesse con riferimento all’incarico oggetto dell’avviso;
+\item di non essere collocato in quiescenza (art. 6 del DL 90/2014 convertito in Legge n. 114/2014), ai fini del divieto ai sensi dell’art. 5 comma 9 del DL 95 del 2012 come convertito con modificazioni dalla Legge 7 agosto 2012, n. 135;
+\item di essere in possesso del diploma di laurea in \blankfield{ {{< meta applicant.degree >}} }, conseguito presso \blankfield{ l'{{< meta applicant.university >}} } nell’anno \blankfield{ {{< meta applicant.graduation_year >}} }, con la votazione di \blankfield{ {{< meta applicant.grade >}} } su \blankfield{ {{< meta applicant.out_of >}} };
+\item di aver preso visione dei contenuti dell'avviso pubblico e di accettarne integralmente le condizioni; nonché di avere piena consapevolezza della natura autonoma del rapporto lavorativo, nonché conoscenza ed accettazione delle norme, condizioni e prescrizioni dettate dall’avviso stesso;
+\item di essere in possesso di partita IVA o di essere disponibile ad aprire la partita IVA;
+\item di rendersi disponibile, laddove richiesto, a mettere a disposizione la documentazione attestante le esperienze professionali e/o formative indicate nel CV.
+\end{enumerate}
+
+
+\vspace{4em}
+
+\noindent
+\begin{minipage}[t]{0.45\textwidth}
+\raggedright
+Luogo e data: {{< meta applicant.city >}}, {{< meta date >}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\centering
+\textbf{Firma} \\
+\vspace{0.3em}
+\includegraphics[width=5cm]{assets/img/firma.png} \\ % ← replace with your signature file
+\vspace{-0.5em} % ← tighten spacing between image and underline
+\underline{\hspace{5cm}} \\
+(per esteso e leggibile)
+\end{minipage}
+
+\vspace{2em}
+
+ 
+
+Il/la sottoscritto/a \blankfield{ {{< meta applicant.name >}} }, nato/a a \blankfield{ {{< meta applicant.place_of_birth >}} } il \blankfield{ {{< meta applicant.date_of_birth >}} }, dichiara di aver preso visione dell’informativa di cui all’art. 13 del Decreto legislativo 30 giugno 2003 n. 196, con il quale è stato emanato il Codice in materia dei protezione dei dati personali, ed autorizza la Società Eutalia Srl al trattamento dei propri dati personali ai sensi del predetto Decreto.
+
+\vspace{4em}
+
+\noindent
+\begin{minipage}[t]{0.45\textwidth}
+\raggedright
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+\centering
+\textbf{Firma} \\
+\vspace{0.3em}
+\includegraphics[width=5cm]{assets/img/firma2.png} \\ % ← replace with your signature file
+\vspace{-0.5em} % ← tighten spacing between image and underline
+\underline{\hspace{5cm}} \\
+(per esteso e leggibile)
+\end{minipage}
+
+\vspace{2em}
+
+\newpage
+
+**Informativa ai sensi dell’art. 13-14 del Regolamento UE 2016/679 (GENERAL DATA PROTECTION REGULATION - GDPR) e della normativa nazionale:**   
+Eutalia S.r.l., in qualità di titolare del trattamento con sede in Via Flaminia, 888, CAP 00191 Roma email: eutalia@legalmail.it  tel. 06-69921659, tratterà i dati personali conferiti con la presente domanda di partecipazione, con modalità prevalentemente informatiche e telematiche, per le finalità prevista dal Regolamento (UE) 2016/679 (GDPR), esclusivamente per l’esecuzione delle attività connesse all’espletamento del presente avviso, ivi incluse le finalità di archiviazione e gestione della documentazione ricevuta.  
+
+\vspace{1em}
+
+I trattamenti dei dati personali connessi all’espletamento della presente procedura hanno luogo presso gli uffici della Società. I trattamenti sono effettuati da persone autorizzate, istruite e impegnate alla riservatezza e preposte alle relative attività in relazione alle finalità perseguite. Nessun dato viene comunicato o diffuso, salvo nei casi espressamente previsti dalla legge, con particolare riguardo alle norme in materia di trasparenza e pubblicità. A tal fine i provvedimenti approvati dagli organi competenti e i relativi esiti (es. graduatorie di merito) verranno diffusi mediante pubblicazione nelle forme previste dalle norme in materia e attraverso il sito internet della Società.  <br>
+Il conferimento dei dati richiesti nella presente modulistica è obbligatorio e il loro mancato inserimento preclude la possibilità di dar corso alla valutazione della domanda di partecipazione nonché agli adempimenti conseguenti inerenti alla procedura di selezione.  
+
+\vspace{1em}
+
+I dati non saranno comunicati a terzi né diffusi, se non nei casi specificamente previsti dal diritto nazionale o dell’Unione europea, come ad esempio, per la trasmissione degli atti alle autorità pubbliche preposte. Non si prevede il trasferimento dei dati verso paesi al di fuori dell’Unione Europea.  
+
+\vspace{1em}
+
+I dati saranno trattati per tutto il tempo necessario all’espletamento della procedura e delle attività, connesse e strumentali, alla gestione del presente avviso, con particolare riguardo alla gestione amministrativo-contabile delle attività e agli obblighi di tenuta della documentazione, che verrà realizzata in conformità alle norme sulla conservazione della documentazione amministrativa.  
+
+\vspace{1em}
+
+Gli interessati possono esercitare i diritti previsti dal GDPR ed in particolare il diritto di accedere ai propri dati personali, di chiederne la rettifica o la limitazione, l’aggiornamento se incompleti o erronei e la cancellazione se sussistono i presupposti, nonché di opporti al loro trattamento, presentando apposita istanza alla Società.  
+
+\vspace{1em}
+
+Infine, si informa che gli interessati, ricorrendone i presupposti, hanno altresì, il diritto di proporre reclamo al Garante per la protezione dei dati personali secondo le procedure previste dalla Legge.

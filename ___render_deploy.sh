@@ -23,6 +23,7 @@ git push origin master
 
 #============================ tutto insieme  =================================#
 git add -u && git commit  -m "Stop tracking letter_*.qmd" && git push origin master
+git commit  -m "small upds" && git push origin master
 
 
 #===================== COPIO FILE SU WEBSITE DIR  ==========================#
