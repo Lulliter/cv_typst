@@ -4,7 +4,7 @@ author:
   firstname: Luisa M.
   lastname: Mimmi
   address: Cittadina italiana residente a Pavia (PV)
-  position: "Economista | Data Analyst | Consulente indipendente" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
+  position: "Economista | Analista di politiche pubbliche | Consulente con P.IVA" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
@@ -116,18 +116,16 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
     size: 11pt, 
     weight: "regular", 
     fill: rgb("#414141"), 
-    style: "italic",
+    // style: "italic",
   )
 
-Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando come M&E Specialist per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi quantitative, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). Ho al mio attivo varie pubblicazioni e corsi di formazione su applicazioni di statistica e machine learning.
-#linebreak()
-Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche e mi piace studiare linguaggi di programmazione e tecniche per l'analisi riproducibile dei dati. 
+Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando per organizzazioni internazionali su monitoraggio e valutazione di progetti di sviluppo sostenibile. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi quantitative, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). #linebreak()
+Ho al mio attivo varie pubblicazioni e corsi di formazione su applicazioni di statistica e machine learning. #linebreak()
+Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche. Coltivo un forte interesse per i linguaggi di programmazione e le tecniche per l’analisi riproducibile dei dati.
 
 ]
 ```
-
-
-
+ 
 ## Esperienza professionale
 
 
@@ -189,7 +187,7 @@ work %>%
 <!-- #box(height: 2%) // #box(height: 60pt) -->
 <!-- ``` -->
 
-\newpage
+
 
 ### [2001–2006] Business Intelligence Analyst per consulenza aziendale		
 
@@ -210,7 +208,7 @@ work %>%
 
 ```
 
-
+\newpage
 ## Istruzione
 
 ```{r}
@@ -240,6 +238,94 @@ read.csv("data/skill_ita.csv") |>
   )
 ```
 
+## Corsi e seminari
+
+```{r}
+# filter recent and....
+talks_temp <- RefManageR::ReadBib(
+	file = here::here("data", "Lula-MyTalks.bib"),
+	.Encoding ="UTF-8")  %>%
+	as.data.frame() %>% 
+	# Keep only portion of string before "/" in the "date" column [2018-09-05/2018-09-06]
+	dplyr::mutate(date = stringr::str_extract(date, pattern = "^[^/]+")) %>% 
+	# Clean the date column and format it as "month-year"
+	dplyr::mutate(parsed_date = case_when(
+		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings
+		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format
+		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format
+		TRUE ~ NA_Date_))  %>% 
+	dplyr::relocate(parsed_date, .after = date) %>%
+	dplyr::arrange(desc(parsed_date)) %>%
+	# Format the parsed date as "month-year"
+	dplyr::mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y"))) %>% 
+	dplyr::relocate(month_year, .after = date) %>% 
+	dplyr::mutate(year = stringr::str_extract(date,pattern = "^.{1,4}"))  
+
+
+# filter 2020 and after & use `month_year` for date
+talks <- talks_temp %>%
+  # dplyr::filter(year > 2015 & type != "Invited Talk")  %>%
+  # mutate(url = if_else(is.na(url), url_preprint, url)) %>%
+  mutate(
+    clean_title = title %>%
+      gsub("\\{\\{", "", .) %>%
+      gsub("\\}\\}", "", .) %>%
+      gsub("\\\\dots\\{\\}", "…", .),  # Replace \dots{} with …
+    
+    clean_eventtitle = eventtitle %>%
+      gsub("\\{\\{", "", .) %>%
+      gsub("\\}\\}", "", .) %>%
+      gsub('"', "", .)
+  )
+```
+
+```{r}
+#| eval: false
+#| echo: false
+#| output: asis
+
+talks %>%
+	resume_entry(title = "clean_title",
+					 date = "month_year",
+					 description = "clean_eventtitle",
+					 location = "venue")
+```
+
+
+
+```{r}
+#| output: asis
+manual_lesson <- tibble::tibble(
+  type = "Lesson",
+  clean_title = "Workshop di introduzione alla biostatistica con R",
+  venue = "Radboud Center for Mitochondrial Medicine, Nijmegen, Netherlands",
+  clean_eventtitle = "MITGEST Doctoral Network Summer School",
+  url = "https://r4biostats.com/",
+  month_year = "Jul-2024"
+)
+
+talks %>%
+  filter(type == "Lesson") %>%
+  list(manual_lesson, .) %>%           # combine into a list of data frames
+  dplyr::bind_rows() %>%               # bind with manual first
+  # manually add urls 
+  mutate(url = case_when(
+  	rownames(.) == "mimmi_principi_2023" ~ "https://luisamimmi.org/teaching/Reproducibility_Compressed.pdf",
+  	rownames(.) == "mimmi_infrastructure_2021-1" ~ "https://blogs.worldbank.org/en/ppps/building-back-better-quality-infrastructure-investment-mooc",
+  	rownames(.) == "mimmi_sampling_2012" ~ "https://luisamimmi.org/teaching/Mumbai.pdf",
+  	TRUE ~ url)
+  	) %>%	
+	# no NA in url 
+	mutate(
+    url_fmt = ifelse(!is.na(url), glue::glue(" [{url}]({url})"), ""),
+    talk_entry = glue::glue(
+      "- *{clean_title}* **({venue}, {month_year})** | <span style='color:#7c1c2d'>{clean_eventtitle}</span>{url_fmt}"
+    )
+  ) %>%
+  pull(talk_entry) %>%
+  cat(sep = "\n\n")
+
+```
 
 ## Pubblicazioni e altri progetti
   
@@ -289,7 +375,8 @@ peer_pub |>
 					 details = "url")
 ```
 
-+ Sul mio sito ([**www.luisamimmi.org/**](https://luisamimmi.org/)) si trovano contenuti tra cui: corsi presentati, progetti di _data science_, codice ![](assets/icon/r-project-brands-solid.svg){height=1em}, e analisi di diversi temi di carattere socio-economico.
++ Sul mio sito ([**www.luisamimmi.org/**](https://luisamimmi.org/)) sono accessibili vari contenuti: corsi presentati, analisi su temi socio-economici ed esempi di utilizzo di ![](assets/icon/r-project-brands-solid.svg){height=1em} per progetti di _data science_.
+
 
 ```{r}
 #| output: false
@@ -299,7 +386,7 @@ Sys.setlocale("LC_TIME", original_locale)
 
 <!--spazio vuoto--> 
 ```{=typst}
-#box(height: 10%) // #box(height: 60pt)
+#box(height: 1%) // #box(height: 60pt)
 ```
 
 <!-- quarto  typst-->

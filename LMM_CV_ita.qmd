@@ -134,16 +134,6 @@ work %>%
 <!--  <!-- •	**Forte orientamento ai risultati** e capacità di lavorare in modo autonomo e in condizioni di stress  --> 
  
 \newpage 
-## Competenze
-
-```{r}
-#| output: asis
-read.csv("data/skill_ita.csv") |>
-  resume_entry(title = "area",
-               details = c("skills1", "skills2", "skills3", "skills4")
-  )
-```
-
 
 ## Istruzione
 
@@ -162,6 +152,18 @@ educ <- educ_temp %>%
 					 description = "detail")
 ```
  
+
+## Competenze
+
+```{r}
+#| output: asis
+read.csv("data/skill_ita.csv") |>
+  resume_entry(title = "area",
+               details = c("skills1", "skills2", "skills3", "skills4")
+  )
+```
+
+
 
 ## Pubblicazioni sottoposte a revisione paritaria 
   
@@ -194,6 +196,8 @@ peer_pub <- peer_pub_temp %>%
 
 
 ```{r}
+#| eval: false
+#| echo: false
 #| output: asis
 peer_pub |>
 	resume_entry(title = "clean_title",
@@ -203,8 +207,21 @@ peer_pub |>
 					 details = "url")
 ```
 
+```{r}
+#| output: asis
+#| 
+peer_pub %>%
+  mutate(
+    citation_entry = glue::glue(
+      "- <span style='color:#7c1c2d'>{author}</span>. *{clean_title}*. **{journaltitle}** ({month_year}) [{url}]({url})"
+    )
+  ) %>%
+  pull(citation_entry) %>%
+  cat(sep = "\n\n")
+```
 
-## Altre pubblicazioni 
+
+### Altre pubblicazioni 
 
 Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) 
 
@@ -261,9 +278,9 @@ Vedere lista completa su [**Profilo Google Scholar**](https://scholar.google.com
 ```
 
 
-<!-- ```{=typst}  -->
-<!-- #box(height: 5%) // #box(height: 60pt)   -->
-<!-- ``` -->
+```{=typst}
+#box(height: 5%) // #box(height: 60pt)
+```
 
 <!-- quarto  typst-->
 ::: {.block fill=luma(221) inset="8pt" radius="4pt"}

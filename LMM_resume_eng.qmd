@@ -55,7 +55,7 @@ execute:
   )
 
  Empirical researcher with expertise in observational and longitudinal studies, real-world data analysis, and applied statistics. I have designed and led surveys and policy evaluations across developing countries, focusing on economic and public health outcomes related to energy poverty and inadequate access to water and sanitation.\
-I am a native Italian speaker, fluent in English and Spanish, with strong communication and scientific writing skills. An expert programmer in R and SQL, I am passionate about empirical research and leveraging data to inform evidence-based public policies. I also enjoy exploring programming languages and techniques for open and reproducible data analysis (See my website #link("https://luisamimmi.org")[https://luisamimmi.org]).  
+I am a native Italian speaker, fluent in English and Spanish, with strong communication and scientific writing skills. An expert programmer in R and SQL, I am passionate about empirical research and leveraging data to inform evidence-based public policies. I also enjoy exploring programming languages and techniques for open and reproducible data analysis (See my website at #link("https://luisamimmi.org")[https://luisamimmi.org]).  
     
 ]
 ```

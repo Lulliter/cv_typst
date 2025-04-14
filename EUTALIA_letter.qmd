@@ -117,7 +117,8 @@ Dal 2020 svolgo attività da {{< meta profile2 >}}, collaborando con enti pubbli
 Riconosco nella missione del {{< meta company.div >}} il mio stesso impegno per delle politiche pubbliche fondate su evidenze e orientate all'impatto e alla trasparenza. Per il mio background professionale, conosco profondamente anche le sfide legate al disegno e all’implementazione di sistemi statistici per monitorare in modo efficace e armonizzato realtà articolate e complesse. Sono certa che la mia esperienza nell’ideazione e gestione di complessi sistemi di monitoraggio, unita alla mia conoscenza di strumenti e tecniche innovative per la gestione e divulgazione dei dati, possa rappresentare un valore aggiunto per il team. La comprovata capacità di comunicare efficacemente con tutti gli _stakeholders_ — tramite report tecnici e metodologici, presentazioni o interazioni con i collaboratori — è un ulteriore punto di forza che potrei offrire.
 
 <!-- Chiusura -->
-Sarei lieta di poter approfondire come le mie competenze possano contribuire agli obiettivi del vostro team. Alle competenze tecniche affianco un approccio collaborativo e orientato al risultato, oltre a una spiccata capacità di comunicare efficacemente i risultati della ricerca. Sono convinta che la mia esperienza e le mie competenze siano in linea con le esigenze della posizione di **{{< meta job_role >}}**.
+<!-- Sarei lieta di poter approfondire come le mie competenze possano contribuire agli obiettivi del vostro team. Alle competenze tecniche affianco un approccio collaborativo e orientato al risultato, oltre a una spiccata capacità di comunicare efficacemente i risultati della ricerca.  -->
+Sono convinta che la mia esperienza e le mie competenze siano molto in linea con i requisiti della posizione di **{{< meta job_role >}}**.
 
 Resto a disposizione per un colloquio conoscitivo, secondo la vostra disponibilità.
 
