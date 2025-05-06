@@ -181,9 +181,11 @@ educ <- educ_temp %>%
 ```{r}
 #| output: asis
 read.csv("data/skill.csv") |>
-  resume_entry(title = "area",
-               details = c("skills1", "skills2", "skills3", "skills4")
-  )
+	# filter skills
+	filter(area != "Personal Skills 2") %>%
+	resume_entry(title = "area",
+					 details = c("skills1", "skills2", "skills3", "skills4")
+	)
 ```
 
 

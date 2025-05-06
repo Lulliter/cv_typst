@@ -4,7 +4,7 @@ author:
   firstname: Luisa M.
   lastname: Mimmi
   address: Cittadina italiana residente a Pavia (PV)
-  position: "Economista | Consulente in data science e formazione" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
+  position: "Economista | Analista di politiche pubbliche | Consulente freelance" # "Economista | Consulente in data science e formazione" #    
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
@@ -48,6 +48,10 @@ execute:
   warning: false
 ---
 
+```{=typst}
+#box(height: 1%) // #box(height: 60pt)
+```
+
 ```{r}
 #| output: false
 
@@ -62,6 +66,7 @@ library(dplyr)
 library(stringr)
 library(lubridate)
 library(RefManageR)
+library(glue)
 
 # Set locale to Italian function before calling base::format().
 original_locale <- Sys.getlocale("LC_TIME")  # Save the original locale
@@ -79,12 +84,10 @@ Sys.setlocale("LC_TIME", "it_IT")  # Set locale to Italian
     style: "normal",
   )
 
-Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo sostenibile. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi di dati, _business intelligence_, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). #linebreak()
+Economista con esperienza internazionale nella valutazione di politiche pubbliche. #linebreak()
+Ho vissuto 14 anni a Washington, DC, lavorando per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo sostenibile e salute pubblica. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi di dati, _project management_, stesura di _grant proposal_, monitoraggio fondi strutturali UE/PNRR). #linebreak()
 Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche e utilizzo linguaggi di programmazione e software per l'analisi riproducibile dei dati.
-#linebreak()
-Ho al mio attivo varie pubblicazioni e corsi di formazione, in ambito accademico e professionale, su applicazioni di statistica e machine learning.
-
- 
+Ho al mio attivo varie pubblicazioni e corsi di formazione, in ambito accademico e professionale.
 
 ]
 ```
@@ -123,18 +126,79 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
 ```
 
 
+```{r func_date_day}
+#| output: false
 
+# --------- FUNCTION: Process date columns including day, month, and year
+f_full_dates <- function(df, 
+                         start_year_col, start_month_col, start_day_col, 
+                         end_year_col, end_month_col, end_day_col) {
+  
+  df %>%
+    mutate(
+      # Convert all to numeric safely (handles "NA", "", etc.)
+      start_y = as.numeric(.data[[start_year_col]]),
+      start_m = as.numeric(.data[[start_month_col]]),
+      start_d = as.numeric(.data[[start_day_col]]),
+      end_y   = as.numeric(.data[[end_year_col]]),
+      end_m   = as.numeric(.data[[end_month_col]]),
+      end_d   = as.numeric(.data[[end_day_col]])
+    ) %>%
+    mutate(
+      start_date = dplyr::if_else(
+        !is.na(start_y) & !is.na(start_m) & !is.na(start_d),
+        lubridate::make_date(start_y, start_m, start_d),
+        as.Date(NA)
+      ),
+      end_date = dplyr::if_else(
+        !is.na(end_y) & !is.na(end_m) & !is.na(end_d),
+        lubridate::make_date(end_y, end_m, end_d),
+        as.Date(NA)
+      ),
+      end_date = if_else(is.na(end_date), lubridate::today(), end_date)
+    ) %>%
+    mutate(
+      start_str = format(start_date, "%d/%m/%Y"),
+      end_str   = format(end_date, "%d/%m/%Y"),
+      date = glue::glue("{start_str} – {end_str}")
+    ) %>%
+    select(-start_y, -start_m, -start_d, -end_y, -end_m, -end_d)
+}
+
+# ------- FUNCTION usage
+# processed_df <- f_full_dates(df, 
+#                              "start_year", "start_month", "start_day", 
+#                              "end_year", "end_month", "end_day")
+
+```
+
+```{=typst}
+#box(height: 1%) // #box(height: 60pt)
+```
 
 ## Esperienza professionale
 ```{r}
-work_temp <- readr::read_csv(here::here("data", "work_ita.csv"), show_col_types = FALSE) 
+#| output: false
+
+work_temp <- readr::read_csv(here::here("data", "work_ita_ATS.csv"), show_col_types = FALSE) 
 
 work <- work_temp %>% 
-	f_m_y_dates("start_year", "start_month", "end_year", "end_month")
+	# f_m_y_dates("start_year", "start_month", 
+	# 				"end_year", "end_month") |> 
+	f_full_dates("start_year", "start_month", "start_day",
+					 "end_year", "end_month", "end_day")|> 
+ 	# replace with strings (not NA)  if division is NA
+	mutate(division2 = ifelse(is.na(division), "", division)) %>%
+	mutate(unit2 = ifelse(is.na(unit), "", unit)) %>%
+	mutate(org_div = ifelse(is.na(unit),
+									glue::glue("{org}\n[{division2}]"),
+									glue::glue("{org}\n[{division2} - {unit2}]")
+								))
 
 # names(work )
 #work$end
 ```
+
 
 ```{r}
 #| output: asis
@@ -142,12 +206,14 @@ work %>%
 	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
 	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
 	filter( org !="CSIL") %>%
-	resume_entry(title = "title",
-					 description = "org",
+	resume_entry(title = "org_div",
+					 description = "title",
 					 location = "where",
 					 date = "date",
 					 #details = c("description_1" )
-					 details = c("description_1", "description_2", "description_3")
+					 details = c("impegno","causa_termine",
+					 				"description_1", "description_2", "description_3"
+					 				)
 	) 
 	
 ```
@@ -163,15 +229,6 @@ work %>%
  
 <!-- \newpage -->
  
-## Competenze
-
-```{r}
-#| output: asis
-read.csv("data/skill_ita.csv") |>
-  resume_entry(title = "area",
-               details = c("skills1", "skills2", "skills3", "skills4")
-  )
-```
 
 ## Istruzione
 
@@ -189,9 +246,88 @@ educ <- educ_temp %>%
 					 description = "detail")
 ```
  
+ 
+## Corsi di aggiornamento e perfezionamento
+  
+<br><br>
+
+```{r}
+#| output: asis
+courses_ita_temp <- read.csv("data/courses_ita.csv")
+# str(courses_ita)	
+# "accomplishment" "year"           "detail"    
+
+courses_ita <- courses_ita_temp %>%
+  mutate(
+    href_match = str_match(detail, "\\\\href\\{(.*?)\\}\\{(.*?)\\}"),
+    link_url = href_match[, 2],
+    link_label = href_match[, 3],
+
+    # ✅ Fix: check both are not NA
+    detail_clean = ifelse(
+    	!is.na(link_url) & !is.na(link_label) & link_url != "NA",
+    	glue::glue("[{link_label}]({link_url})"),
+    	""
+    ),
+    
+    # Add missing url
+    link_url = case_when(
+    	entity == "IRES, Kenya" ~ "./data/IRES.pdf",
+    	TRUE ~ link_url
+    ),
+    link_label = case_when(
+    	entity == "IRES, Kenya" ~ "Certificato",
+    	TRUE ~ link_label
+    ),
+    
+    # ✅ Format entries
+    course_entry = ifelse(
+      detail_clean != "",
+      glue::glue(
+        "- <span style='color:#7c1c2d'>{entity}</span> <span style='color:#414141'>({year})</span> ***{accomplishment}*** | <span style='color:#7c1c2d'>{detail_clean}</span>"),
+      glue::glue(
+        "- <span style='color:#7c1c2d'>{entity}</span> <span style='color:#414141'>({year})</span> ***{accomplishment}***")
+    )
+  )
+# %>%
+#   pull(course_entry) %>%
+#   cat(sep = "\n")
+
+# ✅ This avoids "NULL" at the end
+base::writeLines(courses_ita$course_entry)
+
+  #   citation_entry = glue::glue(
+  #     "- <span style='color:#7c1c2d'>{author}</span>. *{clean_title}*. **{journaltitle}** ({month_year}) [{url}]({url})"
+  #   )
+  # ) 
+#
+# talks %>%
+# 	filter(type != "Lesson") %>%
+# 	mutate(
+# 		# solo non NA url
+# 		url_fmt = ifelse(!is.na(url), glue::glue(" [{url}]({url})"), ""),
+# 		talk_entry = glue::glue(
+# 			"- *{clean_title}* **({venue}, {month_year})** | <span style='color:#7c1c2d'>{clean_eventtitle}</span>{url_fmt}"
+# 		)
+# 	) %>%
+# 	pull(talk_entry) %>%
+# 	cat(sep = "\n\n")
+```
+
+
+\newpage
+
+## Competenze
+
+```{r}
+#| output: asis
+read.csv("data/skill_ita.csv") |>
+  resume_entry(title = "area",
+               details = c("skills1", "skills2", "skills3", "skills4")
+  )
+```
 
 ## Pubblicazioni sottoposte a revisione paritaria 
-  
 
 ```{r}
 # Retrieve .bib and transform it into a data frame
@@ -246,11 +382,56 @@ peer_pub %>%
 ```
 
 
-### Altre pubblicazioni 
+## Altre pubblicazioni edite a stampa
+```{r}
+# Retrieve .bib and transform it into a data frame
+othr_pub_temp <- RefManageR::ReadBib(
+	file = here::here("data", "Lula-MyPublication-Narrow.bib"),
+	.Encoding ="UTF-8")  %>%
+	base::as.data.frame() %>%
+	# filter articles 
+	dplyr::filter(bibtype != "Article") |> # sopra
+	dplyr::filter(type != "Personal Blog") |> 
+	dplyr::filter(type != "Background Paper") |> 
+	dplyr::filter(type != "Working Paper") |> 
+	dplyr::filter(type != "Working-paper") 
+	
 
-<br><br>
 
-Lista completa accessibile dal [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) 
+#mutate(url = if_else(is.na(url), url_preprint, url) )
+
+# Clean the date column and format it as "month-year"
+othr_pub <- othr_pub_temp %>% 
+	mutate(parsed_date = case_when(
+		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings
+		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format
+		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format
+		TRUE ~ NA_Date_))  %>% 
+	dplyr::arrange(desc(parsed_date)) %>%
+	# Format the parsed date as "month-year"
+	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y")))  %>% 
+	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
+	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
+         clean_title = gsub("\\}\\}", "", clean_title))  # Remove "}}"
+
+```
+
+```{r}
+#| output: asis
+#| 
+othr_pub %>%
+  mutate(
+    citation_entry = glue::glue(
+      "- <span style='color:#7c1c2d'>{author}</span>. *{clean_title}*. **({type})** ({month_year}) [{url}]({url})"
+    )
+  ) %>%
+  pull(citation_entry) %>%
+  cat(sep = "\n\n")
+```
+
+<!-- <br><br> -->
+
+<!-- Lista completa accessibile dal [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao)  -->
 
 <!-- ### Media Divulgativi -->
 <!-- ```{r} -->
@@ -274,8 +455,8 @@ Lista completa accessibile dal [**Profilo Google Scholar**](https://scholar.goog
 
 <!-- \newpage -->
 
-## Corsi e Seminari
 
+## Attività didattica
 ```{r}
 # filter recent and....
 talks_temp <- RefManageR::ReadBib(
@@ -312,7 +493,9 @@ talks <- talks_temp %>%
       gsub("\\{\\{", "", .) %>%
       gsub("\\}\\}", "", .) %>%
       gsub('"', "", .)
-  )
+  ) 
+	
+	
 ```
 
 ```{r}
@@ -328,40 +511,60 @@ talks %>%
 ```
 
 
-
 ```{r}
 #| output: asis
+
+# extra entry
 manual_lesson <- tibble::tibble(
   type = "Lesson",
   clean_title = "Workshop di introduzione alla biostatistica con R",
   venue = "Radboud Center for Mitochondrial Medicine, Nijmegen, Netherlands",
   clean_eventtitle = "MITGEST Doctoral Network Summer School",
   url = "https://r4biostats.com/",
-  month_year = "Jul-2024"
+  month_year = "Jul-2024",
+  note = "(*) In questo caso ho contribuito alla preparazione dei materiali didattici.",
 )
 
 talks %>%
   filter(type == "Lesson") %>%
-  list(manual_lesson, .) %>%           # combine into a list of data frames
-  dplyr::bind_rows() %>%               # bind with manual first
-  # manually add urls 
-  mutate(url = case_when(
-  	rownames(.) == "mimmi_principi_2023" ~ "https://luisamimmi.org/teaching/Reproducibility_Compressed.pdf",
-  	rownames(.) == "mimmi_infrastructure_2021-1" ~ "https://blogs.worldbank.org/en/ppps/building-back-better-quality-infrastructure-investment-mooc",
-  	rownames(.) == "mimmi_sampling_2012" ~ "https://luisamimmi.org/teaching/Mumbai.pdf",
-  	TRUE ~ url)
-  	) %>%	
-	# no NA in url 
-	mutate(
-    url_fmt = ifelse(!is.na(url), glue::glue(" [{url}]({url})"), ""),
-    talk_entry = glue::glue(
-      "- *{clean_title}* **({venue}, {month_year})** | <span style='color:#7c1c2d'>{clean_eventtitle}</span>{url_fmt}"
+  list(manual_lesson, .) %>%
+  dplyr::bind_rows() %>%
+
+  # Add missing URLs
+  mutate(
+    url = case_when(
+      rownames(.) == "mimmi_principi_2023" ~ "https://luisamimmi.org/teaching/Reproducibility_Compressed.pdf",
+      rownames(.) == "mimmi_infrastructure_2021-1" ~ "https://blogs.worldbank.org/en/ppps/building-back-better-quality-infrastructure-investment-mooc",
+      rownames(.) == "mimmi_sampling_2012" ~ "https://luisamimmi.org/teaching/Mumbai.pdf",
+      # add pdf for Milano 
+      rownames(.) == "mimmi_oba_2011" ~ "https://luisamimmi.org/teaching/Present_OBA-Milan_2011.pdf",
+      TRUE ~ url
     )
   ) %>%
+
+  mutate(
+    url_fmt = if_else(!is.na(url), glue::glue(" [{url}]({url})"), "")
+  ) %>%
+
+  # Format note as HTML paragraph inside list item
+  mutate(
+  	note_fmt = if_else(
+  		!is.na(note) & note != "",
+  		glue::glue("<div style='margin-top:4px; margin-left:2em; font-size:0.9em; color:#6c757d'><em>{note}</em></div>"),
+  		""
+  	),
+  	
+  	talk_entry = glue::glue(
+  		"- *{clean_title}* **({venue}, {month_year})** | <span style='color:#7c1c2d'>{clean_eventtitle}</span>{url_fmt}{note_fmt}"
+  	)
+  ) %>%
+
   pull(talk_entry) %>%
   cat(sep = "\n\n")
 
 ```
+
+<!-- \newpage -->
 
 ## Presentazioni e Conferenze
 ```{r}
@@ -407,7 +610,7 @@ talks %>%
 <!-- ``` -->
 
 
-Sul sito ([**www.luisamimmi.org/**](https://luisamimmi.org/)) vari contenuti: corsi, progetti di _data science_, e pubblicazioni.
+Al mio sito personale ([**www.luisamimmi.org/**](https://luisamimmi.org/)) sono accessibili vari contenuti: corsi e seminari tenuti, progetti di _data science_, e pubblicazioni a carattere tecnico e/o divulgativo.
 
 
 
@@ -416,18 +619,17 @@ Sul sito ([**www.luisamimmi.org/**](https://luisamimmi.org/)) vari contenuti: co
 <!-- ``` -->
 
 
+\newpage
 
- 
+### Autorizzazione al trattamento dei dati personali <br>  
 
-<!-- quarto  typst-->
-::: {.block fill=luma(221) inset="8pt" radius="4pt"}
-<!-- raw  typst block -->
-```{=typst} 
-#set text(size: 8pt, weight: "medium", fill: rgb("#85144b"))
+Autorizzo il trattamento dei miei dati personali ai sensi del D.Lgs. 196/2003, come modificato dal D.Lgs. 101/2018, e del Regolamento UE 2016/679 (GDPR), per le finalità connesse alla presente procedura di selezione.
 
-Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 101/2018, n. 196 e del GDPR (Regolamento UE 2016/679)
-```
-:::
+### Dichiarazione sostitutiva ai sensi di legge <br>  
+
+La sottoscritta, ai sensi degli artt. 46 e 47 del D.P.R. 28 dicembre 2000, n. 445 e s.m.i., dichiara che quanto sopra riportato corrisponde a verità, assumendosi ogni responsabilità in merito alle dichiarazioni rese.
+
+
 
 ```{r}
 #| output: true
@@ -437,6 +639,25 @@ Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativ
 
 knitr::include_graphics("assets/img/firma.png")
 ```
+
+<div style="text-align: center; margin-top: 0.5em;"> 
+**Luogo e data**: Pavia, 05 Maggio, 2025 ______ **Firma** (Luisa M. Mimmi)
+<br>
+</div> 
+
+
+
+<!-- quarto  typst-->
+<!-- ::: {.block fill=luma(221) inset="8pt" radius="4pt"} -->
+<!-- <!-- raw  typst block -->  
+<!-- ```{=typst}  -->
+<!-- #set text(size: 8pt, weight: "medium", fill: rgb("#85144b")) -->
+
+<!-- Autorizzo il trattamento dei miei dati personali ai sensi del Decreto Legislativo 101/2018, n. 196 e del GDPR (Regolamento UE 2016/679) -->
+<!-- ``` -->
+<!-- ::: -->
+
+
 
 <!-- ![](assets/img/firma.png){fig-align="center" width=20%}\ -->
 
