@@ -172,8 +172,25 @@ f_full_dates <- function(df,
 
 ```
 
-```{=typst}
-#box(height: 1%) // #box(height: 60pt)
+<!-- ```{=typst} -->
+<!-- #box(height: 1%) // #box(height: 60pt) -->
+<!-- ``` -->
+## Istruzione
+
+```{r}
+educ_temp <- readr::read_csv(here::here("data", "edu_ita.csv"), show_col_types = FALSE)
+```
+
+```{r}
+#| output: asis
+educ <- educ_temp %>% 
+	f_m_y_dates("start_year", "start_month", "end_year", "end_month") %>% 
+	# chron inv
+	arrange( end_year) %>%
+	resume_entry(title = "degree",
+					 location = "inst",
+					 date = "end_m_y",
+					 description = "detail")
 ```
 
 ## Esperienza professionale
@@ -193,7 +210,8 @@ work <- work_temp %>%
 	mutate(org_div = ifelse(is.na(unit),
 									glue::glue("{org}\n[{division2}]"),
 									glue::glue("{org}\n[{division2} - {unit2}]")
-								))
+								)) |> 
+	arrange(end_date)
 
 # names(work )
 #work$end
@@ -230,26 +248,41 @@ work %>%
 <!-- \newpage -->
  
 
-## Istruzione
 
-```{r}
-educ_temp <- readr::read_csv(here::here("data", "edu_ita.csv"), show_col_types = FALSE)
-```
+## Altri progetti
 
-```{r}
-#| output: asis
-educ <- educ_temp %>% 
-	f_m_y_dates("start_year", "start_month", "end_year", "end_month") %>% 
-	resume_entry(title = "degree",
-					 location = "inst",
-					 date = "end_m_y",
-					 description = "detail")
-```
+<!-- ```{r} -->
+<!-- proj_temp <- readr::read_csv(here::here("data", "projects_ita.csv"), show_col_types = FALSE) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- #| output: asis -->
+<!-- #  "area"           "year"           "accomplishment" "where"          "link"   -->
+<!-- proj <- proj_temp %>%  -->
+<!-- 	as_tibble() %>% -->
+<!-- 	mutate( -->
+<!-- 		link_typst = str_replace_all( -->
+<!-- 			link, -->
+<!-- 			"\\\\href\\{([^}]+)\\}\\{([^}]+)\\}", -->
+<!-- 			"[\\2](\\1)" -->
+<!-- 		)) %>% -->
+<!-- 	 slice(c(1, 2, 5)) %>%  -->
+<!-- 	resume_entry(title = "area", -->
+<!-- 					 date = "year", -->
+<!-- 					 description = "accomplishment", -->
+<!-- 					 location = "where", -->
+<!-- 					 details = c("link_typst")) -->
+<!-- ``` -->
+
+
+Dal mio sito personale ([**www.luisamimmi.org/**](https://luisamimmi.org/)) sono accessibili vari contenuti su progetti di interesse personale: lavori di _data science_, materiali per corsi e seminari tenuti, e pubblicazioni a carattere tecnico e/o divulgativo.
+
+
  
+\newpage
  
 ## Corsi di aggiornamento e perfezionamento
-  
-<br><br>
+<br>
 
 ```{r}
 #| output: asis
@@ -270,16 +303,7 @@ courses_ita <- courses_ita_temp %>%
     	""
     ),
     
-    # Add missing url
-    link_url = case_when(
-    	entity == "IRES, Kenya" ~ "./data/IRES.pdf",
-    	TRUE ~ link_url
-    ),
-    link_label = case_when(
-    	entity == "IRES, Kenya" ~ "Certificato",
-    	TRUE ~ link_label
-    ),
-    
+
     # ✅ Format entries
     course_entry = ifelse(
       detail_clean != "",
@@ -288,34 +312,17 @@ courses_ita <- courses_ita_temp %>%
       glue::glue(
         "- <span style='color:#7c1c2d'>{entity}</span> <span style='color:#414141'>({year})</span> ***{accomplishment}***")
     )
-  )
-# %>%
+  ) |> 
+	# chron order
+	arrange(year) # %>%
 #   pull(course_entry) %>%
 #   cat(sep = "\n")
 
 # ✅ This avoids "NULL" at the end
-base::writeLines(courses_ita$course_entry)
-
-  #   citation_entry = glue::glue(
-  #     "- <span style='color:#7c1c2d'>{author}</span>. *{clean_title}*. **{journaltitle}** ({month_year}) [{url}]({url})"
-  #   )
-  # ) 
-#
-# talks %>%
-# 	filter(type != "Lesson") %>%
-# 	mutate(
-# 		# solo non NA url
-# 		url_fmt = ifelse(!is.na(url), glue::glue(" [{url}]({url})"), ""),
-# 		talk_entry = glue::glue(
-# 			"- *{clean_title}* **({venue}, {month_year})** | <span style='color:#7c1c2d'>{clean_eventtitle}</span>{url_fmt}"
-# 		)
-# 	) %>%
-# 	pull(talk_entry) %>%
-# 	cat(sep = "\n\n")
+base::writeLines(courses_ita$course_entry, sep = "\n")
+ 
 ```
 
-
-\newpage
 
 ## Competenze
 
@@ -351,7 +358,7 @@ peer_pub <- peer_pub_temp %>%
 	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y")))  %>% 
 	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
 	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
-         clean_title = gsub("\\}\\}", "", clean_title))  # Remove "}}"
+			 clean_title = gsub("\\}\\}", "", clean_title))  # Remove "}}"
 
 ```
 
@@ -372,15 +379,18 @@ peer_pub |>
 #| output: asis
 #| 
 peer_pub %>%
-  mutate(
-    citation_entry = glue::glue(
-      "- <span style='color:#7c1c2d'>{author}</span>. *{clean_title}*. **{journaltitle}** ({month_year}) [{url}]({url})"
-    )
-  ) %>%
-  pull(citation_entry) %>%
-  cat(sep = "\n\n")
+	# reverse chron order 
+	dplyr::arrange(parsed_date) %>%
+	mutate(
+		citation_entry = glue::glue(
+			"- <span style='color:#7c1c2d'>{author}</span>. *{clean_title}*. **{journaltitle}** ({month_year}) [{url}]({url})"
+		)
+	) %>%
+	pull(citation_entry) %>%
+	cat(sep = "\n\n")
 ```
 
+\newpage
 
 ## Altre pubblicazioni edite a stampa
 ```{r}
@@ -420,18 +430,18 @@ othr_pub <- othr_pub_temp %>%
 #| output: asis
 #| 
 othr_pub %>%
-  mutate(
-    citation_entry = glue::glue(
-      "- <span style='color:#7c1c2d'>{author}</span>. *{clean_title}*. **({type})** ({month_year}) [{url}]({url})"
-    )
-  ) %>%
-  pull(citation_entry) %>%
-  cat(sep = "\n\n")
+	# reverse chron order 
+	dplyr::arrange(parsed_date) %>%
+	
+	mutate(
+		citation_entry = glue::glue(
+			"- <span style='color:#7c1c2d'>{author}</span>. *{clean_title}*. **({type})** ({month_year}) [{url}]({url})"
+		)
+	) %>%
+	pull(citation_entry) %>%
+	cat(sep = "\n\n")
 ```
 
-<!-- <br><br> -->
-
-<!-- Lista completa accessibile dal [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao)  -->
 
 <!-- ### Media Divulgativi -->
 <!-- ```{r} -->
@@ -453,10 +463,25 @@ othr_pub %>%
 <!-- 					 details = "url") -->
 <!-- ``` -->
 
-<!-- \newpage -->
+<br><br>
+
+## Altre pubblicazioni di carattere tecnico e/o divulgativo  
+
+Lista completa accessibile dal [**Profilo Google Scholar**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao)
 
 
 ## Attività didattica
+ 
+::: {.block fill=luma(221) inset="8pt" radius="4pt"}
+<!-- raw  typst block -->
+```{=typst}
+#set text(size: 10pt, weight: "medium", fill: rgb("#85144b"))
+
+[Ruolo di docente tranne dove specificato con "‡" (qui ho contribuito alla preparazione del materiale didattico)]
+```
+:::
+
+
 ```{r}
 # filter recent and....
 talks_temp <- RefManageR::ReadBib(
@@ -493,9 +518,11 @@ talks <- talks_temp %>%
       gsub("\\{\\{", "", .) %>%
       gsub("\\}\\}", "", .) %>%
       gsub('"', "", .)
-  ) 
-	
-	
+  ) 	|> 
+	# reverse chron order 
+	dplyr::arrange(parsed_date) 
+
+
 ```
 
 ```{r}
@@ -517,19 +544,17 @@ talks %>%
 # extra entry
 manual_lesson <- tibble::tibble(
   type = "Lesson",
-  clean_title = "Workshop di introduzione alla biostatistica con R",
+  clean_title = "(‡) Workshop di introduzione alla biostatistica con R",
   venue = "Radboud Center for Mitochondrial Medicine, Nijmegen, Netherlands",
   clean_eventtitle = "MITGEST Doctoral Network Summer School",
   url = "https://r4biostats.com/",
-  month_year = "Jul-2024",
-  note = "(*) In questo caso ho contribuito alla preparazione dei materiali didattici.",
+  month_year = "Jul-2024"
 )
 
 talks %>%
   filter(type == "Lesson") %>%
-  list(manual_lesson, .) %>%
+  list(., manual_lesson) %>%
   dplyr::bind_rows() %>%
-
   # Add missing URLs
   mutate(
     url = case_when(
@@ -546,25 +571,18 @@ talks %>%
     url_fmt = if_else(!is.na(url), glue::glue(" [{url}]({url})"), "")
   ) %>%
 
-  # Format note as HTML paragraph inside list item
-  mutate(
-  	note_fmt = if_else(
-  		!is.na(note) & note != "",
-  		glue::glue("<div style='margin-top:4px; margin-left:2em; font-size:0.9em; color:#6c757d'><em>{note}</em></div>"),
-  		""
-  	),
-  	
-  	talk_entry = glue::glue(
-  		"- *{clean_title}* **({venue}, {month_year})** | <span style='color:#7c1c2d'>{clean_eventtitle}</span>{url_fmt}{note_fmt}"
-  	)
-  ) %>%
-
-  pull(talk_entry) %>%
-  cat(sep = "\n\n")
+  # Format  
+	mutate(talk_entry = glue::glue(
+		"- *{clean_title}* **({venue}, {month_year})** | <span style='color:#7c1c2d'>{clean_eventtitle}</span>{url_fmt}"
+	)
+	) %>%
+	
+	pull(talk_entry) %>%
+	cat(sep = "\n\n")
 
 ```
 
-<!-- \newpage -->
+\newpage
 
 ## Presentazioni e Conferenze
 ```{r}
@@ -580,46 +598,18 @@ talks %>%
 		)
 	) %>%
 	pull(talk_entry) %>%
-	cat(sep = "\n\n")
+	cat(sep = "\n\n") 
 ```
 
 
-### Altri progetti
 
-<!-- ```{r} -->
-<!-- proj_temp <- readr::read_csv(here::here("data", "projects_ita.csv"), show_col_types = FALSE) -->
-<!-- ``` -->
+```{=typst}
+#box(height: 4%) // #box(height: 60pt)
+```
 
-<!-- ```{r} -->
-<!-- #| output: asis -->
-<!-- #  "area"           "year"           "accomplishment" "where"          "link"   -->
-<!-- proj <- proj_temp %>%  -->
-<!-- 	as_tibble() %>% -->
-<!-- 	mutate( -->
-<!-- 		link_typst = str_replace_all( -->
-<!-- 			link, -->
-<!-- 			"\\\\href\\{([^}]+)\\}\\{([^}]+)\\}", -->
-<!-- 			"[\\2](\\1)" -->
-<!-- 		)) %>% -->
-<!-- 	 slice(c(1, 2, 5)) %>%  -->
-<!-- 	resume_entry(title = "area", -->
-<!-- 					 date = "year", -->
-<!-- 					 description = "accomplishment", -->
-<!-- 					 location = "where", -->
-<!-- 					 details = c("link_typst")) -->
-<!-- ``` -->
-
-
-Al mio sito personale ([**www.luisamimmi.org/**](https://luisamimmi.org/)) sono accessibili vari contenuti: corsi e seminari tenuti, progetti di _data science_, e pubblicazioni a carattere tecnico e/o divulgativo.
-
-
-
-<!-- ```{=typst} -->
-<!-- #box(height: 1%) // #box(height: 60pt) -->
-<!-- ``` -->
-
-
-\newpage
+### Nota relativa alle esperienze professionali svolte all’estero <br>  
+Le esperienze professionali maturate all’estero presso enti di rilevanza internazionale, in linea con le finalità del presente avviso (ovvero Banca Mondiale e Banca Interamericana dello Sviluppo), sono documentabili mediante contratti e lettere di incarico.  
+Tutta la documentazione è disponibile e può essere fornita su richiesta.
 
 ### Autorizzazione al trattamento dei dati personali <br>  
 
@@ -630,6 +620,9 @@ Autorizzo il trattamento dei miei dati personali ai sensi del D.Lgs. 196/2003, c
 La sottoscritta, ai sensi degli artt. 46 e 47 del D.P.R. 28 dicembre 2000, n. 445 e s.m.i., dichiara che quanto sopra riportato corrisponde a verità, assumendosi ogni responsabilità in merito alle dichiarazioni rese.
 
 
+```{=typst}
+#box(height: 1%) // #box(height: 60pt)
+```
 
 ```{r}
 #| output: true
@@ -641,7 +634,7 @@ knitr::include_graphics("assets/img/firma.png")
 ```
 
 <div style="text-align: center; margin-top: 0.5em;"> 
-**Luogo e data**: Pavia, 05 Maggio, 2025 ______ **Firma** (Luisa M. Mimmi)
+**Luogo e data**: Pavia, 06 Maggio, 2025 ______ **Firma** (Luisa M. Mimmi)
 <br>
 </div> 
 
