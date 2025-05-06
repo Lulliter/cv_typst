@@ -147,7 +147,7 @@ work <- work_temp %>%
 work %>% 
 	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
 	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
-	filter(start_year >= 2020) %>%
+	filter(start_year >= 2019) %>%
 	filter(org != "CSIL") %>%
 	resume_entry(title = "org", #"title",
 					 #description = "org",
@@ -171,7 +171,7 @@ work %>%
 work %>% 
 	#typstcv::format_date(start_m_y_end_m_y, replace_na = "Present" ) %>% 
 	#format_date(replace_na = , end = "end", sort_by = "start")  %>% 
-	filter(start_year >= 2007 & start_year <= 2019) %>%
+	filter(start_year >= 2007 & start_year < 2019) %>%
 	resume_entry(title =  "org", #"title",
 					 #description = "org",
 					 location = "where",
@@ -185,7 +185,6 @@ work %>%
 <!-- ```{=typst} -->
 <!-- #box(height: 2%) // #box(height: 60pt) -->
 <!-- ``` -->
-\newpage
 
 ### [2001–2006] Business Intelligence Analyst in strategic consulting		
 
@@ -205,6 +204,7 @@ work %>%
 	)	
 ```
 
+\newpage
 
 ## Education
 
@@ -234,17 +234,67 @@ educ <- educ_temp %>%
 ```{r}
 #| output: asis
 read.csv("data/skill.csv") |>
-  resume_entry(title = "area",
-               details = c("skills1", "skills2", "skills3", "skills4")
-  )
+	filter(area !="Personal Skills 2") |> 
+	resume_entry(title = "area",
+					 details = c("skills1", "skills2", "skills3", "skills4")
+	)
 ```
 
 
 
-## Publications and other projects
+## Peer Reviewed Publications
 
-+ My [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) lists my publications and citations. 
+```{r}
+# Retrieve .bib and transform it into a data frame
+peer_pub_temp <- RefManageR::ReadBib(
+	file = here::here("data", "Lula-MyPublication-Narrow.bib"),
+	.Encoding ="UTF-8")  %>%
+	base::as.data.frame() %>%
+	# filter articles 
+	dplyr::filter(bibtype == "Article") # %>% 
+	#mutate(url = if_else(is.na(url), url_preprint, url) )
 
+# Clean the date column and format it as "month-year"
+peer_pub <- peer_pub_temp %>% 
+	mutate(parsed_date = case_when(
+		is.na(date) | date == "" ~ NA_Date_,  # Handle NA and empty strings
+		nchar(date) == 7 ~ ym(date),# For "yyyy-mm" format
+		nchar(date) == 10 ~ ymd(date),# For "yyyy-mm-dd" format
+		TRUE ~ NA_Date_))  %>% 
+	dplyr::arrange(desc(parsed_date)) %>%
+	# Format the parsed date as "month-year"
+	mutate(month_year = if_else(is.na(parsed_date), NA_character_, base::format(parsed_date, "%b-%Y")))  %>% 
+	# Apply the function to clean the "{{" and "}}" symbols from "title" and "author" columns
+	mutate(clean_title = gsub("\\{\\{", "", title),  # Remove "{{"
+         clean_title = gsub("\\}\\}", "", clean_title))  # Remove "}}"
+
+```
+
+
+```{r}
+#| eval: false
+#| echo: false
+#| output: asis
+peer_pub |>
+	resume_entry(title = "clean_title",
+					 description = "author",
+					 location = "journaltitle",
+					 date =  "month_year" ,
+					 details = "url")
+```
+
+```{r}
+#| output: asis
+#| 
+peer_pub %>%
+  mutate(
+    citation_entry = glue::glue(
+      "- <span style='color:#7c1c2d'>{author}</span>. *{clean_title}*. **{journaltitle}** ({month_year}) [{url}]({url})"
+    )
+  ) %>%
+  pull(citation_entry) %>%
+  cat(sep = "\n\n")
+```
 ```{r}
 #| eval: false
 #| echo: false
@@ -291,12 +341,17 @@ peer_pub |>
 					 details = "url")
 ```
 
+
+## Other Publications and Projects
++ My [**Google Scholar profile**](https://scholar.google.com/citations?user=OBYla5gAAAAJ&hl=en&oi=ao) lists my publications and citations. 
+
+
 + My website ([**www.luisamimmi.org**](https://luisamimmi.org/)) showcases some of my recent projects, including technical writing, workshops and training materials, ![](assets/icon/r-project-brands-solid.svg){height=1em} code for data analysis, and more.
  
 
-```{=typst}
-#box(height: 10%) // #box(height: 60pt)
-```
+<!-- ```{=typst} -->
+<!-- #box(height: 1%) // #box(height: 60pt) -->
+<!-- ``` -->
 
 <!-- quarto  typst-->
 ::: {.block fill=luma(221) inset="8pt" radius="4pt"}

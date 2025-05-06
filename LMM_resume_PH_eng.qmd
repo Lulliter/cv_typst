@@ -3,8 +3,8 @@ title: "Luisa M. Mimmi"
 author:
   firstname: Luisa M.
   lastname: Mimmi
-  address: "Available for remote freelance contracts. EU citizen, based in Italy."
-  position: "Sr. Data Analyst | Data Scientist"
+  address: "Available for staff or freelance contracts. EU citizen, based in Italy."
+  position: "Sr. Data Analyst and Statistician"
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
