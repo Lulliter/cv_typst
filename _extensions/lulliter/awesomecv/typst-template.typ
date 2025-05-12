@@ -4,7 +4,7 @@
 #import "@preview/fontawesome:0.1.0": *
 
 //------------------------------------------------------------------------------
-// Style
+// Style (defines constants or variables)
 //------------------------------------------------------------------------------
 
 // const color
@@ -15,30 +15,29 @@
 #let color-footergray = rgb("#7d7d7d")
 #let color-lightgray = rgb("#999999")
 #let color-link = rgb("#0063B2")
-
-// Lula's
 #let color-darkblue = rgb("#004980") // dark blue
-#let color-accent = rgb("#0084c8") // deciso  in YAML
-#let color-accent-red = rgb("#7c1c2d") // antique ruby
+#let color-accent = rgb("#7c1c2d") // antique ruby
 
-
-// Default style
-#let color-accent-default = rgb("#dc3522")
+// Default style (fallback if not defined by user in YAML)
+#let color-accent-default = rgb("#7c1c2d") // antique ruby
 #let font-header-default = ("Roboto", "Arial", "Helvetica", "Dejavu Sans", "Avenir Next", "Optima")
 #let font-text-default = ("Source Sans Pro", "Arial", "Helvetica", "Dejavu Sans")
 #let align-header-default = center
 
 // User defined style
+
 $if(style.color-accent)$
 #let color-accent = rgb("$style.color-accent$")
 $else$
 #let color-accent = color-accent-default
 $endif$
+
 $if(style.font-header)$
 #let font-header = "$style.font-header$"
 $else$
 #let font-header = font-header-default
 $endif$
+
 $if(style.font-text)$
 #let font-text = "$style.font-text$"
 $else$
@@ -67,14 +66,13 @@ $endif$
   }
 }
 
-// contact text parser
+// contact text parser (Cleans up escaped characters in text)
 #let unescape_text(text) = {
   // This is not a perfect solution
   text.replace("\\", "").replace(".~", ". ")
 }
 
-
-// layout FOOTER (I think!)
+// layout FOOTER (which has 3 sections in the same line)
 #let __justify_align_3(left_body, mid_body, right_body) = {
   block[
     #box(width: 1fr)[
@@ -120,33 +118,33 @@ $endif$
   ]
 }
 
-/// Right section for the justified headers ------- (LOCATION)
+/// Right section for the secondary headers (job entry)------- (LOCATION, e.g. "Milano, Italia")
 /// - body (content): The body of the right header
 #let secondary-right-header(body) = {
   set text(
     size: 10pt,
-    weight: "light",
+    weight: "regular", // weight: "light",
     style: "italic",
-    fill: color-accent,
+    fill: color-accent, // color reddish !
   )
   body
 }
 
-/// Right section of a tertiaty headers ------- (FROM-TO)
+/// Right section of a tertiaty headers (job entry)------- (FROM-TO, e.g. 01/10/2001 – 30/06/2006)
 /// - body (content): The body of the right header
 #let tertiary-right-header(body) = {
   set text(
-    weight: "light", // weight: "light",
+    weight: "regular", // weight: "light",
     size: 10pt,
     style: "italic",
-    fill: color-darkblue,// fill: color-gray,
+    fill: color-darkblue,// color blue !
   )
   body
 }
 
 /// Justified header that takes a primary section and a secondary section. The primary section is on the left and the secondary section is on the right.
 /// - primary (content): The primary section of the header ------- (ORG)
-/// - secondary (content): The secondary section of the header ------- (LOCATION)
+/// - secondary (content): The secondary section of the header ------- (TITLE)
 #let justified-header(primary, secondary) = {
   set block(
     above: 0.7em,
@@ -167,14 +165,13 @@ $endif$
 }
 
 /// Justified header that takes a primary section and a secondary section. The primary section is on the left and the secondary section is on the right. This is a smaller header compared to the `justified-header`.
-/// - primary (content): The primary section of the header ------- (DESCRIPTION)
-/// - secondary (content): The secondary section of the header () ------- (FROM - TO)
+/// - secondary (content): The secondary section of the header () ---(TITLE!! 2cond line)
 #let secondary-justified-header(primary, secondary) = {
   __justify_align[
      #set text(
-      size: 10pt,
+      size: 10.5pt,
       weight: "regular",
-      fill: color-gray,
+      fill: color-gray,//color-darknight, //color-darkblue, //color-gray,
     )
     #primary
   ][
@@ -215,7 +212,7 @@ $endif$
 //------------------------------------------------------------------------------
 // Header
 //------------------------------------------------------------------------------
-
+// Luisa M. Mimmi
 #let create-header-name(
   firstname: "",
   lastname: "",
@@ -234,7 +231,7 @@ $endif$
     ]
   ]
 }
-
+// 
 #let create-header-position(
   position: "",
 ) = {
@@ -523,12 +520,16 @@ $endif$
 
 // LULA: INTERMEDIATE WORK EXPERIENCE HEADER
 show heading.where(level: 2): it => { // QUESTO IN REALTA CORRISPONDE A "###" !!!!!!!!!
-  set text(
+    set block(
+      above: 1em,
+      below: 0.75em,
+    )
+    set text(
     font: "Avenir Next",  // Using Arial for a wider font
     size: 13pt,
-    weight: "regular",
+    weight: "bold",
     style: "italic",
-    fill: color-accent,
+    fill: color-middledarkgray, //color-accent,
   )
   align(center)[#it.body]
 }

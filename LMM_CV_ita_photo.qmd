@@ -4,7 +4,7 @@ author:
   firstname: Luisa M.
   lastname: Mimmi
   address: Cittadina italiana residente a Pavia (PV)
-  position: "Economista | Analista di politiche pubbliche | Consulente con P.IVA" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
+  position: "Economista | Consulente in statistica e data science"# "Economista | Analista di politiche pubbliche | Consulente con P.IVA" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
@@ -36,7 +36,6 @@ author:
 profile-photo: assets/img/profile.jpg
 profile-photo-width: 3cm
 profile-photo-height: 3cm
-
 style:
   color-accent: 7c1c2d #004B72 #516db0
 format:
@@ -119,9 +118,11 @@ f_m_y_dates <- function(df, start_year_col, start_month_col, end_year_col, end_m
     // style: "italic",
   )
 
-Economista con esperienza internazionale nella valutazione di politiche economiche. Ho vissuto 14 anni a Washington, DC, lavorando per organizzazioni internazionali su monitoraggio e valutazione di progetti di sviluppo sostenibile. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi quantitative, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). #linebreak()
-Ho al mio attivo varie pubblicazioni e corsi di formazione su applicazioni di statistica e machine learning. #linebreak()
-Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche. Coltivo un forte interesse per i linguaggi di programmazione e le tecniche per l’analisi riproducibile dei dati.
+Economista con esperienza internazionale nella valutazione quantitativa di politiche pubbliche. #linebreak()
+Ho vissuto 14 anni a Washington, D.C., lavorando per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo sostenibile e salute pubblica. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi di dati, _project management_, stesura di _grant proposal_, monitoraggio fondi strutturali UE/PNRR). #linebreak()
+Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche e utilizzo linguaggi di programmazione e software per l'analisi riproducibile dei dati.
+Ho al mio attivo varie pubblicazioni e ho tenuto corsi di formazione in ambito accademico e professionale.
+
 
 ]
 ```

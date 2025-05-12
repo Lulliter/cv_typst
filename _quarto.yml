@@ -5,8 +5,8 @@ project:
 # exclude files
   render:
     - "*.qmd"
-    - "!EUTALIA*.qmd" # anonimo
-    - "!CV_ita_long.qmd" # anonimo
+    # - "!EUTALIA*.qmd" # anonimo
+    # - "!CV_ita_long.qmd" # anonimo
     - "!letter*.qmd" # cazzi miei
 #    - "!*PH*.qmd" # occasionale
 

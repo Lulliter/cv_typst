@@ -41,11 +41,15 @@ _freeze/*
 # old
 zzz_old/*
 
-
-# private
-assets/img/firma*
-Domanda_EUTALIA.qmd
-CV_ita_long.qmd
-letter*.qmd
-*PH*.qmd
+# private (nessun *CV*.pdf xche in alcuni ho la firma)
+## FOLDERS
 _mine/*
+EUTALIA/*
+PA/*
+docs/EUTALIA/*
+docs/PA/*
+## FILES
+assets/img/firma*
+*letter*.qmd
+*PH*.qmd
+

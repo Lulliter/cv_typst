@@ -37,8 +37,8 @@ author:
 profile-photo: assets/img/profile.jpg
 profile-photo-width: 3cm
 profile-photo-height: 3cm
-style:
-  color-accent: 7c1c2d #004B72 #516db0
+# style:
+#   color-accent: 7c1c2d #004B72 #516db0
 format:
   awesomecv-typst:
     font-paths: ["assets/fonts/"]

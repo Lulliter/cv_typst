@@ -33,8 +33,8 @@ author:
     # - icon: fa brands researchgate
     #   text: Luisa M. Mimmi
     #   url: https://www.researchgate.net/profile/Luisa-Mimmi
-style:
-  color-accent: 7c1c2d #004B72 #516db0
+# style:
+#   color-accent: 7c1c2d #004B72 #516db0
 format:
   awesomecv-typst:
     font-paths: ["assets/fonts/"]
