@@ -14,6 +14,7 @@ git add -u # tracked
 git add LMM_CV_ita_long_NOSIGN.qmd
 
 
+
 git commit -m "LMM_CV_ita_long_NOSIGN.qmd"
 # git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 git commit -m "LMM_CV_ita_long.qmd accademico"
@@ -23,7 +24,7 @@ git push origin master
 
 
 #============================ tutto insieme  =================================#
-git add -u && git commit  -m "Stop tracking letter_*.qmd" && git push origin master
+git add -u && git commit  -m "LMM_CV_ita_long_NOSIGN.qmd" && git push origin master
 git commit  -m "small upds" && git push origin master
 
 
