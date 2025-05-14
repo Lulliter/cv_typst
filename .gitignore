@@ -41,15 +41,16 @@ _freeze/*
 # old
 zzz_old/*
 
-# private (nessun *CV*.pdf xche in alcuni ho la firma)
+# private (nessun *CV*.pdf | *letter*.* xche in alcuni ho la firma)
 ## FOLDERS
 _mine/*
 EUTALIA/*
 PA/*
+LETTERS/*
 docs/EUTALIA/*
 docs/PA/*
 ## FILES
 assets/img/firma*
 *letter*.qmd
 *PH*.qmd
-
+*letter*.pdf

@@ -529,7 +529,7 @@ show heading.where(level: 2): it => { // QUESTO IN REALTA CORRISPONDE A "###" !!
     size: 13pt,
     weight: "bold",
     style: "italic",
-    fill: color-middledarkgray, //color-accent,
+    fill: color-accent,// color-middledarkgray, //
   )
   align(center)[#it.body]
 }

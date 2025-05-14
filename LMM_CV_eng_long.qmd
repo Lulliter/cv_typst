@@ -65,9 +65,9 @@ library(glue)
 Sys.getlocale("LC_TIME")
 ```
 
-```{=typst}
-#box(height: 3%) // #box(height: 60pt)
-```
+<!-- ```{=typst} -->
+<!-- #box(height: 3%) // #box(height: 60pt) -->
+<!-- ``` -->
 
 ```{=typst}
 #align(center)[

@@ -14,7 +14,7 @@ git add -u # tracked
 git add LMM_CV_ita_v_long.qmd
 
 
-git commit -m "ATS nighmare 😱😱😱"
+git commit -m "removed letters 📩📩"
 # git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 git commit -m "LMM_CV_ita_long.qmd accademico 🎓🎓"
 # Push local source (master branch) to remote reference (origin)
@@ -53,7 +53,7 @@ cp "$SOURCE_DIR/$FILE_NAME" "$DEST_DIR/"
 ls -l "$DEST_DIR" | grep ".pdf" | awk -v dir="$DEST_DIR" '{print dir, "->",  $9 " (last saved on", $6, $7, $8, ")"}'
 
 #===================================== Tracked by mistake in git =====================================#
-git rm --cached letter*.qmd
+git rm --cached letter*.pdf
 
 
 

@@ -504,23 +504,23 @@ Autorizzo il trattamento dei miei dati personali ai sensi del D.Lgs. 196/2003, c
 <!-- La sottoscritta, ai sensi degli artt. 46 e 47 del D.P.R. 28 dicembre 2000, n. 445 e s.m.i., dichiara che quanto sopra riportato corrisponde a verità, assumendosi ogni responsabilità in merito alle dichiarazioni rese. -->
 
 
-```{=typst}
-#box(height: 1%) // #box(height: 60pt)
-```
+<!-- ```{=typst} -->
+<!-- #box(height: 1%) // #box(height: 60pt) -->
+<!-- ``` -->
 
-```{r}
-#| output: true
-#| echo: FALSE
-#| out.width: 1.5in
-#| fig-align: "center"
+<!-- ```{r} -->
+<!-- #| output: true -->
+<!-- #| echo: FALSE -->
+<!-- #| out.width: 1.5in -->
+<!-- #| fig-align: "center" -->
 
-knitr::include_graphics("assets/img/firma.png")
-```
+<!-- knitr::include_graphics("assets/img/firma.png") -->
+<!-- ``` -->
 
-<div style="text-align: center; margin-top: 0.5em;"> 
-**Luogo e data**: Pavia, `r format(Sys.Date(), "%d %B %Y")` ______ **Firma** (Luisa M. Mimmi)
-<br>
-</div> 
+<!-- <div style="text-align: center; margin-top: 0.5em;">  -->
+<!-- **Luogo e data**: Pavia, `r format(Sys.Date(), "%d %B %Y")` ______ **Firma** (Luisa M. Mimmi) -->
+<!-- <br> -->
+<!-- </div>  -->
 
 
 
