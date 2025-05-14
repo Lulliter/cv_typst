@@ -13,8 +13,6 @@ git add -A # ALL
 git add -u # tracked
 git add LMM_CV_ita_long_NOSIGN.qmd
 
-
-
 git commit -m "LMM_CV_ita_long_NOSIGN.qmd"
 # git commit -m "revision INSTALL + cleanup slides 2"  -m "01_... + 00_carico_tab-contesto.qmd "
 git commit -m "LMM_CV_ita_long.qmd accademico"
