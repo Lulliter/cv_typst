@@ -1,10 +1,10 @@
 ---
-title: "Luisa M. Mimmi"
+title: "Luisa Maria Mimmi"
 author:
   firstname: Luisa M.
   lastname: Mimmi
   address: Cittadina italiana residente a Pavia (PV)
-  position: "Economista | Consulente in statistica e data science" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
+  position: "Economista | Analista di Politiche Pubbliche | Consulente con P.IVA" # "Economista | Consulente in statistica e data science" #   "Data Science | Analisi di politiche pubbliche | Consulenza freelance" # 
   contacts:
     - icon: fa envelope
       text: lmm76@georgetown.edu
@@ -83,9 +83,12 @@ Sys.setlocale("LC_TIME", "it_IT")  # Set locale to Italian
     fill: rgb("#414141"), 
     style: "normal",
   )
+  
+Economista con esperienza internazionale nella gestione e valutazione di programmi socio-economici di sviluppo. Ho vissuto 14 anni a Washington, DC, lavorando per Banca Mondiale e Banca Inter-Americana dello Sviluppo come specialista in monitoraggio e valutazione nel settore dei servizi e infrastrutture di base (abitazione, salute, energia, acqua e servizi sanitari) in contesti svantaggiati. #linebreak()
+Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi quantitative, rendicontazione e gestione di fondi UE/PNRR, redazione di _grant proposal_). Ho al mio attivo la pubblicazione di alcuni articoli accademici, oltre a diversi report tecnici e articoli divulgativi. Ho inoltre realizzato corsi di formazione sull'analisi dei dati in ambito economico, sanitario e della cooperazione.
 
-Economista con esperienza internazionale nella valutazione quantitativa di politiche pubbliche. Ho vissuto 14 anni a Washington, DC, lavorando per organizzazioni internazionali su monitoraggio e valutazione di programmi di sviluppo sostenibile e salute pubblica. Dal rientro in Italia, nel 2020, sono consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi di dati, _business intelligence_, rendicontazione e gestione di fondi UE/PNRR, _grant proposal_). #linebreak()
-Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo _evidence-based_ le politiche pubbliche e utilizzo linguaggi di programmazione e software per l'analisi riproducibile dei dati. Ho al mio attivo varie pubblicazioni, in ambito accademico e professionale, e corsi di formazione su applicazioni di statistica e _machine learning_.
+// Economista con esperienza internazionale nella valutazione quantitativa di // politiche pubbliche. Ho vissuto 14 anni a Washington, DC, lavorando per // organizzazioni internazionali su monitoraggio e valutazione di programmi di // sviluppo sostenibile e salute pubblica. Dal rientro in Italia, nel 2020, sono // consulente per enti pubblici e privati, istituti di ricerca e nonprofit (analisi // di dati, _business intelligence_, rendicontazione e gestione di fondi UE/PNRR, // _grant proposal_). #linebreak()
+// Mi appassiona la ricerca empirica e l’uso dei dati per orientare in modo // _evidence-based_ le politiche pubbliche e utilizzo linguaggi di programmazione e // software per l'analisi riproducibile dei dati. Ho al mio attivo varie // pubblicazioni, in ambito accademico e professionale, e corsi di formazione su // applicazioni di statistica e _machine learning_.
 
 
 ]
